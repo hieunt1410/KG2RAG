@@ -4,12 +4,12 @@ import ujson as json
 import argparse
 from tqdm import tqdm
 from FlagEmbedding import FlagReranker
-from llama_index.core import Settings, VectorStoreIndex  # , PromptTemplate
+from llama_index.core import Settings, VectorStoreIndex, QueryBundle  # , PromptTemplate
 from llama_index.llms.ollama import Ollama
 from llama_index.core.schema import TextNode
 from llama_index.core.retrievers import VectorIndexRetriever
 # from llama_index.core.query_engine import RetrieverQueryEngine  # Not needed for retriever testing
-from llama_index.embeddings.ollama import OllamaEmbedding
+from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 # from llama_index.core.response_synthesizers import ResponseMode  # Not needed for retriever testing
 from util.kg_post_processor import (
     NaivePostprocessor,
@@ -56,7 +56,7 @@ def read_data(args):
 
 def init_model(args):
     Settings.llm = Ollama(model=args.model_name, request_timeout=200)
-    Settings.embed_model = OllamaEmbedding(model_name=args.embed_model_name)
+    Settings.embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-small-en-v1.5")
 
 
 def read_kg(args, data):
@@ -208,10 +208,13 @@ def process_sample(args, sample, kg):
         # Retrieve nodes without generating answers
         retrieved_nodes = retriever.retrieve(sample_question)
         
+        # Create a QueryBundle for post-processors
+        query_bundle = QueryBundle(query_str=sample_question)
+        
         # Apply post-processors manually to test the retrieval pipeline
-        processed_nodes = expansion_pp.postprocess_nodes(retrieved_nodes, query_bundle=None)
-        processed_nodes = filter_pp.postprocess_nodes(processed_nodes, query_bundle=None)
-        processed_nodes = naive_pp.postprocess_nodes(processed_nodes, query_bundle=None)
+        processed_nodes = expansion_pp.postprocess_nodes(retrieved_nodes, query_bundle=query_bundle)
+        processed_nodes = filter_pp.postprocess_nodes(processed_nodes, query_bundle=query_bundle)
+        processed_nodes = naive_pp.postprocess_nodes(processed_nodes, query_bundle=query_bundle)
         
         # Extract supporting facts from retrieved nodes (no answer generation)
         prediction = "[RETRIEVAL_TEST_MODE - NO ANSWER GENERATED]"
@@ -329,7 +332,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--reranker",
         type=str,
-        default="../model/bge-reranker-large",
+        default="BAAI/bge-reranker-large",
         help="Path of the reranker model",
     )
     parser.add_argument("--top_k", type=int, default=10, help="Top k similar documents")
