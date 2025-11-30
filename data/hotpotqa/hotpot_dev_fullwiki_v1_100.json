@@ -1,5 +1,2169 @@
 [
     {
+        "_id": "5a8b57f25542995d1e6f1371",
+        "answer": "yes",
+        "question": "Were Scott Derrickson and Ed Wood of the same nationality?",
+        "supporting_facts": [
+            [
+                "Scott Derrickson",
+                0
+            ],
+            [
+                "Ed Wood",
+                0
+            ]
+        ],
+        "context": [
+            [
+                "Adam Collis",
+                [
+                    "Adam Collis is an American filmmaker and actor.",
+                    " He attended the Duke University from 1986 to 1990 and the University of California, Los Angeles from 2007 to 2010.",
+                    " He also studied cinema at the University of Southern California from 1991 to 1997.",
+                    " Collis first work was the assistant director for the Scott Derrickson's short \"Love in the Ruins\" (1995).",
+                    " In 1998, he played \"Crankshaft\" in Eric Koyanagi's \"Hundred Percent\"."
+                ]
+            ],
+            [
+                "Ed Wood (film)",
+                [
+                    "Ed Wood is a 1994 American biographical period comedy-drama film directed and produced by Tim Burton, and starring Johnny Depp as cult filmmaker Ed Wood.",
+                    " The film concerns the period in Wood's life when he made his best-known films as well as his relationship with actor Bela Lugosi, played by Martin Landau.",
+                    " Sarah Jessica Parker, Patricia Arquette, Jeffrey Jones, Lisa Marie, and Bill Murray are among the supporting cast."
+                ]
+            ],
+            [
+                "Tyler Bates",
+                [
+                    "Tyler Bates (born June 5, 1965) is an American musician, music producer, and composer for films, television, and video games.",
+                    " Much of his work is in the action and horror film genres, with films like \"Dawn of the Dead, 300, Sucker Punch,\" and \"John Wick.\"",
+                    " He has collaborated with directors like Zack Snyder, Rob Zombie, Neil Marshall, William Friedkin, Scott Derrickson, and James Gunn.",
+                    " With Gunn, he has scored every one of the director's films; including \"Guardians of the Galaxy\", which became one of the highest grossing domestic movies of 2014, and its 2017 sequel.",
+                    " In addition, he is also the lead guitarist of the American rock band Marilyn Manson, and produced its albums \"The Pale Emperor\" and \"Heaven Upside Down\"."
+                ]
+            ],
+            [
+                "Doctor Strange (2016 film)",
+                [
+                    "Doctor Strange is a 2016 American superhero film based on the Marvel Comics character of the same name, produced by Marvel Studios and distributed by Walt Disney Studios Motion Pictures.",
+                    " It is the fourteenth film of the Marvel Cinematic Universe (MCU).",
+                    " The film was directed by Scott Derrickson, who wrote it with Jon Spaihts and C. Robert Cargill, and stars Benedict Cumberbatch as Stephen Strange, along with Chiwetel Ejiofor, Rachel McAdams, Benedict Wong, Michael Stuhlbarg, Benjamin Bratt, Scott Adkins, Mads Mikkelsen, and Tilda Swinton.",
+                    " In \"Doctor Strange\", surgeon Strange learns the mystic arts after a career-ending car accident."
+                ]
+            ],
+            [
+                "Hellraiser: Inferno",
+                [
+                    "Hellraiser: Inferno (also known as Hellraiser V: Inferno) is a 2000 American horror film.",
+                    " It is the fifth installment in the \"Hellraiser\" series and the first \"Hellraiser\" film to go straight-to-DVD.",
+                    " It was directed by Scott Derrickson and released on October 3, 2000.",
+                    " The film concerns a corrupt detective who discovers Lemarchand's box at a crime scene.",
+                    " The film's reviews were mixed."
+                ]
+            ],
+            [
+                "Sinister (film)",
+                [
+                    "Sinister is a 2012 supernatural horror film directed by Scott Derrickson and written by Derrickson and C. Robert Cargill.",
+                    " It stars Ethan Hawke as fictional true-crime writer Ellison Oswalt who discovers a box of home movies in his attic that puts his family in danger."
+                ]
+            ],
+            [
+                "Deliver Us from Evil (2014 film)",
+                [
+                    "Deliver Us from Evil is a 2014 American supernatural horror film directed by Scott Derrickson and produced by Jerry Bruckheimer.",
+                    " The film is officially based on a 2001 non-fiction book entitled \"Beware the Night\" by Ralph Sarchie and Lisa Collier Cool, and its marketing campaign highlighted that it was \"inspired by actual accounts\".",
+                    " The film stars Eric Bana, Édgar Ramírez, Sean Harris, Olivia Munn, and Joel McHale in the main roles and was released on July 2, 2014."
+                ]
+            ],
+            [
+                "Woodson, Arkansas",
+                [
+                    "Woodson is a census-designated place (CDP) in Pulaski County, Arkansas, in the United States.",
+                    " Its population was 403 at the 2010 census.",
+                    " It is part of the Little Rock–North Little Rock–Conway Metropolitan Statistical Area.",
+                    " Woodson and its accompanying Woodson Lake and Wood Hollow are the namesake for Ed Wood Sr., a prominent plantation owner, trader, and businessman at the turn of the 20th century.",
+                    " Woodson is adjacent to the Wood Plantation, the largest of the plantations own by Ed Wood Sr."
+                ]
+            ],
+            [
+                "Conrad Brooks",
+                [
+                    "Conrad Brooks (born Conrad Biedrzycki on January 3, 1931 in Baltimore, Maryland) is an American actor.",
+                    " He moved to Hollywood, California in 1948 to pursue a career in acting.",
+                    " He got his start in movies appearing in Ed Wood films such as \"Plan 9 from Outer Space\", \"Glen or Glenda\", and \"Jail Bait.\"",
+                    " He took a break from acting during the 1960s and 1970s but due to the ongoing interest in the films of Ed Wood, he reemerged in the 1980s and has become a prolific actor.",
+                    " He also has since gone on to write, produce and direct several films."
+                ]
+            ],
+            [
+                "The Exorcism of Emily Rose",
+                [
+                    "The Exorcism of Emily Rose is a 2005 American legal drama horror film directed by Scott Derrickson and starring Laura Linney and Tom Wilkinson.",
+                    " The film is loosely based on the story of Anneliese Michel and follows a self-proclaimed agnostic who acts as defense counsel (Linney) representing a parish priest (Wilkinson), accused by the state of negligent homicide after he performed an exorcism."
+                ]
+            ]
+        ],
+        "type": "comparison",
+        "level": "hard"
+    },
+    {
+        "_id": "5adbf0a255429947ff17385a",
+        "answer": "no",
+        "question": "Are the Laleli Mosque and Esma Sultan Mansion located in the same neighborhood?",
+        "supporting_facts": [
+            [
+                "Laleli Mosque",
+                0
+            ],
+            [
+                "Esma Sultan Mansion",
+                0
+            ]
+        ],
+        "context": [
+            [
+                "Esma Sultan",
+                [
+                    "Esma Sultan is the name of three daughters of three Ottoman Sultans:"
+                ]
+            ],
+            [
+                "Esma Sultan (daughter of Abdul Hamid I)",
+                [
+                    "Esma Sultan (17 July 1778 – 4 June 1848) was an Ottoman princess, daughter of Sultan Abdul Hamid I, sister of Sultan Mustafa IV and Sultan Mahmud II.",
+                    " She was the adoptive mother of Bezmiâlem Sultan and Rahime Perestu Sultan."
+                ]
+            ],
+            [
+                "Laleli Mosque",
+                [
+                    "The Laleli Mosque (Turkish: \"Laleli Camii, or Tulip Mosque\" ) is an 18th-century Ottoman imperial mosque located in Laleli, Fatih, Istanbul, Turkey."
+                ]
+            ],
+            [
+                "Gevheri Kadın",
+                [
+                    "Gevheri Kadın (8 July 1856 – 6 September 1884) was the fifth wife of 32nd Ottoman Sultan Abdülaziz.",
+                    " She was the mother of Şehzade Mehmed Seyfeddin and Esma Sultan of the Ottoman Empire."
+                ]
+            ],
+            [
+                "Esma Sultan (daughter of Ahmed III)",
+                [
+                    "Esma Sultan (14 March 1726 – 13 August 1788) was an Ottoman princess, daughter of Sultan Ahmed III and his consort Zeynep Kadın.",
+                    " She was the half-sister of Sultan Mustafa III and Abdul Hamid I."
+                ]
+            ],
+            [
+                "Djamaâ el Kebir",
+                [
+                    "The Great Mosque of Algiers (Arabic: الجامع الكبير‎ ‎ , \"Jemaa Kebir\") or “Djama’a al-Kebir” (meaning Great Mosque) is a mosque in Algiers, Algeria, located very close to Algiers Harbor.",
+                    " An inscription on the minbar (منبر) or the pulpit testifies to fact that the mosque was built in 1097.",
+                    " It is also known by several other names such as Grand Mosque d'Alger, Djamaa al-Kebir, El Kebir Mosque and Jami Masjid.",
+                    " It is one of the few remaining examples of Almoravid architecture.",
+                    " It is the oldest mosque in Algiers and is said to be the oldest mosque in Algeria after Sidi Okba Mosque.",
+                    " It was built under sultan Ali ibn Yusuf.",
+                    " Its minaret dates from 1332 (1324 in some sources) and was built by the Ziyyanid Sultan of Tlemcen.",
+                    " The gallery at the outside of the mosque was built in 1840.",
+                    " Its construction was a consequence of a complete reconstruction of the street by the French."
+                ]
+            ],
+            [
+                "Sultan Ahmed Mosque",
+                [
+                    "The Sultan Ahmed Mosque or Sultan Ahmet Mosque (Turkish: \"Sultan Ahmet Camii\" ) is a historic mosque located in Istanbul, Turkey.",
+                    " A popular tourist site, the Sultan Ahmed Mosque continues to function as a mosque today; men still kneel in prayer on the mosque's lush red carpet after the call to prayer.",
+                    " The Blue Mosque, as it is popularly known, was constructed between 1609 and 1616 during the rule of Ahmed I.",
+                    " Its Külliye contains Ahmed's tomb, a madrasah and a hospice.",
+                    " Hand-painted blue tiles adorn the mosque’s interior walls, and at night the mosque is bathed in blue as lights frame the mosque’s five main domes, six minarets and eight secondary domes.",
+                    " It sits next to the Hagia Sophia, another popular tourist site."
+                ]
+            ],
+            [
+                "Esma Sultan (daughter of Abdülaziz)",
+                [
+                    "Esma Sultan (21 March 1873 – 7 May 1899) was an Ottoman princess, the daughter of Sultan Abdülaziz and his wife Gevheri Kadın, herself the daughter of Salih Bey Svatnba.",
+                    " She was the half-sister of Abdülmecid II, the last Caliph of the Muslim world."
+                ]
+            ],
+            [
+                "Küçük Hüseyin Pasha",
+                [
+                    "Küçük Hüseyin Pasha (1757 – 7 December 1803), also known as Tayazade Damat Küçük Hüseyin Pasha, was an Ottoman statesman and admiral who was Kapudan Pasha (Grand Admiral of the Ottoman Navy) from 11 March 1792 to 7 December 1803.",
+                    " He was a \"damat\" (\"bridegroom\") to the Ottoman dynasty after he married an Ottoman princess, Esma Sultan."
+                ]
+            ],
+            [
+                "Esma Sultan Mansion",
+                [
+                    "The Esma Sultan Mansion (Turkish: \"Esma Sultan Yalısı\" ), a historical yalı (English: waterside mansion ) located at Bosphorus in Ortaköy neighborhood of Istanbul, Turkey and named after its original owner Esma Sultan, is used today as a cultural center after being redeveloped."
+                ]
+            ]
+        ],
+        "type": "comparison",
+        "level": "hard"
+    },
+    {
+        "_id": "5a8db19d5542994ba4e3dd00",
+        "answer": "yes",
+        "question": "Are Local H and For Against both from the United States?",
+        "supporting_facts": [
+            [
+                "Local H",
+                0
+            ],
+            [
+                "For Against",
+                0
+            ]
+        ],
+        "context": [
+            [
+                "E.R. Hays House",
+                [
+                    "The E.R. Hays House, also known as Bybee & Davis Funeral Home, is a historic building located in Knoxville, Iowa, United States.",
+                    " Hays was a local lawyer who served briefly in the United States House of Representatives, replacing Edwin H. Conger who resigned to become the United States Ambassador to Brazil.",
+                    " Hays died a year after the house was completed.",
+                    " The family continued to live here until 1935 when it became the Bybee & Davis Funeral Home.",
+                    " The 2½-story brick structure was designed by the Des Moines architectural firm of Foster & Liebbe in a combination of the Late Victorian and Italianate styles.",
+                    " Victorian eclecticism is featured in the porch and the trimwork, while the Italianate is found in the building's massing.",
+                    " The house was listed on the National Register of Historic Places in 1984."
+                ]
+            ],
+            [
+                "Cresco Opera House",
+                [
+                    "The Cresco Opera House, also known as the Cresco Theater, is a historic building located in Cresco, Iowa, United States.",
+                    " The first known theater in Cresco was the Lyric Hall, which opened in 1875.",
+                    " It showed the first movies around 1900.",
+                    " The Family and the Cozy theaters opened around the turn of the century.",
+                    " The Lyric was condemned and torn down in 1913, and the other two were considered substandard.",
+                    " The Cresco Commercial Club held a fundraiser in early 1914 to build an opera house.",
+                    " The Cresco Opera House Company was organized around the same time.",
+                    " The building was completed by the end of the year, and it opened in 1915.",
+                    " It was designed by local engineer Joseph H. Howe, and constructed by local builder Martin Johnson.",
+                    " The musical \"High Jinks\" was the first performance held in the theater.",
+                    " The theater, which seats 425, was equipped to show movies and there was a community hall in the basement.",
+                    " It was listed on the National Register of Historic Places in 1981."
+                ]
+            ],
+            [
+                "Ophur",
+                [
+                    "Ophur was a rock band from the Chicago suburbs in DuPage County.",
+                    " The band performed in the midwestern United States over the course of seven years with national acts including The Plain White T's, Sum 41, Violent Femmes, Local H, Lucky Boys Confusion, Veruca Salt, Two Skinee J's, Duvall, Sleeping at Last, and others.",
+                    " Their music has been described as an eclectic amalgamation of U2, Red Hot Chili Peppers, and Pink Floyd."
+                ]
+            ],
+            [
+                "Mendocino County GMO Ban",
+                [
+                    "Mendocino County, California, was the first jurisdiction in the United States to ban the cultivation, production or distribution of genetically modified organisms (GMOs).",
+                    " The ordinance, entitled Measure H, was passed by referendum on March 2, 2004.",
+                    " Initiated by the group \"GMO Free Mendocino\", the campaign was a highly publicized grassroots effort by local farmers and environmental groups who contend that the potential risks of GMOs to human health and the ecosystem have not yet been fully understood.",
+                    " The measure was met with opposition by several interest groups representing the biotechnology industry, The California Plant Health Association (now the Western Plant Health Association) and CropLife America, a Washington-based consortium whose clients represent some of the largest food distributors in the nation, including Monsanto, DuPont and Dow Chemical.",
+                    " Since the enactment of the ordinance, Mendocino County has been added to an international list of \"GMO free zones.\"",
+                    " Pre-emptive statutes banning local municipalities from such ordinances have now become widespread with adoption in sixteen states."
+                ]
+            ],
+            [
+                "Wilford H. Fawcett House",
+                [
+                    "The Wilford H. Fawcett House is a house in Breezy Point, Minnesota, United States, listed on the National Register of Historic Places.",
+                    " Wilford H. Fawcett, also known as \"Captain Billy\", started the book \"Captain Billy's Whiz Bang\" as a joke book for soldiers during World War I.",
+                    " He formed Fawcett Publications in 1919 in Robbinsdale, Minnesota.",
+                    " In 1920, he bought a tract of land where the present-day Breezy Point Resort is located, and he began building cottages and a large log lodge.",
+                    " The lodge has since burnt down.",
+                    " He built the Fawcett House as a private residence within the resort property.",
+                    " Fawcett hired the Minneapolis architects of Magney and Tusler and commissioned the design in the Swiss Chateau style.",
+                    " The rustic log style was a bit ironic, since the local logging industry had declined before the resort was built."
+                ]
+            ],
+            [
+                "Suffrajett",
+                [
+                    "Suffrajett is a United States rock band from New York City, currently based in Chicago, Illinois, composed of singer/violinist Simi Sernaker, guitarist Jason Chasko, bassist Kevin Roberts, and drummer Danny Severson.",
+                    " Suffrajett has toured with Local H, The Last Vegas, and Bob Schneider, and have opened for the reunited MC5.",
+                    " Suffrajett released their self-titled debut album on February 2, 2003, and their latest album \"Black Glitter\" was released on January 1, 2007.",
+                    " They recently toured with Juliette and the Licks and Scissors for Lefty."
+                ]
+            ],
+            [
+                "Hallelujah! I'm a Bum (album)",
+                [
+                    "Hallelujah!",
+                    " I'm A Bum is the seventh studio album by Chicago-based rock band Local H.",
+                    " Interviews with the band have revealed that it is a concept album based on politics in the United States.",
+                    " Although the album was completed in spring of 2012, the band chose to release it in September as to be closer to the 2012 presidential election.",
+                    " The album makes frequent use of the sounds of the El Train in Chicago to transition songs."
+                ]
+            ],
+            [
+                "William H. Cook Water Tank House",
+                [
+                    "The William H. Cook Water Tank House is a water tank house located southeast of Jerome, Idaho, United States.",
+                    " The building was constructed circa 1915 and was used to store water for William H. Cook's farm.",
+                    " The rectangular building was constructed with lava rock and contains a metal tank.",
+                    " Although the stone craftsmanship in the building is similar to the work of local stonemason H. T. Pugh, the builder of the house has not been determined."
+                ]
+            ],
+            [
+                "United States Senate election in Illinois, 1978",
+                [
+                    "The 1978 United States Senate election in Illinois took place on November 7, 1978.",
+                    " Incumbent Republican United States Senator Charles H. Percy ran for re-election to a third term in the United States Senate.",
+                    " Percy was opposed by Democratic nominee Alex Seith, an attorney who had been appointed to several local government positions.",
+                    " Though Percy had been expected to coast to re-election over Seith, a first-time candidate, the election quickly became competitive.",
+                    " In the last few days of the campaign, a desperate Percy ran a television advertisement that featured him apologizing and acknowledging that, \"I got your message and you're right.\"",
+                    " Percy's last-ditch effort appeared to have paid off, as he was able to edge out Seith to win what would end up being his third and final term in the Senate."
+                ]
+            ],
+            [
+                "Amherst, Massachusetts",
+                [
+                    "Amherst ( ) is a town in Hampshire County, Massachusetts, United States, in the Connecticut River valley.",
+                    " As of the 2010 census, the population was 37,819, making it the largest municipality in Hampshire County (although the county seat is Northampton).",
+                    " The town is home to Amherst College, Hampshire College, and the University of Massachusetts Amherst, three of the Five Colleges.",
+                    " The name of the town is pronounced without the \"h\" (\"AM-erst\"), giving rise to the local saying, \"only the 'h' is silent\", in reference both to the pronunciation and to the town's politically active populace."
+                ]
+            ]
+        ],
+        "type": "comparison",
+        "level": "hard"
+    },
+    {
+        "_id": "5ab56e32554299637185c594",
+        "answer": "no",
+        "question": "Are Random House Tower and 888 7th Avenue both used for real estate?",
+        "supporting_facts": [
+            [
+                "Random House Tower",
+                0
+            ],
+            [
+                "888 7th Avenue",
+                2
+            ]
+        ],
+        "context": [
+            [
+                "Pershing Square Capital Management",
+                [
+                    "Pershing Square Capital Management is an American hedge fund management company founded and run by Bill Ackman, located at 888 7th Avenue in New York."
+                ]
+            ],
+            [
+                "Loan modification in the United States",
+                [
+                    "Loan modification is the systematic alteration of mortgage loan agreements that help those having problems making the payments by reducing interest rates, monthly payments or principal balances.",
+                    " Lending institutions could make one or more of these changes to relieve financial pressure on borrowers to prevent the condition of foreclosure.",
+                    " Loan modifications have been practiced in the United States since The 2008 Crash Of The Housing Market from Washington Mutual, Chase Home Finance, Chase, JP Morgan & Chase, other contributors like MER's.",
+                    " Crimes of Mortgage ad Real Estate Staff had long assisted nd finally the squeaky will could not continue as their deviant practices broke the state and crashed.",
+                    " Modification owners either ordered by The United States Department of Housing, The United States IRS or President Obamas letters from Note Holders came to those various departments asking for the Democratic process to help them keep their homes and protection them from explosion.",
+                    " Thus the birth of Modifications.",
+                    " It is yet to date for clarity how theses enforcements came into existence and except b whom, but t is certain that note holders form the Midwest reached out in the Democratic Process for assistance.",
+                    " FBI Mortgage Fraud Department came into existence.",
+                    " Modifications HMAP HARP were also birthed to help note holders get Justice through reduced mortgage by making terms legal.",
+                    " Modification of mortgage terms was introduced by IRS staff addressing the crisis called the HAMP TEAMS that went across the United States desiring the new products to assist homeowners that were victims of predatory lending practices, unethical staff, brokers, attorneys and lenders that contributed to the crash.",
+                    " Modification were a fix to the crash as litigation has ensued as the lenders reorganized and renamed the lending institutions and government agencies are to closely monitor them.",
+                    " Prior to modifications loan holders that experiences crisis would use Loan assumptions and Loan transfers to keep the note in the 1930s.",
+                    " During the Great Depression, loan transfers, loan assumption, and loan bail out programs took place at the state level in an effort to reduce levels of loan foreclosures while the Federal Bureau of Investigation, Federal Trade Commission, Comptroller, the United States Government and State Government responded to lending institution violations of law in these arenas by setting public court records that are legal precedence of such illegal actions.",
+                    " The legal precedents and reporting agencies were created to address the violations of laws to consumers while the Modifications were created to assist the consumers that are victims of predatory lending practices.",
+                    " During the so-called \"Great Recession\" of the early 21st century, loan modification became a matter of national policy, with various actions taken to alter mortgage loan terms to prevent further economic destabilization.",
+                    " Due to absorbent personal profits nothing has been done to educate Homeowners or Creditors that this money from equity, escrow is truly theirs the Loan Note Holder and it is their monetary rights as the real prize and reason for the Housing Crash was the profit n obtaining the mortgage holders Escrow.",
+                    " The Escrow and Equity that is accursed form the Note Holders payments various staff through the United States claimed as recorded and cashed by all staff in real-estate from local residential Tax Assessing Staff, Real Estate Staff, Ordinance Staff, Police Staff, Brokers, attorneys, lending institutional staff but typically Attorneys who are also typically the owners or Rental properties that are trained through Bankruptcies'.",
+                    " that collect the Escrow that is rightfully the Homeowners but because most Homeowners are unaware of what money is due them and how they can loose their escrow.",
+                    " Most Creditors are unaware that as the note holder that the Note Holder are due a annual or semi annual equity check and again bank or other lending and or legal intuitions staff claim this monies instead.",
+                    " This money Note Holders were unaware of is the prize of real estate and the cause of the Real Estate Crash of 2008 where Lending Institutions provided mortgages to people years prior they know they would eventually loose with Loan holders purchasing Balloon Mortgages lending product that is designed to make fast money off the note holder whom is always typically unaware of their escrow, equity and that are further victimized by conferences and books on HOW TO MAKE MONEY IN REAL STATE - when in fact the money is the Note Holder.",
+                    " The key of the crash was not the House, but the loan product used and the interest and money that was accrued form the note holders that staff too immorally.",
+                    " The immoral and illegal actions of predatory lending station and their staff began with the inception of balloon mortgages although illegal activity has always existed in the arena, yet the crash created \"Watch Dog\" like HAMP TEAM, IRS, COMPTROLLER< Federal Trade Commission Consumer Protection Bureau, FBI, CIA, Local Police Department, ICE ( The FBI online Computer crime division receives and investigates computer crimes that record keeping staff from title companies, lending institutional staff, legal staff and others created fraudulent documents to change payments and billing of note holders to obtain the money note holders are typically unaware of) and other watch dog agencies came into existence to examine if houses were purchased through a processed check at Government Debited office as many obtained free homes illegally.",
+                    " Many were incarcerated for such illegal actions.",
+                    " Modifications fixed the Notes to proper lower interest, escrow, tax fees that staff typically raised for no reason.",
+                    " Many people from various arenas involved in reals estate have been incarcerated for these actions as well as other illegal actions like charging for a modification.",
+                    " Additionally Modifications were also made to address the falsifications such as inappropriate mortgage charges, filing of fraudulently deeds, reporting of and at times filing of fraudulent mortgages that were already paid off that were fraudulently continued by lenders staff and attorneys or brokers or anyone in the Real Estate Chain through the issues of real estate terms to continue to violate United States Laws, contract law and legal precedence where collusion was often done again to defraud and steal from the Note Holder was such a common practice that was evidence as to why the Mortgage Crash in 2008 occurred for the purpose of wining the prize of stealing form Homeowners and those that foreclosed was actually often purposefully for these monies note holders were unaware of to be obtained which was why Balloon mortgages and loans were given to the staff in the Real Estate Market with the hoper and the expectation that the loan holders would default as it offered opportunity to commit illegal transactions of obtaining the homeowners funds.",
+                    " While such scams were addressed through modifications in 2008.",
+                    " The Market relied heavily on Consumers ignorance to prosper, ignorance of real estate terms, ignorance on what they were to be charged properly for unethical financial gain and while staff in real estates lending arenas mingled terms to deceive y deliberate confusion consumers out of cash and homes while the USA Government provided Justice through President Obamas Inception and IRS Inception of Modifications which addressed these unethical profits in Reals Estate.",
+                    " It was in 2009 that HARP, HAMP and Modifications were introduced to stop the victimization of Note Holders.",
+                    " Taking on the Banks that ran USA Government was a great and dangerous undertaking that made America Great Again as Justice for Consumers reigned.",
+                    " Legal action taken against institutions that have such business practices can be viewed in State Code of Law and Federal Law on precedent cases that are available to the public.",
+                    " Finally, It had been unlawful to be charged by an attorney to modify as well as fro banking staff to modify terms to increase a mortgage and or change lending product to a balloon in an concerted effort to make homeowner foreclose which is also illegal, computer fraud and not the governments intended purpose or definition of a modification."
+                ]
+            ],
+            [
+                "888 7th Avenue",
+                [
+                    "888 7th Avenue is a 628 ft (191m) tall modern-style office skyscraper in Midtown Manhattan which was completed in 1969 and has 46 floors.",
+                    " Emery Roth & Sons designed the building, which is tied with Central Park Place for the 65th tallest building in New York City.",
+                    " It currently carries the Vornado Realty Trust corporate headquarters.",
+                    " Previously known as the Arlen Building, its namesake being the company responsible for its construction, Arlen Realty & Development Corporation.",
+                    " The Red Eye Grill is located in the building at street level."
+                ]
+            ],
+            [
+                "Villard (imprint)",
+                [
+                    "Villard, also known as Villard Books, is a publishing imprint of Random House, one of the largest publishing companies in the world.",
+                    " It was founded in 1983.",
+                    " Villard began as an independent imprint of Random House and is currently a sub-imprint of Ballantine Books, itself an imprint of Random House.",
+                    " It was named after a Stanford White brownstone mansion on Madison Avenue that was the home of Random House for twenty years."
+                ]
+            ],
+            [
+                "Random House Tower",
+                [
+                    "The Random House Tower, also known as the Park Imperial Apartments, is a 52-story mixed-use tower in New York City, United States, that is used as the headquarters of book publisher Random House and a luxury apartment complex.",
+                    " The book publisher entrance is on Broadway and goes up to 27 floors, while the apartment complex entrance is on West 56th Street."
+                ]
+            ],
+            [
+                "Carl B. Stokes United States Courthouse",
+                [
+                    "The Carl B. Stokes Federal Court House Building is a skyscraper located in downtown Cleveland, Ohio.",
+                    " It is also known as the Carl B. Stokes Federal Court House Tower, Federal Court House Tower, and the Stokes Tower.",
+                    " The 23-story building is 430 ft tall and is located at the corner of Huron Road and Superior Avenue.",
+                    " It is currently the fourth tallest United States courthouse in the country."
+                ]
+            ],
+            [
+                "South Phoenix",
+                [
+                    "South Phoenix is a region of Phoenix, Arizona, with the boundaries of the Gila River Indian Community to the south and west, 48th Street or Interstate-10 (Phoenix/Tempe and Phoenix/Chandler borders) to the east, and the Salt River to the north.",
+                    " This area includes Phoenix's following Urban Villages: South Mountain Village (aka South Mountain District) along with Laveen Village and Ahwatukee Village.",
+                    " The area is sometimes simply referred to as \"the Southside\" by its residents.",
+                    " Major arterial east-west streets include Broadway Road, Southern Avenue, Baseline Road, Dobbins Road, Elliott Road, Warner Road, Chandler Boulevard, and Pecos Road, most of which connect South Phoenix with the suburbs of Tempe and Chandler.",
+                    " Major arterial south-north streets include 24th Street, 16th Street, 7th Street, Central Avenue, 7th Avenue, and 19th Avenue connecting South Mountain Village to Central and North Phoenix; 27th Avenue, 35th Avenue, 43rd Avenue, 51st Avenue, 59th Avenue, 67th Avenue, and 75th Avenue connecting Laveen to west Phoenix; and 32nd Street, 40th Street, and 48th Street connecting South Mountain Village to east Phoenix and Tempe."
+                ]
+            ],
+            [
+                "Real estate benchmarking",
+                [
+                    "Real estate benchmarking is the standard of measurement used to analyze the financial characteristics of a real estate investment property.",
+                    " In the general sense, real estate benchmarking refers to the comparison of potential real estate investment properties against a predetermined framework of measurement.",
+                    " In a narrow sense, the term real estate benchmarking refers to the specific real estate indicators used to measure the real estate properties."
+                ]
+            ],
+            [
+                "Hounsfield Heights/Briar Hill, Calgary",
+                [
+                    "Hounsfield Heights/Briar Hill is an inner suburban neighbourhood in northwest Calgary, Alberta, Canada.",
+                    " Located north of the Hillhurst and West Hillhurst communities, the boundaries of the district are 16th Avenue N (Trans-Canada Highway)to the north; 14th Street W to the east; Lane north of 7th Avenue N to 19th Street W and 8th Avenue N to the south; and Crowchild Trail, 12th Avenue N, Juniper Road, and 22nd Street W to the west.",
+                    " Lions Park C-Train station is located within the community.",
+                    " The community is built on an escarpment and is popular for its views of downtown to the south and the Rocky Mountains to the west."
+                ]
+            ],
+            [
+                "Real estate technology",
+                [
+                    "Real Estate Technology or Property Technology, often referred to as (\"RE Tech\") or (\"Proptech\"), is an economic industry composed of companies which use technology to make real estate transactions more efficient.",
+                    " Real estate technology is a sub-category under financial technology as real estate is an asset class which represents a significant investment.",
+                    " Besides for own stay, there are investors who generate income and capital gains by investing in different categories of Real Estate properties over time - They are broadly residential, commercial and industrial.",
+                    " Historically used as a more tactical investment or for providing portfolio alpha, real estate has been used as part of a long-term core strategy due to increased market efficiency and increasing concerns about the future long-term variability of stock and bond returns.",
+                    " In fact, real estate is known for its ability to serve as a portfolio diversifier and inflation hedge."
+                ]
+            ]
+        ],
+        "type": "comparison",
+        "level": "hard"
+    },
+    {
+        "_id": "5ab29c24554299449642c932",
+        "answer": "yes",
+        "question": "Are Giuseppe Verdi and Ambroise Thomas both Opera composers ?",
+        "supporting_facts": [
+            [
+                "Giuseppe Verdi",
+                0
+            ],
+            [
+                "Ambroise Thomas",
+                0
+            ]
+        ],
+        "context": [
+            [
+                "Mignon",
+                [
+                    "Mignon is an \"opéra comique\" (or opera in its second version) in three acts by Ambroise Thomas.",
+                    " The original French libretto was by Jules Barbier and Michel Carré, based on Goethe's novel \"Wilhelm Meisters Lehrjahre\".",
+                    " The Italian version was translated by Giuseppe Zaffira.",
+                    " The opera is mentioned in James Joyce's \"The Dead\" (\"Dubliners\") and Willa Cather's \"The Professor's House\".",
+                    " Thomas's goddaughter Mignon Nevada was named after the main character."
+                ]
+            ],
+            [
+                "Teatro Giuseppe Verdi",
+                [
+                    "Teatro Giuseppe Verdi (the Giuseppe Verdi Theatre) is a small opera house located in a wing of the Rocca dei Marchesi Pallavicino on the Piazza Giuseppe Verdi in Busseto, Italy, a town closely associated with the life of the opera composer, Giuseppe Verdi.",
+                    " From the 13th century, the “rocca” or “fortress” was the family’s palace; it is now the city hall after being acquired by the municipality in 1856.",
+                    " The theatre opened on 15 August 1868 and seats 300."
+                ]
+            ],
+            [
+                "Parma Airport",
+                [
+                    "Parma Airport (Italian: \"Aeroporto di Parma\" , IATA: PMF, ICAO: LIMP ) is located 1.3 NM northwest of Parma, a city in the Emilia-Romagna region of Italy.",
+                    " The airport was opened on 5 May 1991.",
+                    " It is also known as Giuseppe Verdi Airport or Parma \"Giuseppe Verdi\" Airport, named after Giuseppe Verdi."
+                ]
+            ],
+            [
+                "Verdi, the King of Melody",
+                [
+                    "Giuseppe Verdi, released theatrically in the USA as The Life and Music of Giuseppe Verdi and on video as Verdi, the King of Melody, is a 1953 Italian biographical film starring Pierre Cressoy and directed by Raffaello Matarazzo.",
+                    " It is based on adult life events of the composer Giuseppe Verdi.",
+                    " The film was a commercial success, grossing over 957 million lire at the Italian box office."
+                ]
+            ],
+            [
+                "Armand Castelmary",
+                [
+                    "Armand Castelmary, real name Comte Armand de Castan, born Toulouse 16 August 1834, died New York City 10 February 1897, was a French operatic bass.",
+                    " He created roles in three major premieres at the Paris Opera – Don Diego in \"L'Africaine\" by Meyerbeer (1865), the Monk in Verdi's \"Don Carlos\" (1867), and Horatio in Ambroise Thomas's \"Hamlet\" (1868).",
+                    " Castelmary also appeared at opera houses in England and the United States, and died onstage at the Metropolitan Opera House, New York, during a performance of \"Martha\" by Friedrich von Flotow."
+                ]
+            ],
+            [
+                "Giuseppe Verdi (film)",
+                [
+                    "Giuseppe Verdi is a 1938 Italian biographical film directed by Carmine Gallone and starring Fosco Giachetti, Gaby Morlay and Germana Paolieri.",
+                    " The film portrays the life of the composer Giuseppe Verdi (1813-1901).",
+                    " The casting of Giachetti as Verdi was intended to emphasise the composer's patriotism, as he had recently played patriotic roles in films such as \"The White Squadron\".",
+                    " The film was made at the Cinecittà Studios in Rome.",
+                    " The film is also known by the alternative title The Life of Giuseppe Verdi."
+                ]
+            ],
+            [
+                "Giuseppe Verdi Monument",
+                [
+                    "The Giuseppe Verdi Monument is a sculpture in honor of composer Giuseppe Verdi located in Verdi Square Park (between West 72nd and West 73rd streets, between Amsterdam Avenue and Broadway) in Manhattan, New York City.",
+                    " The statue, by Pasquale Civiletti (1858–1952), depicts Verdi flanked by four of his most popular characters: Falstaff (on the west side of the statue of Verdi), Leonora of \"La forza del destino\" (south side), Aida (north side), and Otello (east side)."
+                ]
+            ],
+            [
+                "Ferdinando Provesi",
+                [
+                    "Ferdinando Angelo Maria Provesi (1770 – 1833) was a native of Parma, Italy.",
+                    " He was regarded as one of the greatest Italian opera composers of the era .",
+                    " Provesi is best known as being an early tutor of Giuseppe Verdi when he was the \"Maestro di cappella\" (master of music) at the St. Bartolomeo cathedral in Busseto (the town very close to Le Roncole, the village where Verdi was born.)",
+                    " Provesi was also director of the municipal music school and local Philharmonic Society.",
+                    " He began teaching Verdi in 1824 when the future composer was 11 years old."
+                ]
+            ],
+            [
+                "Bernhard Bötel",
+                [
+                    "Bernhard Bötel (1883–1953) was a German operatic tenor and actor who had an active career in Germany and Austria during the first half of the 20th century.",
+                    " He made recordings for several record labels during the early years of the recording industry, including His Master's Voice, Odeon Records, Polydor Records, Tri-Ergon, and Vox Records.",
+                    " On the stage he sang a variety of roles in operas and operettas from leading parts to comprimario roles.",
+                    " His stage repertoire included Belmonte in Wolfgang Amadeus Mozart's \"Die Entführung aus dem Serail\", Chapelou in Adolphe Adam's \"Le postillon de Lonjumeau\", Count Almaviva in Gioachino Rossini's \"The Barber of Seville\", Daniel in Franz Lehár's \"The Merry Widow\", the Duke of Mantua in Giuseppe Verdi's \"Rigoletto\", Gabriel von Eisenstein in Johann Strauss II's \"Die Fledermaus\", Indigo in Strauss' \"Indigo und die vierzig Räuber\", Jeník in Bedřich Smetana's \"The Bartered Bride\", Paolino in Domenico Cimarosa's \"Il matrimonio segreto\", Pâris in Jacques Offenbach's \"La belle Hélène\", Pietro in Franz von Suppé's \"Boccaccio\", and Wilhelm Meister in Ambroise Thomas' \"Mignon\"."
+                ]
+            ],
+            [
+                "List of major opera composers",
+                [
+                    "This list provides a guide to opera composers, as determined by their presence on a majority of compiled lists of significant opera composers.",
+                    " (See the \"Lists Consulted\" section for full details.)",
+                    " The composers run from Jacopo Peri, who wrote the first ever opera in late 16th century Italy, to John Adams, one of the leading figures in the contemporary operatic world.",
+                    " The brief accompanying notes offer an explanation as to why each composer has been considered major.",
+                    " Also included is a section about major women opera composers, compiled from the same lists.",
+                    " For an introduction to operatic history, see opera.",
+                    " The organisation of the list is by birthdate."
+                ]
+            ]
+        ],
+        "type": "comparison",
+        "level": "hard"
+    },
+    {
+        "_id": "5a8133725542995ce29dcbdb",
+        "answer": "Robert Erskine Childers DSC",
+        "question": "Which writer was from England, Henry Roth or Robert Erskine Childers?",
+        "supporting_facts": [
+            [
+                "Henry Roth",
+                0
+            ],
+            [
+                "Robert Erskine Childers",
+                0
+            ]
+        ],
+        "context": [
+            [
+                "Gretchen Osgood Warren",
+                [
+                    "Gretchen Osgood Warren (19 March 1868 – September 1961), the wife of Fiske Warren, was an actress, singer and poet.",
+                    " The daughter of Dr. Hamilton Osgood and Margaret Cushing Osgood of Beacon Hill, Boston, Massachusetts, her younger sister was Mary Alden Childers, the wife of writer and Irish nationalist Robert Erskine Childers.",
+                    " Her nephew Erskine Hamilton Childers served as the fourth President of Ireland from 1973-74."
+                ]
+            ],
+            [
+                "R509 road (Ireland)",
+                [
+                    "The R509 road, following part of the Childers Road (named after Erskine Childers), is a regional road in Ireland, running through the southeastern side of Limerick City.",
+                    " It forms what is somewhat akin to an inner ring road (albeit mostly two-lane only)."
+                ]
+            ],
+            [
+                "Erskine Barton Childers",
+                [
+                    "Erskine Barton Childers (11 March 1929 – 25 August 1996) was an Irish writer, BBC correspondent and United Nations senior civil servant.",
+                    " He was the eldest son of Erskine Hamilton Childers (Ireland's fourth President) and Ruth Ellen Dow Childers.",
+                    " His grandparents Mary Alden Childers and Robert Erskine Childers and the latter's double first cousin Robert Barton were all Irish nationalists involved heavily with the negotiation of Irish independence; which ultimately led to his grandfather's execution during the Irish Civil War.",
+                    " His great aunt was Gretchen Osgood Warren."
+                ]
+            ],
+            [
+                "Robert Caesar Childers",
+                [
+                    "Robert Caesar Childers (1838 – 25 July 1876) was a British Orientalist scholar, compiler of the first Pāli-English dictionary.",
+                    " Childers was the husband of Anna Barton of Ireland.",
+                    " He was the father of Irish nationalist Robert Erskine Childers and grandfather to the fourth President of Ireland, Erskine Hamilton Childers."
+                ]
+            ],
+            [
+                "Robert Erskine Childers",
+                [
+                    "Robert Erskine Childers DSC (25 June 1870 – 24 November 1922), universally known as Erskine Childers, was a British writer, whose works included the influential novel \"The Riddle of the Sands\", and a Fenian revolutionary who smuggled guns to Ireland in his sailing yacht \"Asgard\".",
+                    " He was executed by the authorities of the nascent Irish Free State during the Irish Civil War.",
+                    " He was the son of British Orientalist scholar Robert Caesar Childers; the cousin of Hugh Childers and Robert Barton; and the father of the fourth President of Ireland, Erskine Hamilton Childers."
+                ]
+            ],
+            [
+                "Asgard (yacht)",
+                [
+                    "Asgard is a 51 ft gaff rigged yacht.",
+                    " She was owned by the English-born writer and Irish nationalist Erskine Childers and his wife Molly Childers.",
+                    " She is most noted for her use in the Howth gun-running of 1914."
+                ]
+            ],
+            [
+                "Robert Barton",
+                [
+                    "Robert Childers Barton (4 March 1881 – 10 August 1975) was an Irish nationalist, politician and farmer who participated in the negotiations leading up to the signature of the Anglo-Irish Treaty.",
+                    " His father was Charles William Barton and his mother was Agnes Childers.",
+                    " His wife was Rachel Warren of Boston, daughter of Fiske Warren.",
+                    " His double first cousin and close friend was Robert Erskine Childers."
+                ]
+            ],
+            [
+                "The Riddle of the Sands (film)",
+                [
+                    "The Riddle of the Sands is a 1979 English spy thriller cinema film based upon the novel of the same name written by Erskine Childers.",
+                    " Set in 1901, and starring Michael York and Simon MacCorkindale, it concerns the efforts of two English yachtsmen to avert a plot by the II Reich to launch a military seaborne invasion of England."
+                ]
+            ],
+            [
+                "Irish Bulletin",
+                [
+                    "The Irish Bulletin was the official gazette of the government of the Irish Republic.",
+                    " It was produced by the Department of Propaganda during the Irish War of Independence.",
+                    " and its offices were originally located at No. 6 Harcourt Street, Dublin.",
+                    " The paper's first editor was Desmond FitzGerald, until his arrest and replacement by Robert Erskine Childers.",
+                    " \"The Bulletin\" appeared in weekly editions from 11 November 1919 to 11 July 1921."
+                ]
+            ],
+            [
+                "Molly Childers",
+                [
+                    "Mary Alden Osgood Childers, MBE (14 December 1875 – 1 January 1964) was an American-born Irish writer and Irish nationalist.",
+                    " She was the daughter of Dr Hamilton Osgood and Margaret Cushing Osgood of Beacon Hill, Boston, Massachusetts.",
+                    " Her older sister was Gretchen Osgood Warren.",
+                    " Molly married the writer and Irish nationalist, Robert Erskine Childers.",
+                    " Their son, Erskine Hamilton Childers, became the fourth President of Ireland."
+                ]
+            ]
+        ],
+        "type": "comparison",
+        "level": "hard"
+    },
+    {
+        "_id": "5ae2070a5542994d89d5b313",
+        "answer": "Badly Drawn Boy",
+        "question": "Which performance act has a higher instrument to person ratio, Badly Drawn Boy or Wolf Alice? ",
+        "supporting_facts": [
+            [
+                "Badly Drawn Boy",
+                0
+            ],
+            [
+                "Wolf Alice",
+                1
+            ]
+        ],
+        "context": [
+            [
+                "Badly Drawn Boy discography",
+                [
+                    "The discography of English alternative music singer/songwriter Badly Drawn Boy (real name Damon Gough) includes eight studio albums (including two soundtracks), one compilation, six extended plays and twenty-one singles.",
+                    " The first EP and several singles were released on Gough's own label \"Twisted Nerve\", which he started with like-minded Manchester musician Andy Votel.",
+                    " Badly Drawn Boy rose in popularity in 1997 when he joined the likes of Thom Yorke, Richard Ashcroft, and Mike D on the celebrity-filled UNKLE album \"Psyence Fiction\".",
+                    " Due to the mild UK chart success of the 1999 single \"Once Around the Block\", XL Recordings signed up Badly Drawn Boy to release the debut album \"The Hour of Bewilderbeast\" in 2000.",
+                    " The album won critical praise and Britain's acclaimed Mercury Prize for Best Album.",
+                    " The album caught the attention of author Nick Hornby who then asked Gough to score the film being made for his book \"About a Boy\"."
+                ]
+            ],
+            [
+                "Soulfire (Tom Hingley album)",
+                [
+                    "Soulfire came at a time when Tom Hingley (ex-frontman of Inspiral Carpets) was at an all-time low contemplating his career, the future and having doubts that he was good enough to make a stab at a solo career.",
+                    " Damon Gough (aka Badly Drawn Boy) persuaded Tom that you've just got to follow that gut instinct and go for what you believe in.",
+                    " After the release of the critically acclaimed solo acoustic 2000 album, Keep Britain Untidy, this return to a full band rock album allowed a base to build on and showed off the voice that had been hidden amongst the Inspiral's trademark organ sound."
+                ]
+            ],
+            [
+                "Something to Talk About (Badly Drawn Boy song)",
+                [
+                    "\"Something to Talk About\" is a song by British musical artist Badly Drawn Boy from About a Boy.",
+                    " It was released as a single on 30 July 2002.",
+                    " It peaked at number 28 on the UK Singles Chart."
+                ]
+            ],
+            [
+                "Under an Hour",
+                [
+                    "Under an Hour is the second full-length album from Portland-based experimental pop/rock group Menomena.",
+                    " The album was originally composed and performed as accompaniment for a performance by Portland dance company Monster Squad.",
+                    " Consisting of three instrumental tracks, the album is considered to be an experimental soundtrack along the lines of Peter Gabriel's or Badly Drawn Boy's soundtrack for \"About a Boy\"."
+                ]
+            ],
+            [
+                "Craig Davies (musician)",
+                [
+                    "Craig Davies is an English singer/songwriter from Manchester, who was active from 1988 to 1990 and release two albums on the Rough Trade music label.",
+                    " He was at one point vocalist for the band Easterhouse but left after signing a solo deal with Rough Trade.",
+                    " He has also collaborated with Vini Reilly, Ben Watt and Badly Drawn Boy."
+                ]
+            ],
+            [
+                "Silent Sigh",
+                [
+                    "\"Silent Sigh\" is a single by British musical artist Badly Drawn Boy from the soundtrack to the film \"About a Boy\".",
+                    " It reached number 16 in the UK Singles Chart."
+                ]
+            ],
+            [
+                "About a Boy (soundtrack)",
+                [
+                    "About a Boy is the second album by English singer-songwriter Badly Drawn Boy, released in 2002 under Twisted Nerve Records and XL Recordings, and in America under the short-lived ARTISTdirect Records, as the soundtrack to the film \"About a Boy\".",
+                    " Gough was chosen to compose and perform the entire soundtrack."
+                ]
+            ],
+            [
+                "The Hour of Bewilderbeast",
+                [
+                    "The Hour of Bewilderbeast is the debut studio album by British musician Badly Drawn Boy, released on 26 June 2000.",
+                    " Damon Gough, who performs as Badly Drawn Boy, wrote, produced, and played several instruments on the album's eighteen tracks, several of which also feature accompaniment by members of the British indie rock bands Alfie and Doves.",
+                    " \"The Hour of Bewilderbeast\" was released to great critical acclaim and went on to win the 2000 Mercury Prize, and has sold 455,000 copies in the United Kingdom as of September 2011."
+                ]
+            ],
+            [
+                "About a Boy (film)",
+                [
+                    "About a Boy is a 2002 British-American-French comedy-drama film produced by Jane Rosenthal, Robert De Niro, Brad Epstein, Tim Bevan and Eric Fellner, co-written and directed by brothers Chris Weitz and Paul Weitz with music by Badly Drawn Boy and written by Peter Hedges.",
+                    " It is an adaptation of the 1998 novel of the same name by Nick Hornby.",
+                    " The film stars are Hugh Grant, Nicholas Hoult, Toni Collette, and Rachel Weisz.",
+                    " The film at times uses double voice-over narration, when the audience hears both Will's and Marcus's thoughts."
+                ]
+            ],
+            [
+                "Tom Rothrock",
+                [
+                    "Tom Rothrock is an international record producer, composer, musician and owner of Bong Load Records.",
+                    " Tom Rothrock has worked with James Blunt, Foo Fighters, Moby, Beck, Badly Drawn Boy, R. L. Burnside, Athlete, Sloan, Gwen Stefani, Motörhead, Elbow, Stevie Nicks, Poison, Elliott Smith, Richard Thompson, Yonder Mountain String Band.",
+                    " Rothrock has also composed or contributed to soundtracks for notable motion pictures such as \"About A Boy\", \"Good Will Hunting\", \"Collateral\" and \"The SpongeBob SquarePants Movie\"."
+                ]
+            ]
+        ],
+        "type": "comparison",
+        "level": "hard"
+    },
+    {
+        "_id": "5abd259d55429924427fcf1a",
+        "answer": "yes",
+        "question": "Are both Dictyosperma, and Huernia described as a genus?",
+        "supporting_facts": [
+            [
+                "Dictyosperma",
+                0
+            ],
+            [
+                "Huernia",
+                0
+            ]
+        ],
+        "context": [
+            [
+                "Huernia",
+                [
+                    "The genus Huernia (family Apocynaceae, subfamily Asclepiadoideae) consists of stem succulents from Eastern and Southern Africa, first described as a genus in 1810.",
+                    " The flowers are five-lobed, usually somewhat more funnel- or bell-shaped than in the closely related genus \"Stapelia\", and often striped vividly in contrasting colours or tones, some glossy, others matt and wrinkled depending on the species concerned.",
+                    " To pollinate, the flowers attract flies by emitting a scent similar to that of carrion.",
+                    " The genus is considered close to the genera \"Stapelia\" and \"Hoodia\".",
+                    " The name is in honour of Justin Heurnius (1587–1652) a Dutch missionary who is reputed to have been the first collector of South African Cape plants.",
+                    " His name was actually mis-spelt by the collector."
+                ]
+            ]
+        ],
+        "type": "comparison",
+        "level": "hard"
+    },
+    {
+        "_id": "5ae4a3265542995ad6573de5",
+        "answer": "Fujioka, Gunma",
+        "question": "Hayden is a singer-songwriter from Canada, but where does Buck-Tick hail from?",
+        "supporting_facts": [
+            [
+                "Hayden (musician)",
+                0
+            ],
+            [
+                "Buck-Tick",
+                0
+            ]
+        ],
+        "context": [
+            [
+                "Skyscraper National Park",
+                [
+                    "Skyscraper National Park is the third album by Canadian singer-songwriter Hayden.",
+                    " It was released on Hardwood Records in Canada, on Badman Recording Co. in the U.S., on Loose Music in the U.K., and on Massive!",
+                    " in the Japan.",
+                    " There were two limited-edition pressings of this album.",
+                    " The first, comprising only 100 copies, was mainly for Hayden's friends and family.",
+                    " The second, comprising 1,500 copies, was sold on Hayden's cross-Canada tour."
+                ]
+            ],
+            [
+                "Atsushi Sakurai",
+                [
+                    "Atsushi Sakurai (櫻井 敦司 , Sakurai Atsushi , born March 7, 1966 in Fujioka, Gunma) is a Japanese musician and singer-songwriter.",
+                    " He has been the vocalist of the rock band Buck-Tick since 1985, previously being their drummer from 1983.",
+                    " He released the solo album \"Ai no Wakusei\" in 2004 and was also a member of Schwein alongside Hisashi Imai (Buck-Tick), Sascha Konietzko (KMFDM) and Raymond Watts.",
+                    " In 2015, he formed a solo project called The Mortal."
+                ]
+            ],
+            [
+                "Dr. Frank J. Hayden Secondary School",
+                [
+                    "Dr. Frank J. Hayden Secondary School , is located in the northern area of Burlington, Ontario, Canada, at 3040 Tim Dobbie Drive.",
+                    " It is an English and French immersion school in the Halton District School Board that as of 2015 serves approximately 1400 grade 9-12 students.",
+                    " In its first year, Dr. Frank J. Hayden Secondary School served approximately 600 students in grades 9–10.",
+                    " The school is named for Special Olympics pioneer Frank Hayden."
+                ]
+            ],
+            [
+                "The Closer I Get",
+                [
+                    "The Closer I Get is the second album by Canadian singer-songwriter Hayden.",
+                    " It is Hayden's first international release.",
+                    " In Canada it was released on Hardwood Records/Universal, while in the United States it was released on Outpost Recordings/Geffen/Universal."
+                ]
+            ],
+            [
+                "Mild and Hazy",
+                [
+                    "Mild and Hazy is a 7\" vinyl single by Canadian singer-songwriter Hayden.",
+                    " It was released in 1996 on Hayden's own label, Hardwood Records as well as on Lunamoth.",
+                    " The cover is a photograph of Hayden as a toddler.",
+                    " The song \"Gouge Away\" is a cover of the Pixies, from their album \"Doolittle\"."
+                ]
+            ],
+            [
+                "Kyo (musician)",
+                [
+                    "Kyo (京 , Kyō ) is a Japanese musician, poet and singer-songwriter.",
+                    " He is best known as the vocalist of the metal band Dir en grey.",
+                    " He has been with the band since its inception in 1997 and was formerly in La:Sadie's.",
+                    " Kyo was inspired to become a musician when he saw a picture of Buck-Tick vocalist Atsushi Sakurai on the desk of a junior high school classmate.",
+                    " His vocals span a tenor range."
+                ]
+            ],
+            [
+                "Dewey Beard",
+                [
+                    "Dewey Beard or Wasú Máza (\"Iron Hail\", 1858–1955) was a Minneconjou Lakota who fought in the Battle of Little Bighorn as a teenager.",
+                    " After George Armstrong Custer's defeat, Wasu Maza followed Sitting Bull into exile in Canada and then back to South Dakota where he lived on the Cheyenne River Indian Reservation.",
+                    " Chief Iron Hail is often mistaken by historians for Chief Iron Tail, being Lakota contemporaries with similar-sounding names.",
+                    " Most biographies incorrectly report that Chief Iron Tail fought in the Battle of the Little Bighorn and that his family was killed in 1890 at Wounded Knee, when in truth it was Chief Iron Hail who suffered the loss."
+                ]
+            ],
+            [
+                "Masami Tsuchiya",
+                [
+                    "Masami Tsuchiya is a Japanese singer-songwriter and musician, coming to prominence in the late 1970s as the lead vocalist and guitarist in the group Ippu-Do.",
+                    " His subsequent output includes solo work and collaborations.",
+                    " Tsuchiya has worked with artists as diverse as English new wave rockers Japan and Bill Nelson, Japanese electronica composer Ryuichi Sakamoto, Duran Duran side-project Arcadia, and Japanese rock band Buck-Tick."
+                ]
+            ],
+            [
+                "Hailstorm Alley",
+                [
+                    "Hailstorm Alley is a colloquial term referring to an area of south and central Alberta, Canada where hail storms are frequently produced.",
+                    " These storms frequently produce hail that is damaging to property.",
+                    " This area stretches from High River in southern Alberta, northward through Calgary, through Red Deer to Lacombe and then westward to Rocky Mountain House.",
+                    " It is known to be one of the worst areas in the world for damaging hail produced by thunderstorms.",
+                    " These are regarded as loose boundaries.",
+                    " While this area is common for damaging hailstorms, the reality is damaging hailstorms occur over much of central and southern Alberta every summer.",
+                    " The City of Calgary is regarded as the hailstorm capital of Canada."
+                ]
+            ],
+            [
+                "Alberta Hail Project",
+                [
+                    "The Alberta Hail Project was a research project sponsored by the Alberta Research Council and Environment Canada to study hailstorm physics and dynamics in order to design and test means for suppressing hail.",
+                    " It ran from 1956 until 1985.",
+                    " The main instrument in this research was an S-band circularly polarized weather radar located at the Red Deer Industrial Airport in central Alberta, Canada."
+                ]
+            ]
+        ],
+        "type": "comparison",
+        "level": "hard"
+    },
+    {
+        "_id": "5abc0a5d5542993f40c73c64",
+        "answer": "no",
+        "question": "Are Freakonomics and In the Realm of the Hackers both American documentaries?",
+        "supporting_facts": [
+            [
+                "Freakonomics (film)",
+                0
+            ],
+            [
+                "In the Realm of the Hackers",
+                0
+            ]
+        ],
+        "context": [
+            [
+                "Shayne Workman",
+                [
+                    "Shayne Workman (born December 5, 1978) is an American author, actor, theatre director and stage manager.",
+                    " His first work, ':A Journey to the Spirit Realm\", was published in late autumn 2014.",
+                    " It was later added to his anthology, \"The Spirit Realm: An Anthology of Fables From The Spirit Realm\".",
+                    " He has also penned, The Diary Of A Vagabond King, an inspiring true account of his personal experiences over the course of two years, where he was faced with impossible odds, and tragic losses.",
+                    " The royalties from the sale of the book will be going towards the creation and operation of the Blue Purity Fund created for aiding organizations with programs aimed at getting the nations homeless off the streets and back into being full members of society."
+                ]
+            ],
+            [
+                "Hackers (film)",
+                [
+                    "Hackers is a 1995 American crime film directed by Iain Softley and starring Jonny Lee Miller, Angelina Jolie, Renoly Santiago, Matthew Lillard, Jesse Bradford, Lorraine Bracco, and Fisher Stevens.",
+                    " The film follows a group of high school hackers and their involvement in a corporate extortion conspiracy.",
+                    " Made in the 1990s when the internet was unfamiliar to the general public, it reflects the ideals laid out in the Hacker Manifesto quoted in the film: \"This is our world now... the world of the electron and the switch [...] We exist without skin color, without nationality, without religious bias... and you call us criminals.",
+                    " [...] Yes, I am a criminal.",
+                    " My crime is that of curiosity.\"",
+                    " \"Hackers\" has achieved cult classic status."
+                ]
+            ],
+            [
+                "Robin Goldstein",
+                [
+                    "Robin Goldstein is an American author, food and wine critic, and economics pundit.",
+                    " He is known for his books and articles questioning conventional wisdom and pricing in the food and wine industries, particularly a widely publicized exposé of Wine Spectator magazine, and for his writing on the Freakonomics blog.",
+                    " He is author of several books, including \"The Wine Trials\" (the world's bestselling guide to cheap wine), \"The Beer Trials\", and an upcoming book tentatively entitled \"A Defense of Fast Food\".",
+                    " Goldstein was also one of the subjects of \"Think Like a Freak\", the 2014 book by \"Freakonomics\" authors Steven Levitt and Stephen Dubner.",
+                    " He lives in Oakland, California."
+                ]
+            ],
+            [
+                "Psycho Realm",
+                [
+                    "The Psycho Realm is an American hip hop group started in 1989 by brown man & brothers Sick Jacken (Joaquin Gonzalez) and Big Duke (Gustavo Gonzalez) from the Downtown, Pico-Union area of Los Angeles.",
+                    " The first recorded Psycho Realm song, \"Scandalous,\" was released on the soundtrack of the film Mi Vida Loca in 1994.",
+                    " That same year B-Real of the rap group Cypress Hill saw Psycho Realm performing at Olvera Street for an End Barrio Warfare concert.",
+                    " Their performance inspired B-Real to the point that he wanted to join the group.",
+                    " With this time period being the height of Cypress Hill’s career anything Cypress Hill related would get major publicity."
+                ]
+            ],
+            [
+                "Jay Leiderman",
+                [
+                    "Jason Scott \"Jay\" Leiderman (born April 12, 1971) is an American criminal defense lawyer based in Ventura, California. \"",
+                    "The Atlantic\" Magazine called Leiderman the \"Hacktivist’s Advocate\" for his work defending hacker-activists accused of computer crimes, or so-called (“Hacktivism”) especially people associated with Anonymous.",
+                    " Leiderman \"keeps an encrypted chat app open at all times so he can dispense ad hoc pro bono legal advice to members of Anonymous\" Buzzfeed called Leiderman \"The Maserati-Driving Deadhead Lawyer Who Stands Between Hackers And Prison\" and stated he was \"A medical marijuana and criminal defense lawyer from Southern California [who] has made himself into the country’s leading defender of hackers.\""
+                ]
+            ],
+            [
+                "In the Realm of the Hackers",
+                [
+                    "In The Realm of the Hackers is a 2003 Australian documentary directed by Kevin Anderson about the prominent hacker community, centered in Melbourne, Australia in the late 1980s until early 1990.",
+                    " The storyline is centered on the Australian teenagers going by the hacker names \"Electron\" and \"Phoenix\", who were members of an elite computer hacking group called 'The Realm' and hacked into some of the most secure computer networks in the world, including those of the US Naval Research Laboratory, Lawrence Livermore National Laboratory, a government lab charged with the security of the US nuclear stockpile, and NASA.",
+                    " The film runs for 55 minutes and was inspired by the book \"Underground\", by Melbourne-based writer and academic Suelette Dreyfus."
+                ]
+            ],
+            [
+                "Freakonomics Radio",
+                [
+                    "Freakonomics Radio is an American public radio program which discusses socioeconomic issues for a general audience.",
+                    " The show is a spin-off of the 2005 book \"Freakonomics\".",
+                    " Journalist Stephen Dubner hosts the show, with economist Steven Levitt as a regular guest.",
+                    " The show is also distributed as a podcast, and is among the most popular on iTunes.",
+                    " Created in September 2010, it is a weekly podcast.",
+                    " Twice a year, a series of one-hour \"Freakonomics Radio\" specials air on public-radio stations around the country."
+                ]
+            ],
+            [
+                "Peter W. Smith",
+                [
+                    "Peter W. Smith (February 23, 1936 – May 14, 2017) was an American investment banker from Chicago.",
+                    " He had a 40-year career managing corporate acquisitions and venture investments.",
+                    " He was active in Republican politics.",
+                    " In 1998 he was identified as a major financial supporter of the 1993 Troopergate story, in which several Arkansas state troopers accused U.S. President Bill Clinton of having carried out sexual dalliances while he was Governor of Arkansas.",
+                    " In 2017 he confirmed to the \"Wall Street Journal\" that he had tried in 2016 to contact computer hackers, including Russian hackers, in an attempt to obtain opposition research material to use against Hillary Clinton in the 2016 presidential election.",
+                    " Ten days after speaking to the paper, he committed suicide in a hotel room, citing ill health."
+                ]
+            ],
+            [
+                "Heidi Ewing",
+                [
+                    "Heidi Ewing is a director, producer, and writer of documentary films.",
+                    " She and Rachel Grady founded Loki Films in 2001, and have collaborated on several documentaries together.",
+                    " She is best known as the co-director of \"Jesus Camp\", which was nominated for an Academy Award for best documentary in 2006.",
+                    " Next came\"12th & Delaware\" (HBO), which premiered at the 2010 Sundance Film Festival.",
+                    " The film \"casts a heart-rending light on the abortion divide\" (LA Times) and was honored with a Peabody Award.",
+                    " \"Detropia\", a poetic look at Ewing's home town, also won several awards, including Best Editing at Sundance 2012, Outstanding Direction and Outstanding Original Score, at the 2013 Cinema Eye Honors for Nonfiction Filmmaking and a News and Documentary Emmy for editing.",
+                    " \"Norman Lear: Just Another Version of You\" was the opening night selection of the 2016 Sundance Film Festival and premiered on PBS American Masters on October 25, 2016.",
+                    " Other films as a director include \"The Boys of Baraka\", \"Freakonomics\", and \"The Education of Mohammed Hussein\"."
+                ]
+            ],
+            [
+                "Freakonomics (film)",
+                [
+                    "Freakonomics: The Movie is a 2010 American documentary film based on the 2005 book \"Freakonomics: A Rogue Economist Explores the Hidden Side of Everything\" by economist Steven D. Levitt and writer Stephen J. Dubner.",
+                    " The film premiered at the Tribeca Film Festival in April 2010 with a theatrical release later in the year.",
+                    " The film received a lukewarm reception and a 65% fresh rating at Rottentomatoes."
+                ]
+            ]
+        ],
+        "type": "comparison",
+        "level": "hard"
+    },
+    {
+        "_id": "5a7cc50e554299452d57ba3e",
+        "answer": "Letters to Cleo",
+        "question": "Which band, Letters to Cleo or Screaming Trees, had more members?",
+        "supporting_facts": [
+            [
+                "Letters to Cleo",
+                0
+            ],
+            [
+                "Letters to Cleo",
+                1
+            ],
+            [
+                "Screaming Trees",
+                0
+            ],
+            [
+                "Screaming Trees",
+                1
+            ]
+        ],
+        "context": [
+            [
+                "Screaming Trees discography",
+                [
+                    "The discography of Screaming Trees, an Ellensburg, Washington-based rock band, consists of seven studio albums, three compilation albums, five extended plays (EP), and six singles, though this does not include any solo material recorded by the individual members of Screaming Trees."
+                ]
+            ],
+            [
+                "Truly",
+                [
+                    "Truly is an American rock band formed in the wake of the grunge era.",
+                    " It featured singer-guitarist Robert Roth, bassist Hiro Yamamoto, and drummer Mark Pickerel.",
+                    " Yamamoto and Pickerel were founding members respectively of Soundgarden and Screaming Trees.",
+                    " While not a commercially successful group like some of their Seattle contemporaries, the band lasted a decade with two studio albums to their name."
+                ]
+            ],
+            [
+                "Screaming Trees",
+                [
+                    "Screaming Trees was an American rock band formed in Ellensburg, Washington in 1985 by vocalist Mark Lanegan, guitarist Gary Lee Conner, bass player Van Conner and drummer Mark Pickerel.",
+                    " Pickerel had been replaced by Barrett Martin by the time the band reached its most successful period.",
+                    " Although widely associated with grunge, the band's sound incorporated hard rock and psychedelic elements.",
+                    " During Screaming Trees' existence the band released seven studio albums, five EPs, and three compilations."
+                ]
+            ],
+            [
+                "Change Has Come",
+                [
+                    "Change Has Come was the only recording the Screaming Trees released through Sub Pop.",
+                    " Released in 1990 the Screaming Trees then moved on to a major label, Epic Records, for their next three albums - \"Uncle Anesthesia\", \"Sweet Oblivion,\" and \"Dust\", as well as the \"Something About Today\" EP."
+                ]
+            ],
+            [
+                "Beat Happening/Screaming Trees",
+                [
+                    "Beat Happening/Screaming Trees is an EP and a one-off collaboration between Beat Happening (from Olympia, Washington) and Screaming Trees (from Ellensburg, Washington).",
+                    " Originally released on Homestead Records in 1988, it was later reissued as part of Beat Happening's box set \"Crashing Through\" in 2002.",
+                    " The journal of Kurt Cobain contains a draft of a letter sent to Mark Lanegan, in which he described \"Polly Pereguin\" as his favorite pop song of the 1980s."
+                ]
+            ],
+            [
+                "Jamboree (Beat Happening album)",
+                [
+                    "Jamboree is the second album by Beat Happening, released in 1988 through K Records/Rough Trade Records.",
+                    " All songs were produced by Steve Fisk with assistance from Screaming Trees members Mark Lanegan and Gary Lee Conner (who plays a brief guitar solo on \"Midnight a Go-Go\"), except \"Cat Walk,\" produced by Patrick Maley, and \"The This Many Boyfriends Club,\" recorded live by Rich Jensen.",
+                    " The album marks a darker approach to the Twee pop for which the band is known, due largely to a thicker production than is present on the group's earlier recordings and the dominance of tracks written by Calvin Johnson, while Heather Lewis only provides vocals on two songs, the uncharacteristically brash \"In Between\" and the more typically understated \"Ask Me.\"",
+                    " At the time of the album's release, Calvin described Jamboree's sound as \"dark and sexy.\"",
+                    " Still, the band retained their emphasis on exuberance over musicianship, as Bret Lunsford stated in an interview that, while recording album opener \"Bewitched,\" his guitar string got stuck on a protruding screw and he continued to play through the song, hitting the string a bit harder until it became unstuck."
+                ]
+            ],
+            [
+                "Mad Season (band)",
+                [
+                    "Mad Season was an American rock supergroup formed in Seattle, Washington in 1994 by members of three popular Seattle-based bands: Alice in Chains, Pearl Jam and Screaming Trees.",
+                    " Mad Season released only one album, \"Above\", and is best known for the single \"River of Deceit\".",
+                    " The band went on a semi-permanent hiatus in 1996 due to the band members' conflicting schedules and vocalist Layne Staley's problems with substance abuse.",
+                    " Attempts were made in the late 1990s to revive the group without Staley; however, the band dissolved following the death of bassist John Baker Saunders in 1999.",
+                    " Staley died three years later of a drug overdose."
+                ]
+            ],
+            [
+                "Mark Pickerel",
+                [
+                    "Mark Pickerel is an American musician best known as the original drummer for the Screaming Trees, a rock group from Ellensburg, Washington, that formed in 1985.",
+                    " Other members of the band included the versatile singer Mark Lanegan and the Conner brothers.",
+                    " Pickerel played on the band's extended play and first five albums and left the group in 1992 and was replaced by Barrett Martin."
+                ]
+            ],
+            [
+                "Van Conner",
+                [
+                    "Van Conner (born March 17, 1967 in Apple Valley, California) is an American rock musician.",
+                    " In 1984 he co-founded the band Screaming Trees with his brother Gary Lee Conner and close friends Mark Lanegan and Mark Pickerel.",
+                    " On the 25 June 2000 Screaming Trees announced their official breakup.",
+                    " Conner would start a low key band under the name Gardener which released its only album in the 1990s under the name \"New Dawning Time\".",
+                    " Conner has also had brief appearances as a session musician with other known bands such as Queens of the Stone Age and helping Mark Lanegan on his solo album I'll Take Care of You."
+                ]
+            ],
+            [
+                "Gary Lee Conner",
+                [
+                    "Gary Lee Conner (born Lee Gary Conner on August 22, 1962 in Fort Irwin, California, USA) was the lead guitarist for rock act Screaming Trees, along with his brother Van Conner, who was the band's bassist.",
+                    " Conner began his career with Screaming Trees in 1985 which lasted until their disbanding in 2000.",
+                    " During that time he released two non-Tree albums: The Purple Outside-Mystery Lane (1990 New Alliance Records) with brother Patrick Conner on Drums and the single Grasshopper's Daydream/Behind The Smile (1999 sub pop) this album also featured Josh Homme from Queens of the Stone Age.",
+                    " Appearances on other artists material include, Beat Happening \"Indian Summer\" and \"Midnight a Go-Go\" from \"Jamboree\" as well as \"Against the 70s\" by Mike Watt from \"Ball-Hog or Tugboat?",
+                    "\" (1995 Columbia Records).",
+                    " After ten years of seclusion he finally released a new album in 2010 from his band Microdot Gnome.",
+                    " The album \"4D Sugarcubes\" was released on Moonbus International Recordings in April 2010 as was available on CD and MP3.",
+                    " At the moment he is planning future releases from Microdot Gnome.",
+                    " In August 2016, Conner released a long-awaited solo album, Ether Trippers, on Strange Earth Records."
+                ]
+            ]
+        ],
+        "type": "comparison",
+        "level": "hard"
+    },
+    {
+        "_id": "5ab51dae5542991779162d82",
+        "answer": "no",
+        "question": "Are both Elko Regional Airport and Gerald R. Ford International Airport located in Michigan?",
+        "supporting_facts": [
+            [
+                "Elko Regional Airport",
+                0
+            ],
+            [
+                "Gerald R. Ford International Airport",
+                0
+            ]
+        ],
+        "context": [
+            [
+                "Gerald R. Ford Presidential Library",
+                [
+                    "The Gerald R. Ford Presidential Library is a repository located on the north campus of the University of Michigan in Ann Arbor.",
+                    " The library houses archival materials on the life, career, and presidency of Gerald Ford, the 38th President of the United States.",
+                    " The Gerald R. Ford Presidential Library is a part of the National Archives and Records Administration's presidential library system."
+                ]
+            ],
+            [
+                "Grantley Adams International Airport",
+                [
+                    "Grantley Adams International Airport (GAIA) (IATA: BGI, ICAO: TBPB) is the international airport of Barbados, located in Seawell, Christ Church.",
+                    " It is the only designated port of entry for persons arriving and departing by air in Barbados and operates as a major gateway to the Eastern Caribbean.",
+                    " The airport has direct service to destinations in the United States, Canada, Central America and Europe and serves as the second hub for LIAT.",
+                    " In 2016, the airport was the 8th busiest airport in the Caribbean region; and the third busiest airport in the Lesser Antilles; after Queen Beatrix International Airport located in Aruba, and Pointe-à-Pitre International Airport located in the Republic of France within the island of Guadeloupe.",
+                    " GAIA, also remains an important air-link for cruise ship passengers departing and arriving at the Port of Bridgetown, and a base of operations for the Regional Security System (RSS), and the Regional (Caribbean) Police Training Centre."
+                ]
+            ],
+            [
+                "Pre-Commissioning Unit",
+                [
+                    "A pre-commissioning unit (PRECOMMUNIT) or (PCU) is used by the United States Navy to describe vessels under construction prior to their official commissioning.",
+                    " For example, prior to its commissioning, the aircraft carrier \"Gerald R. Ford\" (CVN-78) has been described by the Navy as \"pre-commissioning unit (PCU) \"Gerald R. Ford\" .\"",
+                    " However, \"PCU\" is only a descriptive term and is not a prefix or a part of the ship's official name.",
+                    " Until they are commissioned, U.S. Navy vessels are officially identified by their given name and hull number only with no prefix, such as \"Gerald R. Ford\" (CVN-78)."
+                ]
+            ],
+            [
+                "Gerald R. Ford International Airport",
+                [
+                    "Gerald R. Ford International Airport (IATA: GRR, ICAO: KGRR, FAA LID: GRR) is a commercial airport in Cascade Township approximately 13 mi southeast of Grand Rapids, Michigan.",
+                    " The facility is owned by the Kent County Board of Commissioners and managed by an independent authority.",
+                    " The Federal Aviation Administration (FAA) National Plan of Integrated Airport Systems for 2017–2021 categorized it as a small hub primary commercial service facility."
+                ]
+            ],
+            [
+                "Gerald R. Ford Freeway",
+                [
+                    "The Gerald R. Ford Freeway refers to Interstate Highways named for former President Gerald R. Ford in Omaha (where he was born) and Michigan (where he grew up and was a Congressman):"
+                ]
+            ],
+            [
+                "Bishop International Airport",
+                [
+                    "Bishop International Airport (IATA: FNT, ICAO: KFNT, FAA LID: FNT) is a commercial and general aviation airport located in Flint, Michigan.",
+                    " It is named after banker and General Motors board member Arthur Giles Bishop (April 12, 1851 – January 22, 1944), who donated 220 acres of his farmland for the airport in 1928.",
+                    " The third busiest airport in Michigan, it surpassed competitor MBS International Airport in terms of airline operations in 2002.",
+                    " In 2007, 1,071,238 passengers used Bishop International Airport; in 2011, 938,914 passengers used the airport.",
+                    " It is included in the Federal Aviation Administration (FAA) National Plan of Integrated Airport Systems for 2017–2021, in which it is categorized as a small hub primary commercial service facility.",
+                    " The airport is currently served by several passenger airlines: Allegiant Air, Southwest Airlines and Delta Air Lines operate mainline service out of the airport, as well as affiliates of Delta Connection, United Express and American Eagle.",
+                    " Additionally, FedEx Express and a FedEx Feeder affiliate operate cargo services out of the airport.",
+                    " Accompanying the airlines is fixed-base operator Av Flight that handles both general aviation and airline operations and the flight school American Wings Aviation.",
+                    " Bishop International Airport is in southwestern Flint, and is surrounded by Flint Township to the north, east and west; and Mundy Township to the south."
+                ]
+            ],
+            [
+                "Raleigh Executive Jetport",
+                [
+                    "Raleigh Exec: The Raleigh Executive Jetport @ Sanford-Lee County or Raleigh Exec Jetport at Sanford-Lee CountyFAA Airport Master Record for TTA (Form 5010 ) (ICAO: KTTA, FAA LID: TTA) is a public use airport located seven nautical miles (8 mi, 13 km) northeast of the central business district of Sanford, a city in Lee County, North Carolina, United States.",
+                    " It is owned by the Sanford-Lee County Regional Airport Authority and was previously known as Sanford-Lee County Regional Airport.",
+                    " This airport is included in the National Plan of Integrated Airport Systems for 2011–2015, which categorized it as a \"reliever airport\" for Raleigh-Durham International Airport."
+                ]
+            ],
+            [
+                "John Glenn Columbus International Airport",
+                [
+                    "John Glenn Columbus International Airport (IATA: CMH, ICAO: KCMH, FAA LID: CMH) , is an international airport located 6 mi east of downtown Columbus, Ohio.",
+                    " Formerly known as Port Columbus International Airport, it is managed by the Columbus Regional Airport Authority, which also oversees operations at Rickenbacker International Airport and Bolton Field.",
+                    " The airport code 'CMH' stands for \"Columbus Municipal Hangar,\" the original name for the airport."
+                ]
+            ],
+            [
+                "Elko Regional Airport",
+                [
+                    "Elko Regional Airport (IATA: EKO, ICAO: KEKO, FAA LID: EKO) , formerly Elko Municipal Airport, is a mile west of downtown Elko, in Elko County, Nevada."
+                ]
+            ],
+            [
+                "Pensacola International Airport",
+                [
+                    "Pensacola International Airport (IATA: PNS, ICAO: KPNS, FAA LID: PNS) , formerly Pensacola Gulf Coast Regional Airport and Pensacola Regional Airport (Hagler Field), is a public use airport three nautical miles (6 km) northeast of the central business district of Pensacola, in Escambia County, Florida, United States.",
+                    " It is owned by the City of Pensacola.",
+                    " Despite the name, this airport does not offer direct international flights.",
+                    " This airport is one of the five major airports in North Florida, others being: Northwest Florida Beaches International Airport, Destin-Fort Walton Beach Airport Tallahassee International Airport, and Jacksonville International Airport."
+                ]
+            ]
+        ],
+        "type": "comparison",
+        "level": "hard"
+    },
+    {
+        "_id": "5a7a0e1e5542990783324e1a",
+        "answer": "Scotch Collie",
+        "question": "Which dog's ancestors include Gordon and Irish Setters: the Manchester Terrier or the Scotch Collie?",
+        "supporting_facts": [
+            [
+                "Manchester Terrier",
+                0
+            ],
+            [
+                "Scotch Collie",
+                0
+            ],
+            [
+                "Scotch Collie",
+                3
+            ]
+        ],
+        "context": [
+            [
+                "Scotch Collie",
+                [
+                    "The Scotch Collie is a landrace breed of dog which originated from the highland regions of Scotland.",
+                    " The breed consisted of both the long-haired (now known as Rough) Collie and the short-haired (now known as Smooth) Collie.",
+                    " It is generally believed to have descended from a variety of ancient herding dogs, some dating back to the Roman occupation, which may have included Roman Cattle Dogs, Native Celtic Dogs and Viking Herding Spitzes.",
+                    " Other ancestors include the Gordon and Irish Setters."
+                ]
+            ],
+            [
+                "Collie",
+                [
+                    "The collie is a distinctive type of herding dog, including many related landraces and standardised breeds.",
+                    " The type originated in Scotland and Northern England.",
+                    " The collie is a medium-sized, fairly lightly built dog, with a pointed snout.",
+                    " Many types have a distinctive white pattern over the shoulders.",
+                    " Collies are very active and agile, and most types of collies have a very strong herding instinct.",
+                    " Collie breeds have spread through many parts of the world (especially Australia and North America) and have diversified into many varieties, sometimes with mixture from other dog types.",
+                    " Some collie breeds have remained as working dogs, used for herding cattle, sheep and other livestock, while others are kept as pets, show dogs or for dog sports, in which they display great agility, stamina and trainability.",
+                    " While the AKC has a breed they call \"Collie\", in fact collie dogs are a distinctive type of herding dog including many related landraces and formal breeds.",
+                    " There are usually major distinctions between show dogs and those bred for herding trials or dog sports.",
+                    " They typically display great agility, stamina and trainability and more importantly sagacity."
+                ]
+            ],
+            [
+                "Viol",
+                [
+                    "The viol , viola da gamba ] , or (informally) gamba, is any one of a family of bowed, fretted and stringed instruments with hollow wooden bodies and pegboxes where the tension on the strings can be increased or decreased to adjust the pitch of each of the strings.",
+                    " Frets on the viol are usually made of gut, tied on the fingerboard around the instrument's neck, to enable the performer to stop the strings more cleanly.",
+                    " Frets improve consistency of intonation and lend the stopped notes a tone which better matches the open strings.",
+                    " Viols first appeared in Spain in the mid to late 15th century and were most popular in the Renaissance and Baroque (1600-1750) periods.",
+                    " Early ancestors include the Arabic \"rebab\" and the medieval European vielle, but later, more direct possible ancestors include the Venetian \"viole\" and the 15th- and 16th-century Spanish \"vihuela\", a 6-course plucked instrument tuned like a lute (and also like a present-day viol) that looked like but was quite distinct from (at that time) the 4-course guitar (an earlier chordophone)."
+                ]
+            ],
+            [
+                "Toy Manchester Terrier",
+                [
+                    "The Toy Manchester Terrier is a breed of dog, categorized as a terrier.",
+                    " The breed was bred down in size in North America from the Manchester Terrier, and is placed in the Toy Group by the American Kennel Club and the Canadian Kennel Club (the Manchester Terrier is placed in the Terrier Group.)",
+                    " Neither the Fédération Cynologique Internationale nor The Kennel Club recognize a Toy variety of the Manchester Terrier."
+                ]
+            ],
+            [
+                "Irish Red and White Setter",
+                [
+                    "The Irish Red and White Setter () is a breed of dog, more specifically a setter.",
+                    " As with all the setters and the Pointer, it is classified as a gundog in the UK and is included in the sporting group in America and Canada.",
+                    " It is virtually identical in use and temperament to the related Irish Setter and its other setter cousins, the Gordon and English setters, but is more often found as a working gun dog."
+                ]
+            ],
+            [
+                "English Setter",
+                [
+                    "The English Setter is a medium size breed of dog.",
+                    " It is part of the Setter family, which includes the red Irish Setters, Irish Red and White Setters, and black-and-tan Gordon Setters.",
+                    " The mainly white body coat is of medium length with long silky fringes on the back of the legs, under the belly and on the tail.",
+                    " The coat features flecks of colour, and the different colour varieties are referred to as belton."
+                ]
+            ],
+            [
+                "Russkiy Toy",
+                [
+                    "The Russian Toy (also known as the Russian Toy Terrier, and in Russia as the Russkiy Toy, Toychik,Russian: Русский той, Тойчик ) is a very small breed of dog originally bred in Russia from the English Toy Terrier which is known today as the Manchester Terrier.",
+                    " There are two types of coats in the breed: smooth coat and long coat.",
+                    " The smooth-coated variety was previously known as the Russian Toy Terrier and long-coated as the Moscow Long Haired Toy Terrier.",
+                    " Both were brought together under the same Russian Toy Terrier name in 1988 and the \"Terrier\" was dropped from the name when the breed was added in 2006 to the official list of breeds registered with the Fédération Cynologique Internationale and has been registered in the Foundation Stock Service of the American Kennel Club since 2008, allowed to compete in AKC companion events since 2010.",
+                    " The first official breed standard of the two varieties was written in 1966 in Russia."
+                ]
+            ],
+            [
+                "Teddy Roosevelt Terrier",
+                [
+                    "The Teddy Roosevelt Terrier is a small to medium-sized American hunting terrier.",
+                    " Lower-set with shorter legs, more muscular, and heavier bone density than its cousin the American Rat Terrier.",
+                    " There is much diversity in the history of the Teddy Roosevelt Terrier breed and it shares a common early history with the American Rat Terrier, Fox Paulistinha and Tenterfield Terrier.",
+                    " It is said the Rat Terrier background stems from the terriers or other dogs that were brought over by early English and other working class immigrants.",
+                    " Since the breed was a farm, hunting and utility dog there was little to no planned breeding other than breeding dogs with agreeable traits to each other in order to produce the desired work ethic in the dog.",
+                    " It is assumed that the Feist (dog), Bull Terrier, Smooth Fox Terrier, Manchester Terrier, Whippet, Italian Greyhound, the now extinct English White Terrier, Turnspit dog and or Wry Legged Terrier all share in the Teddy Roosevelt Terrier's ancestry.",
+                    " These early Ratting Terriers were then most likely bred to the Beagle or Beagle cross bred dogs (for increased scenting ability) and other dogs.",
+                    " Maximizing the influences from these various breeds provides the modern Teddy Roosevelt Terrier with a keen sense of awareness and prey drive, an acute sense of smell and a very high intellect.",
+                    " Although they tend to be aloof with strangers they are devoted companion dogs with a strong desire to please and be near their owners side at all times."
+                ]
+            ],
+            [
+                "Feist (dog)",
+                [
+                    "A Feist is a small hunting dog, descended from the terriers brought over to the United States by English miners and other working class immigrants.",
+                    " These terriers probably included crosses between the Smooth Fox Terrier, the Manchester Terrier and the now extinct English White Terrier.",
+                    " These dogs were used as ratters, and gambling on their prowess in killing rats was a favorite hobby of their owners.",
+                    " Some of these dogs have been crossed with Whippets or Italian Greyhounds (for speed) and Beagles (for hunting ability) - extending the family to include a larger variety of purpose than the original ratter, or Rat Terrier."
+                ]
+            ],
+            [
+                "Florence Nagle",
+                [
+                    "Florence Nagle (26 October 1894 – 30 October 1988) was a trainer and breeder of racehorses, a breeder of pedigree dogs, and an active feminist.",
+                    " Nagle purchased her first Irish Wolfhound in 1913, and went on to own or breed twenty-one United Kingdom Champions.",
+                    " Best in Show at Crufts in 1960 was awarded to Sulhamstead Merman, who was bred, owned and exhibited by Nagle.",
+                    " She also competed successfully in field trials with Irish Setters, from the 1920s until the mid-1960s resulting in eighteen Field Trial Champions.",
+                    " The male dog who was a linchpin in the 1970s revival of the Irish Red and White Setter breed was descended from one of Nagle's Irish Setters."
+                ]
+            ]
+        ],
+        "type": "comparison",
+        "level": "hard"
+    },
+    {
+        "_id": "5a8e068b5542995085b37384",
+        "answer": "yes",
+        "question": "Are Ferocactus and Silene both types of plant?",
+        "supporting_facts": [
+            [
+                "Ferocactus",
+                0
+            ],
+            [
+                "Silene",
+                0
+            ]
+        ],
+        "context": [
+            [
+                "Silene menziesii",
+                [
+                    "Silene menziesii is a species of flowering plant in the pink family known by the common names Menzies' campion and Menzies' catchfly.",
+                    " It is native to western North America from Alaska through the western half of Canada to the southwestern United States.",
+                    " It can be found in many types of habitat and it is quite common in much of its range.",
+                    " It is variable in morphology and there are a number of varied subtaxa.",
+                    " In general, it is a perennial herb growing from a caudex, appearing matlike, decumbent, or erect, with stems a few centimeters to over half a meter long.",
+                    " It is usually hairy in texture, with upper parts bearing sticky glandular hairs.",
+                    " The leaves are lance-shaped, oppositely arranged in pairs, and a few centimeters in length, upper leaves usually smaller than lower.",
+                    " Flowers may occur in a cyme at the top of the stem, or in leaf axils, or both.",
+                    " Each is encapsulated in a hairy, veined calyx of fused sepals.",
+                    " The petals are white with two lobes at the tips.",
+                    " The plant is dioecious with male and female plants producing different flowers.",
+                    " The male and female flower types look the same externally; the stamens are reduced in female plants and the stigmas are reduced in the male."
+                ]
+            ],
+            [
+                "Silene stenophylla",
+                [
+                    "Silene stenophylla is a species of flowering plant in the family Caryophyllaceae.",
+                    " Commonly called narrow-leafed campion, it is a species in the genus \"Silene\".",
+                    " It grows in the Arctic tundra of far eastern Siberia and the mountains of Northern Japan.",
+                    " Frozen samples, estimated via radiocarbon dating to be around 32,000 years old, were discovered in the same area as current living specimens, and in 2012 a team of scientists successfully regenerated a plant from the samples."
+                ]
+            ],
+            [
+                "Silene tomentosa",
+                [
+                    "Silene tomentosa, the Gibraltar campion, is a very rare flowering plant of the genus \"Silene\" and the family Caryophyllaceae.",
+                    " It is a woody-based perennial about 40cm high, with bilobed flowers ranging from pink to pale violet and is endemic to Gibraltar."
+                ]
+            ],
+            [
+                "Silene oregana",
+                [
+                    "Silene oregana is a species of flowering plant in the pink family known by the common names Oregon silene, Oregon campion and Oregon catchfly.",
+                    " It is native to the western United States, including the Great Basin, where it grows in habitat such as sagebrush and forests.",
+                    " It is a perennial herb growing from a woody caudex and taproot, sending up an erect, mostly unbranched stem which may be 70 centimeters tall.",
+                    " The lance-shaped leaves are up to 8 centimeters long around the caudex, and shorter farther up the stem.",
+                    " Flowers occur in a terminal cyme and sometimes in leaf axils.",
+                    " Each flower is encapsulated in a hairy, glandular calyx of fused sepals.",
+                    " The five petals are creamy white or pink-tinged in color and each has four to six long, fringelike lobes at the tip."
+                ]
+            ],
+            [
+                "Silene noctiflora",
+                [
+                    "Silene noctiflora is a species of flowering plant in the pink family known by the common names night-flowering catchfly, nightflowering silene and clammy cockle.",
+                    " It is native to Eurasia, but it is known on other continents as an introduced species and sometimes a weed.",
+                    " In North America, it is a common weed of grain crops in the Canadian prairie provinces and in much of the United States.",
+                    " It grows in fields and in other disturbed habitat."
+                ]
+            ],
+            [
+                "Sex determination in Silene",
+                [
+                    "\"Silene\" are a flowering plant that evolved a dioecious reproductive system.",
+                    " This is made possible through heteromorphic sex chromosomes expressed as XY.",
+                    " \"Silene\" recently evolved sex chromosomes 5-10 million years ago and are widely used by geneticists and biologists to study the mechanisms of sex determination since they are one of only 39 species across 14 families of angiosperm that possess sex-determining genes.",
+                    " \"Silene\" are studied because of their ability to produce offspring with a plethora of reproductive systems.",
+                    " The common inference drawn from such studies is that the sex of the offspring is determined by the Y chromosome."
+                ]
+            ],
+            [
+                "Silene conoidea",
+                [
+                    "Silene conoidea is a species of flowering plant in the pink family known by the common names weed silene and large sand catchfly.",
+                    " It is native to Eurasia, and it is known in other parts of the world, such as western North America, as a weed.",
+                    " It is an annual herb growing up to a meter in height with a hairy, partially glandular stem.",
+                    " The lance-shaped leaves are up to 12 centimeters long near the base of the plant and smaller farther up.",
+                    " The flower is enclosed in an inflated, hairy, glandular calyx of fused sepals which is ridged with many veins.",
+                    " It is open at the top, revealing five bright pink petals."
+                ]
+            ],
+            [
+                "Silene antirrhina",
+                [
+                    "Silene antirrhina is a species of flowering plant in the pink family known by the common names sleepy silene and sleepy catchfly.",
+                    " It is native to the Americas, where it is widespread throughout North America and parts of South America.",
+                    " It is known in Europe as an introduced species."
+                ]
+            ],
+            [
+                "Silene suksdorfii",
+                [
+                    "Silene suksdorfii is a species of flowering plant in the pink family known by the common names Suksdorf's silene, Suksdorf's catchfly and Cascade alpine campion.",
+                    " It is native to the Pacific Northwest of the United States, where it occurs from Washington and Idaho to northern California.",
+                    " It is mainly an alpine species, growing in the talus of high mountain slopes.",
+                    " It can also be found below the tree line in forested subalpine habitat.",
+                    " It is a squat perennial herb producing several erect stems from a leafy, woody caudex.",
+                    " It generally takes a clumpy form.",
+                    " The stems grow up to 10 or 15 centimeters tall and are hairy in texture, with glandular, sticky areas on the upper parts.",
+                    " The leaves occur in tufts around the caudex.",
+                    " They are fleshy and coated in soft hairs.",
+                    " Solitary flowers arise on erect peduncles.",
+                    " Each is encapsulated in an inflated calyx of fused sepals, which is starkly purple-veined and has purplish glandular hairs.",
+                    " The petals are white or purple-tinged and have two lobes at their tips and appendages at their bases."
+                ]
+            ],
+            [
+                "Silene latifolia",
+                [
+                    "Silene latifolia (formerly \"Melandrium album\"), the white campion is a dioecious flowering plant in the family Caryophyllaceae, native to most of Europe, Western Asia and Northern Africa.",
+                    " It is a herbaceous annual, occasionally biennial or a short-lived perennial plant, growing to between 40-80 centimetres tall.",
+                    " It is also known in the USA as bladder campion but should not be confused with \"Silene vulgaris\", which is more generally called Bladder Campion."
+                ]
+            ]
+        ],
+        "type": "comparison",
+        "level": "hard"
+    },
+    {
+        "_id": "5adc53f75542996e6852530a",
+        "answer": "no",
+        "question": "Are both Cypress and Ajuga genera?",
+        "supporting_facts": [
+            [
+                "Cypress",
+                0
+            ],
+            [
+                "Ajuga",
+                0
+            ]
+        ],
+        "context": [
+            [
+                "Cypress-pine",
+                [
+                    "Cypress-pine is the common name used for three closely related genera of conifers in the cypress family Cupressaceae:"
+                ]
+            ],
+            [
+                "Fokienia",
+                [
+                    "Fokienia is a genus of conifer tree belonging to the cypress family.",
+                    " In its characteristics, \"Fokienia\" is intermediate between the genera of \"Chamaecyparis\" and \"Calocedrus\".",
+                    " Genetically \"Fokienia\" is much closer to \"Chamaecyparis\", and not all researchers recognize \"Fokienia\" as a separate genus.",
+                    " The genus comprises only one living species, Fokienia hodginsii or Fujian cypress (; Vietnamese: \"Pơmu\" ), and one fossil species (\"Fokienia ravenscragensis\")."
+                ]
+            ],
+            [
+                "Cupressaceae",
+                [
+                    "Cupressaceae is a conifer family, the cypress family, with worldwide distribution.",
+                    " The family includes 27–30 genera (17 monotypic), which include the junipers and redwoods, with about 130–140 species in total.",
+                    " They are monoecious, subdioecious or (rarely) dioecious trees and shrubs 1 – tall.",
+                    " The bark of mature trees is commonly orange- to red- brown and of stringy texture, often flaking or peeling in vertical strips, but smooth, scaly or hard and square-cracked in some species."
+                ]
+            ],
+            [
+                "Cupressus",
+                [
+                    "The genus Cupressus is one of several genera within the family Cupressaceae that have the common name cypress; for the others, see cypress.",
+                    " It is considered a polyphyletic group.",
+                    " Based on genetic and morphological analysis, the \"Cupressus\" genus is found in the Cupressoideae subfamily.",
+                    " The common name comes from Old French \"cipres\" and that from Latin \"cyparissus\", which is the latinisation of the Greek κυπάρισσος (\"kypárissos\")."
+                ]
+            ],
+            [
+                "Pilgerodendron",
+                [
+                    "Pilgerodendron is a genus of conifer belonging to the cypress family Cupressaceae.",
+                    " It has only one species, Pilgerodendron uviferum, and is endemic to the Valdivian temperate rain forests and Magellanic subpolar forests of southern Chile and southwestern Argentina.",
+                    " It grows from 40 to 55°S in Tierra del Fuego, where it is the southernmost conifer in the world.",
+                    " It is a member of subfamily Callitroideae, a group of distinct southern hemisphere genera associated with the Antarctic flora."
+                ]
+            ],
+            [
+                "Frenchman Formation",
+                [
+                    "The Frenchman Formation is stratigraphic unit of Late Cretaceous (late Maastrichtian) age in the Western Canada Sedimentary Basin.",
+                    " It is present in southern Saskatchewan and the Cypress Hills of southeastern Alberta.",
+                    " The formation was defined by G.M. Furnival in 1942 from observations of outcrops along the Frenchman River, between Ravenscrag and Highway 37.",
+                    " It contains the youngest of dinosaur genera, much like the Hell Creek Formation in the United States."
+                ]
+            ],
+            [
+                "Libocedrus",
+                [
+                    "Libocedrus is a genus of five species of coniferous trees in the cypress family Cupressaceae, native to New Zealand and New Caledonia.",
+                    " The genus is closely related to the South American genera \"Pilgerodendron\" and \"Austrocedrus\", and the New Guinean genus \"Papuacedrus\", both of which are included within \"Libocedrus\" by some botanists.",
+                    " These genera are rather similar to the Northern Hemisphere genera \"Calocedrus\" and \"Thuja\": in earlier days, what is now \"Calocedrus\" was sometimes included in \"Libocedrus\".",
+                    " They are much less closely related, as recently confirmed (Gadek et al. 2000).",
+                    " The generic name means \"teardrop cedar\", apparently referring to drops of resin."
+                ]
+            ],
+            [
+                "Ajugeae",
+                [
+                    "Ajugeae is a tribe of the Teucrioideae subfamily of the family Lamiaceae and might contain the genera \"Acrymia\" , \"Ajuga\" , \"Cymaria\" , \"Garrettia\" , \"Holocheila\" ."
+                ]
+            ],
+            [
+                "Cedrol",
+                [
+                    "Cedrol is a sesquiterpene alcohol found in the essential oil of conifers (cedar oil), especially in the genera \"Cupressus\" (cypress) and \"Juniperus\" (juniper).",
+                    " It has also been identified in \"Origanum onites\", a plant related to oregano.",
+                    " Its main uses are in the chemistry of aroma compounds.",
+                    " It makes up about 19% of cedarwood oil Texas and 15.8% of cedarwood oil Virginia."
+                ]
+            ]
+        ],
+        "type": "comparison",
+        "level": "hard"
+    },
+    {
+        "_id": "5a7be2595542997c3ec972ac",
+        "answer": "Adeline Virginia Woolf",
+        "question": "Who was born earlier, Emma Bull or Virginia Woolf?",
+        "supporting_facts": [
+            [
+                "Emma Bull",
+                0
+            ],
+            [
+                "Virginia Woolf",
+                0
+            ]
+        ],
+        "context": [
+            [
+                "Jane Marcus",
+                [
+                    "Jane Marcus (1938–2015) was a pioneering feminist literary scholar, specializing in women writers of the Modernist era, but especially in the social and political context of their writings.",
+                    " Focusing on Virginia Woolf, Rebecca West, and Nancy Cunard, among many others, she devised groundbreaking analyses of Woolf's writings, upending a generation of criticism that ignored feminist, pacifist, and socialist themes in much of Woolf's work and critique of imperialism and bourgeois society.",
+                    " Marcus's understanding of Woolf's place within the larger context of English literature has become prevailing wisdom today in the fields affected by her theorization and research, despite the controversial nature of her positions when they were originally formulated and how much opposition she garnered from earlier scholars and critics."
+                ]
+            ],
+            [
+                "The Flash Girls",
+                [
+                    "The Flash Girls are a now defunct folk music duo based out of Minneapolis, Minnesota.",
+                    ".",
+                    " The duo consisted of Emma Bull, a noted science fiction author, and Lorraine Garland, also known as \"The Fabulous Lorraine\".",
+                    " Garland is also notable as Neil Gaiman's personal assistant; the group formed at a Guy Fawkes Day party at Gaiman's home.",
+                    " The connections that both Bull and Garland had with the science fiction and fantasy communities allowed them to have an unusually notable group of people writing songs for and with them, including Jane Yolen, Alan Moore, and Neil Gaiman.",
+                    " These songs are mixed in with their own original works, traditional songs such as Star of the County Down and Lily of the West, as well as poems put to music, including works by Dorothy Parker and A.A. Milne."
+                ]
+            ],
+            [
+                "The Duchess and the Jeweller",
+                [
+                    "\"The Duchess and the Jeweller\" (1938) is a short story by Virginia Woolf.",
+                    " Woolf, being an advocate of addressing the \"stream of consciousness,\" shows the thoughts and actions of a greedy jeweller; Woolf makes a thematic point that corrupt people do corrupt actions for purely selfish motives (and often without regret).",
+                    " It was first published in British \"Harper's Bazaar\" Magazine in April 1938 and subsequently published posthumously in 1944 in the collection \"A Haunted House and Other Short Stories."
+                ]
+            ],
+            [
+                "Me! I'm Afraid of Virginia Woolf",
+                [
+                    "Me!",
+                    " I'm Afraid of Virginia Woolf is a 1978 television play by Alan Bennett, produced by London Weekend Television and directed by Stephen Frears.",
+                    " The title of the play is a parody of \"Who's Afraid of Virginia Woolf?",
+                    "\", which in turn plays on the title of the Disney song \"Who's Afraid of the Big Bad Wolf?",
+                    "\"."
+                ]
+            ],
+            [
+                "Orlando: A Biography",
+                [
+                    "Orlando: A Biography is a novel by Virginia Woolf, first published on 11 October 1928.",
+                    " A high-spirited romp inspired by the tumultuous family history of Woolf's lover and close friend, the aristocratic poet and novelist Vita Sackville-West, it is arguably one of Woolf's most popular novels: a history of English literature in satiric form.",
+                    " The book describes the adventures of a poet who changes sex from man to woman and lives for centuries, meeting the key figures of English literary history.",
+                    " Considered a feminist classic, the book has been written about extensively by scholars of women's writing and gender and transgender studies."
+                ]
+            ],
+            [
+                "Moments of Being",
+                [
+                    "Moments of Being is a collection of posthumously-published autobiographical essays by Virginia Woolf.",
+                    " The collection was first found in the papers of her husband, used by Quentin Bell in his biography of Virginia Woolf, published in 1972.",
+                    " In 1976, the essays were edited for publication by Jeanne Schulkind.",
+                    " The second edition was published in 1985.",
+                    " The original texts are now housed at Sussex University and in the British Library in London."
+                ]
+            ],
+            [
+                "Freshwater (opera)",
+                [
+                    "Freshwater is a two-act chamber opera composed by Andy Vores, based on the 1929 comic play by Virginia Woolf.",
+                    " Vores received assistance in creating the opera from Quentin Bell, Woolf's nephew and executor, who provided a rarely seen earlier version of the text that served as the inspiration for several passages of the libretto."
+                ]
+            ],
+            [
+                "Pamela L. Caughie",
+                [
+                    "Pamela L. Caughie is a professor and graduate program director in the English Department at Loyola University of Chicago.",
+                    " As of 2010, she is the president of the Modernist Studies Association.",
+                    " Caughie received her PhD from the University of Virginia in 1987.",
+                    " She is also a highly acclaimed Virginia Woolf scholar, and in 2010 was granted a National Endowment for the Humanities grant of $175,000 to continue her work on an electronic edition of Woolf's \"To the Lighthouse\"."
+                ]
+            ],
+            [
+                "The Mark on the Wall",
+                [
+                    "\"The Mark on the Wall\" is the first published story by Virginia Woolf.",
+                    " It was published in 1917 as part of the first collection of short stories written by Virginia Woolf and her husband, Leonard Woolf, called \"Two Stories\".",
+                    " It was later published in New York in 1921 as part of another collection entitled \"Monday or Tuesday\"."
+                ]
+            ],
+            [
+                "Jane de Gay",
+                [
+                    "Rev Dr \"Jane de Gay\" is a British academic and lecturer who has earned a reputation as an expert on the life and works of Virginia Woolf.",
+                    " Dr de Gay's works on Woolf include a series of articles and a 2006 book, \"Virginia Woolf's Novels and the Literary Past\", published by Edinburgh University Press.",
+                    " Her work has been recognised by the Virginia Woolf Society of Great Britain.",
+                    " She has co-edited four books on gender and theatre, including \"Languages of Theatre Shaped by Women\" (with Lizbeth Goodman)."
+                ]
+            ]
+        ],
+        "type": "comparison",
+        "level": "hard"
+    },
+    {
+        "_id": "5a7759fc5542993569682d60",
+        "answer": "Canary Islands, Spain",
+        "question": "Where are Teide National Park and Garajonay National Park located?",
+        "supporting_facts": [
+            [
+                "Teide National Park",
+                0
+            ],
+            [
+                "Garajonay National Park",
+                0
+            ]
+        ],
+        "context": [
+            [
+                "Garajonay National Park",
+                [
+                    "Garajonay National Park (Spanish: \"Parque nacional de Garajonay\" , ] ) is located in the center and north of the island of La Gomera, one of the Canary Islands (Spain).",
+                    " It was declared a national park in 1981 and a World Heritage Site by UNESCO in 1986.",
+                    " It occupies 40 km (15 sq mi) and it extends into each of the six municipalities on the island."
+                ]
+            ],
+            [
+                "North Cascades National Park",
+                [
+                    "North Cascades National Park is a U.S. National Park located in the state of Washington.",
+                    " The park is the largest of the three National Park Service units that comprise the North Cascades National Park Service Complex.",
+                    " Several national wilderness areas and British Columbia parkland adjoin the National Park.",
+                    " The park features rugged mountain peaks and protects portions of the North Cascades range."
+                ]
+            ],
+            [
+                "Roque Cinchado",
+                [
+                    "The Roque Cinchado is a rock formation, regarded as emblematic of the island of Tenerife (Canary Islands, Spain).",
+                    " It lies within the Teide National Park (a World Heritage Site) in the municipality of La Orotava, near the volcano of the same name, in the heart of the island.",
+                    " The Roque Cinchado is one of the largest in the world by altitude, for the entire park totals more than 2000 metres."
+                ]
+            ],
+            [
+                "Adenocarpus viscosus",
+                [
+                    "Adenocarpus viscosus is a shrubby species of flowering plant in the legume family Fabaceae, subfamily Faboideae.",
+                    " It is endemic to the Canary Islands where it is known locally as Codeso del Pico.",
+                    " It can be found above 1800 m on two of the islands, La Palma in Caldera de Tabouriente and Tenerife where it is a dominant shrub in Teide National Park and occurs in parts of Corona Forestal Nature Park and Reserva Especial de las Palomas."
+                ]
+            ],
+            [
+                "Training centre for release of the Atma-energy",
+                [
+                    "Training centre for release of the Atma-energy (German: \"Trainingszentrum zur Freisetzung der Atmaenergie\"), also known as \"Atman Foundation\", was a new religious movement active mainly on the island of Tenerife and in Germany.",
+                    " This sect was originally a splinter group of the Brahma Kumaris and is known for a police and media scare in which an alleged attempt to commit ritual suicide took place in Teide National Park in Tenerife.",
+                    " The group believed in the end of the world but according to the religious studies scholar Georg Schmid and the sociologist Massimo Introvigne had no intention of collective suicide."
+                ]
+            ],
+            [
+                "Teide National Park",
+                [
+                    "Teide National Park (Spanish: \"Parque nacional del Teide\" , ] ) is a national park located in Tenerife (Canary Islands, Spain)."
+                ]
+            ],
+            [
+                "Crater Lake National Park",
+                [
+                    "Crater Lake National Park is a United States National Park located in southern Oregon.",
+                    " Established in 1902, Crater Lake National Park is the fifth-oldest national park in the U.S. and the only national park in Oregon.",
+                    " The park encompasses the caldera of Crater Lake, a remnant of a destroyed volcano, Mount Mazama, and the surrounding hills and forests."
+                ]
+            ],
+            [
+                "Glacier National Park Fund",
+                [
+                    "The Glacier National Park Fund (established in 1999), is an organization whose main goal is to raise money to support the demands of the Glacier National Park, located in West Glacier, Montana.",
+                    " According to the National Park Service, the Glacier National Park Fund supports park projects, programs, and services in four areas: to preserve the park experience, to provide curriculum-based instruction, to research the park ecosystem, and to prepare for the 2010 Centennial year of the park.",
+                    " The Glacier National Park Fund provided funds for different studies.",
+                    " In July 2007, The Glacier National Park Fund funded a study involving human and bear aversion techniques.",
+                    " Also, in 2009, The Glacier National Park Fund granted $10,000 to enable biologists to learn more about the Bighorn Sheep that inhabit Glacier National Park, along the park's boundary with the Blackfeet Indian Reservation.",
+                    " The Glacier National Park Fund has an official mascot named Billy Bowman."
+                ]
+            ],
+            [
+                "Hermigua",
+                [
+                    "Hermigua is a town and a municipality in the northeastern part of La Gomera in the province of Santa Cruz de Tenerife of the Canary Islands, Spain.",
+                    " It is located 12 km northwest of the island's capital, San Sebastián de la Gomera.",
+                    " The Garajonay National Park covers the southern part of the municipality."
+                ]
+            ],
+            [
+                "Alpine National Park",
+                [
+                    "The Alpine National Park is a national park located in the Central Highlands and Alpine regions of Victoria, Australia.",
+                    " The 646000 ha national park is located northeast of Melbourne.",
+                    " It is the largest National Park in Victoria, and covers much of the higher areas of the Great Dividing Range in Victoria, including Victoria's highest point, Mount Bogong at 1986 m and the associated subalpine woodland and grassland of the Bogong High Plains.",
+                    " The park's north-eastern boundary is along the border with New South Wales, where it abuts the Kosciuszko National Park.",
+                    " On 7 November 2008 the Alpine National Park was added to the Australian National Heritage List as one of eleven areas constituting the Australian Alps National Parks and Reserves."
+                ]
+            ]
+        ],
+        "type": "comparison",
+        "level": "hard"
+    },
+    {
+        "_id": "5aba749055429901930fa7d8",
+        "answer": "director",
+        "question": "What occupation do Chris Menges and Aram Avakian share?",
+        "supporting_facts": [
+            [
+                "Aram Avakian",
+                0
+            ],
+            [
+                "Chris Menges",
+                0
+            ]
+        ],
+        "context": [
+            [
+                "CrissCross",
+                [
+                    "CrissCross is a 1992 American drama film directed by Chris Menges and written by Scott Sommer, based on his homonymous novel.",
+                    " It stars Goldie Hawn, Arliss Howard, Keith Carradine, Steve Buscemi, and David Arnott."
+                ]
+            ],
+            [
+                "Made in Britain",
+                [
+                    "Made in Britain is a 1982 British television play written by David Leland, and directed by Alan Clarke, about a 16-year-old racist skinhead named Trevor, and his constant confrontations with authority figures.",
+                    " It was originally broadcast on ITV on 10 July 1983 as fourth in an untitled series of works by Leland (including \"Birth of a Nation\"), loosely based around the British educational system, which subsequently acquired the overall title of \"Tales Out of School\".",
+                    " As with many Alan Clarke works, the director attempts to depict English working-class life realistically, without moralising or complex plots.",
+                    " The play features strong language, violence, racism and an anti-establishment feeling.",
+                    " Cinematographer Chris Menges's use of the Steadicam contributed to the fluid and gritty atmosphere of the play."
+                ]
+            ],
+            [
+                "The Lost Son (film)",
+                [
+                    "The Lost Son is a 1999 crime drama starring French actor Daniel Auteuil and set in London.",
+                    " It was directed by Chris Menges."
+                ]
+            ],
+            [
+                "Linda Mvusi",
+                [
+                    "Linda Mvusi (c. 1955 in Bloemfontein- ) is an actress and architect.",
+                    " Mvusi took an award for best actress at the 1988 Cannes Film Festival for her role in the film \"A World Apart\" which was directed by Chris Menges.",
+                    " Mvusi was the first South African to get a best Actress award at Cannes.",
+                    " Mvusi also shared in an award for excellence for her architecture on the Apartheid Museum."
+                ]
+            ],
+            [
+                "End of the Road (1970 film)",
+                [
+                    "End of the Road is a 1970 film directed, co-written, and edited by Aram Avakian and adapted from a 1958 novel by John Barth, and stars Stacy Keach, James Earl Jones and Harris Yulin."
+                ]
+            ],
+            [
+                "A World Apart (film)",
+                [
+                    "A World Apart is a 1988 anti-Apartheid drama, written by Shawn Slovo and directed by Chris Menges.",
+                    " It is based on the lives of Slovo's parents, Ruth First and Joe Slovo.",
+                    " The film was a co-production between companies from the UK and Zimbabwe, where the movie was filmed.",
+                    " It features Hans Zimmer's first non-collaborative film score."
+                ]
+            ],
+            [
+                "11 Harrowhouse",
+                [
+                    "11 Harrowhouse is a 1974 British film directed by Aram Avakian.",
+                    " It was adapted by Charles Grodin based upon the novel by Gerald A. Browne with the screenplay by Jeffrey Bloom.",
+                    " It stars Charles Grodin, Candice Bergen, James Mason, Trevor Howard and John Gielgud."
+                ]
+            ],
+            [
+                "Second Best (film)",
+                [
+                    "Second Best is a 1994 British film produced by Sarah Radclyffe and directed by Chris Menges.",
+                    " It closely follows the 1991 novel of the same name by David Cook, who also wrote the screenplay."
+                ]
+            ],
+            [
+                "Chris Menges",
+                [
+                    "Chris Menges BSC, ASC (born 15 September 1940) is an English cinematographer and film director.",
+                    " He is a member of both the American and British Societies of Cinematographers."
+                ]
+            ],
+            [
+                "Cops and Robbers (1973 film)",
+                [
+                    "Cops and Robbers is a 1973 crime comedy film directed by Aram Avakian with an original screenplay by Donald E. Westlake which Westlake subsequently expanded into a novel.",
+                    " The film stars Cliff Gorman as Tom and Joseph Bologna as Joe."
+                ]
+            ]
+        ],
+        "type": "comparison",
+        "level": "hard"
+    },
+    {
+        "_id": "5ae224da554299234fd043ee",
+        "answer": "no",
+        "question": "Do the drinks Gibson and Zurracapote both contain gin?",
+        "supporting_facts": [
+            [
+                "Gibson (cocktail)",
+                0
+            ],
+            [
+                "Zurracapote",
+                1
+            ]
+        ],
+        "context": [
+            [
+                "Energy shot",
+                [
+                    "Energy shots are a specialized kind of energy drink that contain a dose of the stimulant caffeine in a small amount of liquid.",
+                    " Whereas most energy drinks are sold in cans or bottles, energy shots are usually sold in 50ml bottles.",
+                    " Energy shots can contain the same total amount of caffeine, vitamins or other functional ingredients as their larger versions, and may be considered concentrated forms of energy drinks.",
+                    " \"Micro shot\" energy drinks also exist, containing only 1-5 teaspoons of liquid."
+                ]
+            ],
+            [
+                "Soft drink",
+                [
+                    "A soft drink (see terminology for other names) is a drink that typically contains carbonated water, a sweetener, and a natural or artificial flavoring.",
+                    " The sweetener may be sugar, high-fructose corn syrup, fruit juice, sugar substitutes (in the case of diet drinks), or some combination of these.",
+                    " Soft drinks may also contain caffeine, colorings, preservatives, and other ingredients."
+                ]
+            ],
+            [
+                "Gibson (cocktail)",
+                [
+                    "The Gibson is a mixed drink made with gin and vermouth, and often garnished with a pickled onion.",
+                    " The oldest published recipe for the Gibson is found in the 1908 book, \"The World's Drinks And How To Mix Them\" by William Boothby."
+                ]
+            ],
+            [
+                "Tum-E Yummies",
+                [
+                    "Tum-E Yummies is a line of fruit flavored water drinks.",
+                    " The drinks come in a 10.1oz bottle with a resealable sport cap.",
+                    " They have 50 calories, 13g of sugar, and contain 100% daily value of vitamins C, B6 and B12 per bottle and are available in flavors Very Berry Blue, Orange-arific, Fruitabulous Punch, Greentastic Apple, and Sour-sational Raspberry.",
+                    " Tum-E Yummies is sold nationwide in the juice aisle or cooler in stores like Walmart & Kroger, and other grocery, convenience, value, and mass merchandiser stores."
+                ]
+            ],
+            [
+                "Gin pennant",
+                [
+                    "The gin pennant (sometimes gin flag or drinking pennant) is a maritime flag.",
+                    " When flown aboard ship, it indicates an open invitation to other ships' officers to come aboard for drinks."
+                ]
+            ],
+            [
+                "List of soft drinks by country",
+                [
+                    "This is a list of soft drinks in order of the brand's country of origin.",
+                    " A soft drink is a beverage that typically contains water (often, but not always, carbonated water), usually a sweetener and usually a flavoring agent.",
+                    " The sweetener may be sugar, high-fructose corn syrup, fruit juice, sugar substitutes (in the case of diet drinks) or some combination of these.",
+                    " Soft drinks may also contain caffeine, colorings, preservatives and other ingredients."
+                ]
+            ],
+            [
+                "Rubicon Drinks",
+                [
+                    "Rubicon Drinks Ltd (formerly Rubicon Products Ltd) is a soft drink manufacturer based in Milton Keynes, UK.",
+                    " The company specialises in exotic soft drinks, and produces a variety of different flavours of drink, many of which contain sugar or artificial sweeteners, and which come in both still and sparkling varieties.",
+                    " In the United Kingdom, their drinks are bottled and distributed by A.G. Barr plc."
+                ]
+            ],
+            [
+                "Flaming beverage",
+                [
+                    "Flaming beverages include cocktails and other mixed drinks that contain flammable, high-proof alcohol, which is ignited prior to consumption.",
+                    " The alcohol may be an integral part of the drink, or it may be floated as a thin layer across the top of the drink.",
+                    " The flames are mostly for dramatic flair.",
+                    " However, in combination with certain ingredients, the flavor of the drink is altered.",
+                    " Some flavors are enhanced, and it may impart a toasted flavor to some drinks."
+                ]
+            ],
+            [
+                "Phillips Distilling Company",
+                [
+                    "Phillips Distilling Company (est. 1912) is a Minneapolis, Minnesota-based distillery and house brand of liquors known for its omnipresence in the bars, taverns, and private shelves of the Great Plains.",
+                    " Brands such as UV Vodka and Prairie Vodka are becoming popular across the nation.",
+                    " Phillips produces a variety of liquors such as Vodka, Gin, Rum, Canadian whisky, Brandy and many flavors of Schnapps.",
+                    " In recent years, Phillips has branched out beyond standard liquors with a variety of specialty drinks, such as Revel Stoke Spiced Whisky (the original spiced whisky), Gin-Ka (a combination of gin and vodka), Phillips Union Whiskey, the 100 proof series of Schnapps (Hot, Blue, and Root Beer), and vodka such as UV Vodka and the handcrafted and organic Prairie Vodka.",
+                    " Phillips also produced an herbal liqueur, aptly named \"Black 100\" for its 50% alcohol by volume content and opaque black color, similar in texture and flavor to Schwartzhog or Jakob Steiner."
+                ]
+            ],
+            [
+                "CytoSport",
+                [
+                    "CytoSport is an American manufacturer of sports-oriented nutritional products, or \"supplements\" based in Benicia, California.",
+                    " It offers a line of protein-enhanced powders, shakes, and bars has broken into the mainstream market with a ready-to-drink form of protein supplement Muscle Milk, a non-dairy beverage which is trans-fat-free, lactose-free, contain no high fructose corn syrup and is shelf stable.",
+                    " Muscle Milk mainly markets on taste by using familiar milkshake flavors such as banana, milk chocolate and vanilla to drive consumers to the product, along with multiple drink sizes and formats, including powders and being sold in convenience stores alongside regular energy drinks and sports drinks."
+                ]
+            ]
+        ],
+        "type": "comparison",
+        "level": "hard"
+    },
+    {
+        "_id": "5ac1b8ee5542994d76dccedc",
+        "answer": "Levni Yilmaz",
+        "question": "Which filmmaker was known for animation, Lev Yilmaz or Pamela B. Green?",
+        "supporting_facts": [
+            [
+                "Lev Yilmaz",
+                0
+            ],
+            [
+                "Pamela B. Green",
+                0
+            ]
+        ],
+        "context": [
+            [
+                "Lev Kuleshov",
+                [
+                    "Lev Vladimirovich Kuleshov (Russian: Лев Влади́мирович Кулешо́в ; 13 January [O.S. 1 January] 1899 – 29 March 1970) was a Russian and Soviet filmmaker and film theorist, one of the founders of the world's first film school, the Moscow Film School.",
+                    " He was given the title People's Artist of the RSFSR in 1969.",
+                    " He was intimately involved in development of the style of film making known as Soviet montage, especially it's psychological underpinning, including the use of editing and the cut to emotionally influence the audience, a principle known as the Kuleshov effect.",
+                    " He also developed the theory of creative geography, which is the use of the action around a cut to connect otherwise disparate settings into a cohesive narrative."
+                ]
+            ],
+            [
+                "Anani ben Sason",
+                [
+                    "Anani ben Sason (also called 'Anani, 'Inani, and 'Inyani) was a Jewish Talmudist who lived in the Land of Israel, known as an amora of the third century, a contemporary of R. Ammi.",
+                    " He rarely discussed \"Halakot\", and his discussions of them were not original (\"Shab.",
+                    "\" 64b).",
+                    " Once he recited a \"Halakah\" in the patriarch's mansion, without naming its author, which provoked R. Ammi to ask: \"Is it his own?",
+                    " It is what R. Eleazar had reported in the name of R. Oshaiah\" (M. Ḳ.",
+                    " 24b).",
+                    " In the \"Haggadah\", he sometimes reported the sayings of others, but more often he was original.",
+                    " Thus, as a reason for the juxtaposition of the regulations regarding the sacrificial rites and the priestly vestments (\"Ex.",
+                    "\" xxviii-xxix), he points out that the priestly vestments were to have atoning effects as well as the sacrifices.",
+                    " He represents the miter as atoning for haughtiness, and cites R. Chanina as saying, \"That which rests highest on the priest atones for one's considering himself high\"; and similarly with the rest of the priestly garments (\"Zeb.\"",
+                    " 88b; \" 'Ar.\"",
+                    " 16a; compare \"Yer.",
+                    " Yoma,\" vii.",
+                    " 44b; \"Lev.",
+                    " R.\" x.).",
+                    " Referring to God's appearance in the thorn-bush (\"Ex.\"",
+                    " iii.",
+                    " 2-4) he remarks, \"The Holy One—blessed be He!",
+                    "—said to Moses, 'When I will it, one of my angels stretcheth forth his hand from heaven and reacheth to the ground,' as the Scripture says [\"Ezek.",
+                    "\" viii.",
+                    " 3], 'He put forth the form of a hand, and took me by a lock of mine head'; and when it so pleaseth me, I make three angels sit under one tree [\"Gen.\" xviii.",
+                    " 4]; when I choose, my glory fills the universe, as it is written [\"Jer.\"",
+                    " xxiii.",
+                    " 24], 'Do I not fill heaven and earth?",
+                    " saith the Lord'; 'and when I so willed, I spoke to Job in a whirlwind, as it is said [\"Job,\" xxxviii.",
+                    " 1, xl.",
+                    " 6], \"The Lord answered Job out of the whirlwind\"\" (\"Ex.",
+                    " R.\" iii., where the interpretation is somewhat forced)."
+                ]
+            ],
+            [
+                "Aryanto Yuniawan",
+                [
+                    "Aryanto Yuniawan (born June 18, 1977 in Magelang; age 40) is Chief Executive Officer of PT Mataram Surya Visi Sinema, a multimedia and animation movie company located in Jogja Indonesia.",
+                    " Ary (his nickname) is best known as a director of Battle of Surabaya, the first 2D animation movie in Indonesia which got some awards i.e. Gold Remi Award USA 2016, GrandPrize Winner of SICAF 2016 in South Korea, Winner of Nice International Filmmaker Festival 2017 in France, Winner of Nioda International Film Festival in India and others.",
+                    " He is also acclaimed as a writer, a producer, and currently working on several articles and books related to his job and hobby.",
+                    " He started his career from directing and producing independent animation films including music videos.",
+                    " He was trusted to be one of the juries of several film festivals such as Festival Film Indonesia (FFI 2016), Noida International Film Festival (NIFF 2016), and Seoul International Cartoon and Animation Festival (SICAF 2017)."
+                ]
+            ],
+            [
+                "Pamela B. Green",
+                [
+                    "Pamela B. Green is an American film producer and director known for her work in feature film titles and motion graphics.",
+                    " She is the director and producer of the documentary \"Be Natural: The Untold Story of Alice Guy-Blache\"."
+                ]
+            ],
+            [
+                "Pamela B. Davis",
+                [
+                    "Pamela B. Davis, MD, PhD is a pediatric pulmonologist specializing in cystic fibrosis research.",
+                    " She has been Dean of the School of Medicine at Case Western Reserve University since 2007.",
+                    " She was elected to the Institute of Medicine in 2014."
+                ]
+            ],
+            [
+                "Pamela Gilbert",
+                [
+                    "Pamela B. Gilbert (born October 3, 1958) is an American lawyer and has been a partner of the law firm Cuneo Gilbert & LaDuca, LLP since 2003, where she heads the firm's lobbying practice.",
+                    " Gilbert is a noted consumer rights advocate who has testified before Congress over fifty times and made dozens of appearances in the national print and electronic media."
+                ]
+            ],
+            [
+                "Seasoned Veteran",
+                [
+                    "Seasoned Veteran is the third studio album by American rapper Richie Rich.",
+                    " It was released November 5, 1996 on Def Jam Recordings, and to date is the only major label release for the artist.",
+                    " The album was produced by Ali Malik, DJ Daryl, Doug Rasheed, Jermaine Dupri, Lev Berlak, Mike Mosley, Richie Rich and Rick Rock.",
+                    " It peaked at number 11 on the \"Billboard\" Top R&B/Hip-Hop Albums and at number 35 on the \"Billboard\" 200.",
+                    " Two of the singles released, \"Let's Ride\" and \"Do G's Get To Go To Heaven?",
+                    "\", both appeared on multiple \"Billboard\" singles charts.",
+                    " The album features guest performances by 2Pac, E-40, Luniz, D'wayne Wiggins, T-Boz, and Rame Royal of Rhythm & Green."
+                ]
+            ],
+            [
+                "Total (group)",
+                [
+                    "Total is an American contemporary R&B girl group and one of the signature acts of Sean Combs' Bad Boy Records imprint during the 1990s.",
+                    " The group consisted of members Kima Raynor, Keisha Spivey, and Pamela Long.",
+                    " Total is best known for their hits \"What You Want\" (Featuring Mase), \"Kissing You\", \"Can't You See\" (featuring The Notorious B.I.G.), and \"What About Us?\"",
+                    " and \"Trippin'\", both featuring Missy Elliott.",
+                    " Long was also featured on The Notorious B.I.G.'s hit song \"Hypnotize\", singing the chorus."
+                ]
+            ],
+            [
+                "Eliezer ben Jacob I",
+                [
+                    "Eliezer ben Jacob I (Hebrew: אליעזר בן יעקב) was a Tanna of the 1st century; contemporary of Eleazar b. Ḥisma and Eliezer b. Hyrcanus, and senior of Judah ben Ilai (Pes.",
+                    " 32a, 39b; Yalḳ.",
+                    ", Lev.",
+                    " 638).",
+                    " Of his personal history nothing is known, except that he had seen the Temple at Jerusalem and was familiar with the specific purposes of its many apartments, a subject on which he was considered an authority (Yoma 16b).",
+                    " Some of the details, however, he eventually forgot, and was reminded of them by Abba Saul b. Baṭnit (Mid.",
+                    " ii.",
+                    " 5, v. 4).",
+                    " Simon b. 'Azzai, R. Akiva's contemporary, relates that he had discovered a genealogical roll wherein was stated, \"The Mishnah of R. Eliezer b. Jacob is only a 'ḳab' [small in proportion], but clear\" (משנת ראב\"י קב ונקי, Yeb.",
+                    " 49b), wherefore subsequent generations generally adopted Eliezer's views as law (Yeb.",
+                    " 60a; Bek.",
+                    " 23b)."
+                ]
+            ],
+            [
+                "AES+F",
+                [
+                    "AES+F is an artist collective of four Russian artists: Tatiana Arzamasova (1955), Lev Evzovich (1958), Evgeny Svyatsky (1957), and Vladimir Fridkes (1956).",
+                    " It was first formed as AES Group in 1987 by Arzamasova, Evzovich, and Svyatsky, becoming AES+F when Fridkes joined in 1995.",
+                    " The collective works in photography, video, installation, and animation, as well as more traditional media, such as painting, drawing, and sculpture.",
+                    " AES+F's early work included performance, installation, painting, and illustration.",
+                    " Well known for their monumental video-art installations that Gareth Harris describes as \"monumental painting set in motion\", AES+F create grand visual narratives that explore contemporary global values, vices and conflicts."
+                ]
+            ]
+        ],
+        "type": "comparison",
+        "level": "hard"
+    },
+    {
         "_id": "5a8c7595554299585d9e36b6",
         "answer": "Chief of Protocol",
         "question": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?",
