@@ -1,7 +1,7 @@
 import os
 import ujson as json
 from tqdm import tqdm
-from llama_index.llms.ollama import Ollama
+from llama_index.llms.openai import OpenAI
 
 
 def extract_triplets(llm, ctx):
@@ -49,14 +49,23 @@ def extract_triplets(llm, ctx):
     return triplets
 
 
+# Set your OpenAI API key
+# os.environ["OPENAI_API_KEY"] = "your-api-key-here"
+
 data_path = "../../data/hotpotqa/hotpot_dev_fullwiki_v1_100.json"
 with open(data_path) as f:
     data = json.load(f)
 
 triplets = {}
-llm = Ollama(model="llama3:8b", request_timeout=120)
+# Use OpenAI instead of Ollama (works in Colab)
+llm = OpenAI(
+    api_key=os.environ["OPENAI_API_KEY"],
+    model="gpt-3.5-turbo",
+    temperature=0.0,
+    request_timeout=120,
+)
 out_dir = "../../data/hotpotqa/kgs/extract_subkgs"
-os.makedirs(out_dir, exist_ok=True)  # Create directory if it doesn't exist
+os.makedirs(out_dir, exist_ok=True)
 count = 0
 
 for sample in tqdm(data):
