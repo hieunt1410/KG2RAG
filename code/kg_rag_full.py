@@ -157,29 +157,38 @@ def main(args):
     kg_dir = args.kg_dir
     doc2kg = dict()
     print(f'\n{"-"*20}\nLoading KGs')
-    for ent in tqdm(ents):
-        subkg_path = os.path.join(kg_dir, f'{ent.replace("/","_")}.json')
+    for entity in tqdm(ents):
+        subkg_path = os.path.join(kg_dir, f'{entity.replace("/","_")}.json')
         if not os.path.exists(subkg_path):
             continue
-        with open(subkg_path, "r", encoding="utf=8") as fin:
+        with open(subkg_path, "r", encoding="utf-8") as fin:
             subkg = json.load(fin)
             if subkg and len(subkg.keys()) > 0:
-                for seq in subkg.keys():
+                # Create a copy of keys to avoid modification during iteration
+                seq_keys = list(subkg.keys())
+                for seq in seq_keys:
+                    # Update triplets with normalized entity names
+                    updated_triplets = []
                     for triplet in subkg[seq]:
                         h, r, t = triplet
-                        if (ngram_overlap(h, ent) >= 0.90) or (
-                            ngram_overlap(ent, h) >= 0.90
+                        if (ngram_overlap(h, entity) >= 0.90) or (
+                            ngram_overlap(entity, h) >= 0.90
                         ):
-                            h = ent
-                        if (ngram_overlap(t, ent) >= 0.90) or (
-                            ngram_overlap(ent, t) >= 0.90
+                            h = entity
+                        if (ngram_overlap(t, entity) >= 0.90) or (
+                            ngram_overlap(entity, t) >= 0.90
                         ):
-                            t = ent
-                        triplet = h, r, t
-                    if len(subkg[seq]) == 0:
+                            t = entity
+                        updated_triplets.append([h, r, t])
+                    
+                    # Update or remove the sequence
+                    if len(updated_triplets) == 0:
                         del subkg[seq]
+                    else:
+                        subkg[seq] = updated_triplets
+                
                 if len(subkg.keys()) > 0:
-                    doc2kg[ent] = subkg
+                    doc2kg[entity] = subkg
 
     model_name = args.model_name
     print("Init Ollama model")
