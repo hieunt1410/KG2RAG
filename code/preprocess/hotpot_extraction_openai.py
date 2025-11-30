@@ -60,7 +60,7 @@ triplets = {}
 # Use OpenAI instead of Ollama (works in Colab)
 llm = OpenAI(
     api_key=os.environ["OPENAI_API_KEY"],
-    model="gpt-3.5-turbo",
+    model="gpt-4o-mini",
     temperature=0.0,
     request_timeout=120,
 )
