@@ -1,32 +1,29 @@
-# from concurrent.futures import ThreadPoolExecutor, as_completed  # Not needed for retriever testing
 import json
 import os
 from tqdm import tqdm
 import argparse
 
 from FlagEmbedding import FlagReranker
-from llama_index.llms.ollama import Ollama
+# from llama_index.llms.ollama import Ollama
 from llama_index.core import (
     Settings,
     VectorStoreIndex,
+    # PromptTemplate,
     StorageContext,
     load_index_from_storage,
-    QueryBundle,
-)  # Removed PromptTemplate
-from llama_index.core.schema import TextNode
+)
+from llama_index.core.schema import TextNode, QueryBundle
 from llama_index.core.retrievers import VectorIndexRetriever
-
-# from llama_index.core.query_engine import RetrieverQueryEngine  # Not needed for retriever testing
-# from llama_index.core.response_synthesizers import ResponseMode  # Not needed for retriever testing
+# from llama_index.core.query_engine import RetrieverQueryEngine
+# from llama_index.core.response_synthesizers import ResponseMode
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from util.kg_post_processor import (
     NaivePostprocessor,
     KGRetrievePostProcessor,
     ngram_overlap,
     GraphFilterPostProcessor,
-)  # Removed KGIntraInterPostProcessor
-
-# from util.kg_response_synthesizer import get_response_synthesizer  # Not needed for retriever testing
+)
+# from util.kg_response_synthesizer import get_response_synthesizer
 
 
 def kg_rag_parallel(
@@ -35,7 +32,8 @@ def kg_rag_parallel(
     top_k=5,
     workers=4,
     persist_dir=None,
-    reranker="../model/bge-reranker-large",
+    dataset=None,
+    reranker="BAAI/bge-reranker-large",
 ):
     prediction = {"answer": {}, "sp": {}}
 
@@ -65,81 +63,67 @@ def kg_rag_parallel(
             index.storage_context.persist(persist_dir=persist_dir)
     print(f"Index ready in persist dir {persist_dir}")
     retriever = VectorIndexRetriever(index=index, similarity_top_k=top_k)
-
-    # ===== COMMENTED OUT: Answer generation components =====
-    # qa_rag_template_str = 'Context information is below.\n{context_str}\nGive a short factoid answer (as few words as possible).\nQ: Were Scott Derrickson and Ed Wood of the same nationality?\nA: Yes.\nQ: Who was born earlier, Emma Bull or Virginia Woolf?\nA: Adeline Virginia Woolf.\nQ: The arena where the Lewiston Maineiacs played their home games can seat how many people?\nA: 3,677 seated.\nQ: What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?\nA: Chief of Protocol.\n---------------------\nQ: {query_str}\nA: '
+    # qa_rag_template_str = "Context information is below.\n{context_str}\nGive a short factoid answer (as few words as possible).\nQ: Were Scott Derrickson and Ed Wood of the same nationality?\nA: Yes.\nQ: Who was born earlier, Emma Bull or Virginia Woolf?\nA: Adeline Virginia Woolf.\nQ: The arena where the Lewiston Maineiacs played their home games can seat how many people?\nA: 3,677 seated.\nQ: What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?\nA: Chief of Protocol.\n---------------------\nQ: {query_str}\nA: "
     # qa_rag_prompt_template = PromptTemplate(qa_rag_template_str)
-    # response_synthesizer = get_response_synthesizer(response_mode=ResponseMode.COMPACT,text_qa_template=qa_rag_prompt_template)
-    # ===== END COMMENTED OUT =====
+    # response_synthesizer = get_response_synthesizer(
+    #     response_mode=ResponseMode.COMPACT, text_qa_template=qa_rag_prompt_template
+    # )
 
     kg_post_processor1 = KGRetrievePostProcessor(
-        ents=ents, doc2kg=doc2kg, chunks_index=chunks_index
+        dataset=dataset, ents=ents, doc2kg=doc2kg, chunks_index=chunks_index
     )
     bge_reranker = FlagReranker(model_name_or_path=reranker)
     kg_post_processor2 = GraphFilterPostProcessor(
+        dataset=dataset,
         topk=top_k,
+        use_tpt=False,
         ents=ents,
         doc2kg=doc2kg,
         chunks_index=chunks_index,
         reranker=bge_reranker,
     )
-    naive_pp = NaivePostprocessor()
 
-    # ===== COMMENTED OUT: Query engine with answer generation =====
-    # engine = RetrieverQueryEngine(retriever=retriever,response_synthesizer=response_synthesizer,node_postprocessors=[kg_post_processor1,kg_post_processor2,naive_pp])
-    # ===== END COMMENTED OUT =====
+    # engine = RetrieverQueryEngine(
+    #     retriever=retriever,
+    #     response_synthesizer=response_synthesizer,
+    #     node_postprocessors=[
+    #         kg_post_processor1,
+    #         kg_post_processor2,
+    #         NaivePostprocessor(),
+    #     ],
+    # )
 
     test_size = len(data)
 
     sps_count = []
-
-    # ===== RETRIEVER TESTING MODE: Only test retrieval without answer generation =====
+    node_postprocessors = [kg_post_processor1, kg_post_processor2, NaivePostprocessor(dataset=dataset)]
     for sample in tqdm(data[: min(len(data), test_size)]):
         sample_id = sample["_id"]
         sample_question = sample["question"]
-        # sample_answer = sample['answer']  # Not needed for retriever testing
+        # sample_answer = sample["answer"]  # Not needed for retrieval-only benchmark
 
-        try:
-            # Retrieve nodes without generating answers
-            retrieved_nodes = retriever.retrieve(sample_question)
-
-            # Create a QueryBundle for post-processors
-            query_bundle = QueryBundle(query_str=sample_question)
-
-            # Apply post-processors manually to test the retrieval pipeline
-            processed_nodes = kg_post_processor1.postprocess_nodes(
-                retrieved_nodes, query_bundle=query_bundle
-            )
-            processed_nodes = kg_post_processor2.postprocess_nodes(
-                processed_nodes, query_bundle=query_bundle
-            )
-            processed_nodes = naive_pp.postprocess_nodes(
-                processed_nodes, query_bundle=query_bundle
-            )
-
-            # Extract supporting facts from retrieved nodes (no answer generation)
-            answer = "[RETRIEVAL_TEST_MODE - NO ANSWER GENERATED]"
-            sps = [
-                [node.node.id_.split("##")[0], int(node.node.id_.split("##")[1])]
-                for node in processed_nodes
+        # Retrieval only - no answer generation
+        retrieved_nodes = retriever.retrieve(sample_question)
+        # Apply post-processors manually
+        query_bundle = QueryBundle(query_str=sample_question)
+        for postprocessor in node_postprocessors:
+            retrieved_nodes = postprocessor.postprocess_nodes(retrieved_nodes, query_bundle)
+        
+        # response = engine.query(sample_question)
+        # answer = response.response
+        answer = ""  # Placeholder - no answer generation
+        sps = [
+            [
+                source_node.node.id_.split("##")[0],
+                int(source_node.node.id_.split("##")[1]),
             ]
+            for source_node in retrieved_nodes
+        ]
+        prediction["answer"][sample_id] = answer
+        prediction["sp"][sample_id] = sps
+        sps_count.append(len(sps))
 
-            prediction["answer"][sample_id] = answer
-            prediction["sp"][sample_id] = sps
-            sps_count.append(len(sps))
-
-            # Print retrieved nodes for inspection (optional, can comment out for speed)
-            # print(f"\nSample {sample_id}: Retrieved {len(processed_nodes)} nodes")
-            # for i, node in enumerate(processed_nodes):
-            #     print(f"  Node {i+1}: {node.node.id_} (score: {node.score})")
-
-        except Exception as e:
-            print(f"Sample {sample_id}, Error: {e}")
-            prediction["answer"][sample_id] = "[ERROR]"
-            prediction["sp"][sample_id] = []
-    # ===== END RETRIEVER TESTING MODE =====
-
-    print(f"Avg #sps: {sum(sps_count)/len(sps_count) if sps_count else 0}")
+    print(f"Avg #sps: {sum(sps_count)/len(sps_count)}")
 
     return prediction
 
@@ -157,45 +141,36 @@ def main(args):
     kg_dir = args.kg_dir
     doc2kg = dict()
     print(f'\n{"-"*20}\nLoading KGs')
-    for entity in tqdm(ents):
-        subkg_path = os.path.join(kg_dir, f'{entity.replace("/","_")}.json')
+    for ent in tqdm(ents):
+        subkg_path = os.path.join(kg_dir, f'{ent.replace("/","_")}.json')
         if not os.path.exists(subkg_path):
             continue
-        with open(subkg_path, "r", encoding="utf-8") as fin:
+        with open(subkg_path, "r", encoding="utf=8") as fin:
             subkg = json.load(fin)
             if subkg and len(subkg.keys()) > 0:
-                # Create a copy of keys to avoid modification during iteration
-                seq_keys = list(subkg.keys())
-                for seq in seq_keys:
-                    # Update triplets with normalized entity names
-                    updated_triplets = []
+                for seq in subkg.keys():
                     for triplet in subkg[seq]:
                         h, r, t = triplet
-                        if (ngram_overlap(h, entity) >= 0.90) or (
-                            ngram_overlap(entity, h) >= 0.90
+                        if (ngram_overlap(h, ent) >= 0.90) or (
+                            ngram_overlap(ent, h) >= 0.90
                         ):
-                            h = entity
-                        if (ngram_overlap(t, entity) >= 0.90) or (
-                            ngram_overlap(entity, t) >= 0.90
+                            h = ent
+                        if (ngram_overlap(t, ent) >= 0.90) or (
+                            ngram_overlap(ent, t) >= 0.90
                         ):
-                            t = entity
-                        updated_triplets.append([h, r, t])
-                    
-                    # Update or remove the sequence
-                    if len(updated_triplets) == 0:
+                            t = ent
+                        triplet = h, r, t
+                    if len(subkg[seq]) == 0:
                         del subkg[seq]
-                    else:
-                        subkg[seq] = updated_triplets
-                
                 if len(subkg.keys()) > 0:
-                    doc2kg[entity] = subkg
+                    doc2kg[ent] = subkg
 
-    model_name = args.model_name
-    print("Init Ollama model")
-    Settings.llm = Ollama(model=model_name, request_timeout=200)
+    # model_name = args.model_name
+    # print("Init Ollama model")
+    # Settings.llm = Ollama(model=model_name, request_timeout=200)
     embed_model_name = args.embed_model_name
     print("Init Ollama embedding")
-    Settings.embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-reranker-large")
+    Settings.embed_model = HuggingFaceEmbedding(model_name=embed_model_name)
     top_k = args.top_k
     workers = args.num_workers
     persist_dir = args.persist_dir
@@ -206,28 +181,33 @@ def main(args):
         top_k=top_k,
         workers=workers,
         persist_dir=persist_dir,
+        dataset=args.dataset,
         reranker=reranker,
     )
 
     result_path = args.result_path
+    result_dir = os.path.dirname(result_path)
+    if result_dir:
+        os.makedirs(result_dir, exist_ok=True)
     with open(result_path, "w", encoding="utf-8") as f:
         json.dump(prediction, f)
 
+    print(f"Prediction written to {result_path}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-
+    parser.add_argument("--dataset", type=str, default="hotpotqa", help="Dataset name")
     # hotpot full
     parser.add_argument(
         "--data_path",
         type=str,
-        default="../data/hotpotqa/hotpot_dev_fullwiki_v1_100.json",
+        default="../data/hotpotqa/hotpot_dev_distractor_v1.json",
         help="Path to the data file",
     )
     parser.add_argument(
         "--result_path",
         type=str,
-        default="../output/hotpot/hotpot_dev_fullwiki_v1_100.json",
+        default="../output/hotpot/hotpot_dev_distractor_v1_full.json",
         help="Path to the result file",
     )
     parser.add_argument(
@@ -252,7 +232,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--embed_model_name",
         type=str,
-        default="mxbai-embed-large",
+        default="mixedbread-ai/mxbai-embed-large-v1",
         help="Ollama embedding model name for indexing",
     )
     parser.add_argument("--top_k", type=int, default=10, help="Top k similar documents")
