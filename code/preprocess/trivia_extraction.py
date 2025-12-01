@@ -96,7 +96,14 @@ def main(args):
         question = sample['question']
         answer = sample['answer']
         ctxs = sample['context']
-        cands = [sp[0] for sp in sample['supporting_facts']]
+
+        # Handle missing supporting_facts in TriviaQA
+        if 'supporting_facts' in sample and sample['supporting_facts']:
+            cands = [sp[0] for sp in sample['supporting_facts']]
+        else:
+            # If no supporting facts, process all entities
+            cands = [ctx[0] for ctx in ctxs]
+
         for ctx in ctxs:
             ent = ctx[0]
             if ent not in processed_ents and ent in cands:

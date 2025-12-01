@@ -1,28 +1,31 @@
+import argparse
 import json
 import os
-from tqdm import tqdm
-import argparse
 
 from FlagEmbedding import FlagReranker
+
 # from llama_index.llms.ollama import Ollama
 from llama_index.core import (
     Settings,
-    VectorStoreIndex,
     # PromptTemplate,
     StorageContext,
+    VectorStoreIndex,
     load_index_from_storage,
 )
-from llama_index.core.schema import TextNode, QueryBundle
 from llama_index.core.retrievers import VectorIndexRetriever
+from llama_index.core.schema import QueryBundle, TextNode
+
 # from llama_index.core.query_engine import RetrieverQueryEngine
 # from llama_index.core.response_synthesizers import ResponseMode
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
+from tqdm import tqdm
 from util.kg_post_processor import (
-    NaivePostprocessor,
-    KGRetrievePostProcessor,
-    ngram_overlap,
     GraphFilterPostProcessor,
+    KGRetrievePostProcessor,
+    NaivePostprocessor,
+    ngram_overlap,
 )
+
 # from util.kg_response_synthesizer import get_response_synthesizer
 
 
@@ -103,7 +106,11 @@ def kg_rag_parallel(
     test_size = len(data)
 
     sps_count = []
-    node_postprocessors = [kg_post_processor1, kg_post_processor2, NaivePostprocessor(dataset=dataset)]
+    node_postprocessors = [
+        kg_post_processor1,
+        kg_post_processor2,
+        NaivePostprocessor(dataset=dataset),
+    ]
     for sample in tqdm(data[: min(len(data), test_size)]):
         sample_id = sample["_id"]
         sample_question = sample["question"]
@@ -114,12 +121,14 @@ def kg_rag_parallel(
         # Apply post-processors manually
         query_bundle = QueryBundle(query_str=sample_question)
         for postprocessor in node_postprocessors:
-            retrieved_nodes = postprocessor.postprocess_nodes(retrieved_nodes, query_bundle)
-        
+            retrieved_nodes = postprocessor.postprocess_nodes(
+                retrieved_nodes, query_bundle
+            )
+
         # response = engine.query(sample_question)
         # answer = response.response
         answer = ""  # Placeholder - no answer generation
-        
+
         # Parse supporting facts based on dataset format
         sps = []
         for source_node in retrieved_nodes:
@@ -133,14 +142,52 @@ def kg_rag_parallel(
                 entity = parts[0]
                 seq = int(parts[1])
             sps.append([entity, seq])
-        
+
         prediction["answer"][sample_id] = answer
         prediction["sp"][sample_id] = sps
         sps_count.append(len(sps))
 
-    print(f"Avg #sps: {sum(sps_count)/len(sps_count)}")
+    print(f"Avg #sps: {sum(sps_count) / len(sps_count)}")
 
     return prediction
+
+
+def normalize_triviaqa_data(data):
+    """Convert TriviaQA format to HotpotQA format for compatibility."""
+    normalized = []
+    for sample in data:
+        normalized_sample = {
+            "_id": sample.get("_id", sample.get("question_id", "")),
+            "question": sample["question"],
+            "answer": sample["answer"],
+            "context": [],
+        }
+
+        # Handle context - TriviaQA has [title, [text1, text2, ...]] format
+        if "context" in sample:
+            for ctx in sample["context"]:
+                if len(ctx) >= 2:
+                    title = ctx[0]
+                    texts = ctx[1]
+                    # Ensure texts is a list
+                    if isinstance(texts, str):
+                        texts = [texts]
+                    elif not isinstance(texts, list):
+                        texts = [str(texts)]
+
+                    # Clean up texts - remove empty strings and trim
+                    texts = [text.strip() for text in texts if text and text.strip()]
+                    if texts:  # Only add if we have valid texts
+                        normalized_sample["context"].append([title, texts])
+
+        # Add empty supporting facts if not present (TriviaQA doesn't have them)
+        if "supporting_facts" not in sample:
+            normalized_sample["supporting_facts"] = []
+        else:
+            normalized_sample["supporting_facts"] = sample["supporting_facts"]
+
+        normalized.append(normalized_sample)
+    return normalized
 
 
 def normalize_musique_data(data):
@@ -148,10 +195,12 @@ def normalize_musique_data(data):
     normalized = []
     for sample in data:
         normalized_sample = {
-            "_id": sample.get("id", sample.get("_id", "")),  # MuSiQue uses "id", HotpotQA uses "_id"
+            "_id": sample.get(
+                "id", sample.get("_id", "")
+            ),  # MuSiQue uses "id", HotpotQA uses "_id"
             "question": sample["question"],
             "answer": sample["answer"],
-            "context": []
+            "context": [],
         }
         # Convert paragraphs to context format
         for para in sample["paragraphs"]:
@@ -160,7 +209,7 @@ def normalize_musique_data(data):
             title = para["title"]
             text = para["paragraph_text"]
             # Split text into sentences (simple split by period for now)
-            sentences = [s.strip() + '.' for s in text.split('.') if s.strip()]
+            sentences = [s.strip() + "." for s in text.split(".") if s.strip()]
             normalized_sample["context"].append([title, sentences])
         normalized.append(normalized_sample)
     return normalized
@@ -168,8 +217,8 @@ def normalize_musique_data(data):
 
 def main(args):
     data_path = args.data_path
-    original_data = None  # Keep original data for MuSiQue output format
-    
+    original_data = None  # Keep original data for MuSiQue/TriviaQA output format
+
     # Load data based on dataset format
     with open(data_path, "r", encoding="utf-8") as f:
         if args.dataset.lower() == "musique":
@@ -177,8 +226,13 @@ def main(args):
             original_data = [json.loads(line) for line in f if line.strip()]
             # Normalize MuSiQue format to HotpotQA format
             data = normalize_musique_data(original_data)
+        elif args.dataset.lower() == "triviaqa":
+            # TriviaQA uses JSON array format but needs normalization
+            original_data = json.load(f)
+            # Normalize TriviaQA format to HotpotQA format
+            data = normalize_triviaqa_data(original_data)
         else:
-            # HotpotQA and TriviaQA use JSON array format
+            # HotpotQA uses JSON array format
             data = json.load(f)
 
     ents = set()
@@ -188,9 +242,9 @@ def main(args):
 
     kg_dir = args.kg_dir
     doc2kg = dict()
-    print(f'\n{"-"*20}\nLoading KGs')
+    print(f"\n{'-' * 20}\nLoading KGs")
     for ent in tqdm(ents):
-        subkg_path = os.path.join(kg_dir, f'{ent.replace("/","_")}.json')
+        subkg_path = os.path.join(kg_dir, f"{ent.replace('/', '_')}.json")
         if not os.path.exists(subkg_path):
             continue
         with open(subkg_path, "r", encoding="utf=8") as fin:
@@ -237,45 +291,68 @@ def main(args):
     result_dir = os.path.dirname(result_path)
     if result_dir:
         os.makedirs(result_dir, exist_ok=True)
-    
+
     # Output format depends on dataset
     if args.dataset.lower() == "musique" and original_data is not None:
         # MuSiQue format: JSONL with one prediction per line
         # Need to map titles back to paragraph indices
-        
+
         with open(result_path, "w", encoding="utf-8") as f:
             for sample_id in prediction["answer"].keys():
                 # Get supporting paragraph titles
                 sp_data = prediction["sp"].get(sample_id, [])
                 sp_titles = [sp[0] for sp in sp_data]
-                
+
                 # Find the original sample to get paragraph indices
                 original_sample = None
                 for sample in original_data:
                     if sample["id"] == sample_id:
                         original_sample = sample
                         break
-                
+
                 # Map titles to paragraph indices
                 predicted_support_idxs = []
                 if original_sample:
                     title_to_idx = {}
                     for para in original_sample["paragraphs"]:
                         title_to_idx[para["title"]] = para["idx"]
-                    
+
                     seen_idxs = set()
                     for title in sp_titles:
-                        if title in title_to_idx and title_to_idx[title] not in seen_idxs:
+                        if (
+                            title in title_to_idx
+                            and title_to_idx[title] not in seen_idxs
+                        ):
                             predicted_support_idxs.append(title_to_idx[title])
                             seen_idxs.add(title_to_idx[title])
-                
+
                 pred_instance = {
                     "id": sample_id,
                     "predicted_answer": prediction["answer"].get(sample_id, ""),
                     "predicted_support_idxs": predicted_support_idxs,
-                    "predicted_answerable": True
+                    "predicted_answerable": True,
                 }
                 f.write(json.dumps(pred_instance) + "\n")
+    elif args.dataset.lower() == "triviaqa" and original_data is not None:
+        # TriviaQA format: JSON array with additional fields
+        triviaqa_prediction = {"answer": {}, "sp": {}}
+
+        for sample_id in prediction["answer"].keys():
+            # For TriviaQA, we need to map back to the original question_id
+            original_sample = None
+            for sample in original_data:
+                if sample.get("_id") == sample_id or sample.get("question_id") == sample_id:
+                    original_sample = sample
+                    break
+
+            if original_sample:
+                original_id = original_sample.get("question_id", original_sample.get("_id", sample_id))
+                triviaqa_prediction["answer"][original_id] = prediction["answer"][sample_id]
+                triviaqa_prediction["sp"][original_id] = prediction["sp"][sample_id]
+
+        # Include original data metadata if needed
+        with open(result_path, "w", encoding="utf-8") as f:
+            json.dump(triviaqa_prediction, f, indent=2)
     else:
         # HotpotQA format: single JSON object
         with open(result_path, "w", encoding="utf-8") as f:
@@ -283,9 +360,10 @@ def main(args):
 
     print(f"Prediction written to {result_path}")
 
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--dataset", type=str, default="hotpotqa", help="Dataset name")
+    parser.add_argument("--dataset", type=str, default="hotpotqa", help="Dataset name (hotpotqa, musique, triviaqa)")
     # hotpot full
     parser.add_argument(
         "--data_path",

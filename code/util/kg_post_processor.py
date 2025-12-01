@@ -1,27 +1,21 @@
-import random
-import re
-import time
-import networkx as nx
-
-from typing import List, Dict, Optional, Set
-from FlagEmbedding import FlagReranker
-from llama_index.core.schema import TextNode, NodeWithScore, QueryBundle
-from llama_index.core.postprocessor.types import BaseNodePostprocessor
-from llama_index.core.bridge.pydantic import Field
-from llama_index.core.instrumentation import get_dispatcher
-
-dispatcher = get_dispatcher(__name__)
-
+import string
 from builtins import print as _print
 from sys import _getframe
+from typing import Dict, List, Optional, Set
+
+import networkx as nx
+from FlagEmbedding import FlagReranker
+from llama_index.core.bridge.pydantic import Field
+from llama_index.core.instrumentation import get_dispatcher
+from llama_index.core.postprocessor.types import BaseNodePostprocessor
+from llama_index.core.schema import NodeWithScore, QueryBundle, TextNode
+
+dispatcher = get_dispatcher(__name__)
 
 
 def print(*arg, **kw):
     s = f"Line {_getframe(1).f_lineno}"
     return _print(f"Func {__name__} - {s}", *arg, **kw)
-
-
-import string
 
 
 def ngram_overlap(span, sent, n=3):
@@ -188,7 +182,6 @@ class KGRetrievePostProcessor(BaseNodePostprocessor):
             temp_ents = set(additional_ents)
             additional_ents = set()
             for ent in temp_ents:
-
                 if (ent not in self.doc2kg) or (len(self.doc2kg[ent]) == 0):
                     continue
                 for idx_seq_str in self.doc2kg[ent]:
@@ -355,13 +348,13 @@ class GraphFilterPostProcessor(BaseNodePostprocessor):
                 if (
                     (h in mentioned_ents)
                     and (r in mentioned_rels)
-                    and (not t in mentioned_ents)
+                    and (t not in mentioned_ents)
                 ):
                     mentioned_ents.add(t)
                 if (
                     (t in mentioned_ents)
                     and (r in mentioned_rels)
-                    and (not h in mentioned_ents)
+                    and (h not in mentioned_ents)
                 ):
                     mentioned_ents.add(h)
 
