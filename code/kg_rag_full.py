@@ -128,10 +128,41 @@ def kg_rag_parallel(
     return prediction
 
 
+def normalize_musique_data(data):
+    """Convert MuSiQue format to HotpotQA format for compatibility."""
+    normalized = []
+    for sample in data:
+        normalized_sample = {
+            "question": sample["question"],
+            "answer": sample["answer"],
+            "context": []
+        }
+        # Convert paragraphs to context format
+        for para in sample["paragraphs"]:
+            # MuSiQue: [title, [text]]
+            # HotpotQA: [title, [sent1, sent2, ...]]
+            title = para["title"]
+            text = para["paragraph_text"]
+            # Split text into sentences (simple split by period for now)
+            sentences = [s.strip() + '.' for s in text.split('.') if s.strip()]
+            normalized_sample["context"].append([title, sentences])
+        normalized.append(normalized_sample)
+    return normalized
+
+
 def main(args):
     data_path = args.data_path
+    
+    # Load data based on dataset format
     with open(data_path, "r", encoding="utf-8") as f:
-        data = json.load(f)
+        if args.dataset.lower() == "musique":
+            # MuSiQue uses JSONL format (one JSON object per line)
+            data = [json.loads(line) for line in f if line.strip()]
+            # Normalize MuSiQue format to HotpotQA format
+            data = normalize_musique_data(data)
+        else:
+            # HotpotQA and TriviaQA use JSON array format
+            data = json.load(f)
 
     ents = set()
     for sample in data:
