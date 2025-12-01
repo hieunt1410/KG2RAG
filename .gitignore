@@ -1,2 +1,8 @@
 code/env/
 output/
+data/*/kgs/
+
+**/**/__pycache__/
+**/**/.DS_Store
+
+code/util/metrics

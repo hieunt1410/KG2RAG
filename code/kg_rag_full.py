@@ -40,6 +40,7 @@ def kg_rag_parallel(
     doc_chunks = []
     chunks_index = dict()
     ents = set()
+    sample_idx = 0
     for sample in data:
         for ctx in sample["context"]:
             ent = ctx[0]
@@ -47,10 +48,16 @@ def kg_rag_parallel(
             if ent not in chunks_index:
                 chunks_index[ent] = dict()
             for i in range(len(ctx[1])):
-                doc_chunk = TextNode(text=f"{ent}: {ctx[1][i]}", id_=f"{ent}##{str(i)}")
+                # MuSiQue expects idx##entity##seq format, HotpotQA expects entity##seq
+                if dataset and dataset.lower() == "musique":
+                    node_id = f"{sample_idx}##{ent}##{str(i)}"
+                else:
+                    node_id = f"{ent}##{str(i)}"
+                doc_chunk = TextNode(text=f"{ent}: {ctx[1][i]}", id_=node_id)
                 doc_chunks.append(doc_chunk)
                 if str(i) not in chunks_index[ent]:
                     chunks_index[ent][str(i)] = doc_chunk.text
+        sample_idx += 1
     if (persist_dir is not None) and os.path.exists(persist_dir):
         print("Load index from persist dir")
         sc = StorageContext.from_defaults(persist_dir=persist_dir)
@@ -112,13 +119,21 @@ def kg_rag_parallel(
         # response = engine.query(sample_question)
         # answer = response.response
         answer = ""  # Placeholder - no answer generation
-        sps = [
-            [
-                source_node.node.id_.split("##")[0],
-                int(source_node.node.id_.split("##")[1]),
-            ]
-            for source_node in retrieved_nodes
-        ]
+        
+        # Parse supporting facts based on dataset format
+        sps = []
+        for source_node in retrieved_nodes:
+            parts = source_node.node.id_.split("##")
+            if dataset and dataset.lower() == "musique":
+                # MuSiQue format: idx##entity##seq
+                entity = parts[1]
+                seq = int(parts[2])
+            else:
+                # HotpotQA format: entity##seq
+                entity = parts[0]
+                seq = int(parts[1])
+            sps.append([entity, seq])
+        
         prediction["answer"][sample_id] = answer
         prediction["sp"][sample_id] = sps
         sps_count.append(len(sps))
@@ -133,6 +148,7 @@ def normalize_musique_data(data):
     normalized = []
     for sample in data:
         normalized_sample = {
+            "_id": sample.get("id", sample.get("_id", "")),  # MuSiQue uses "id", HotpotQA uses "_id"
             "question": sample["question"],
             "answer": sample["answer"],
             "context": []
@@ -152,14 +168,15 @@ def normalize_musique_data(data):
 
 def main(args):
     data_path = args.data_path
+    original_data = None  # Keep original data for MuSiQue output format
     
     # Load data based on dataset format
     with open(data_path, "r", encoding="utf-8") as f:
         if args.dataset.lower() == "musique":
             # MuSiQue uses JSONL format (one JSON object per line)
-            data = [json.loads(line) for line in f if line.strip()]
+            original_data = [json.loads(line) for line in f if line.strip()]
             # Normalize MuSiQue format to HotpotQA format
-            data = normalize_musique_data(data)
+            data = normalize_musique_data(original_data)
         else:
             # HotpotQA and TriviaQA use JSON array format
             data = json.load(f)
@@ -220,8 +237,49 @@ def main(args):
     result_dir = os.path.dirname(result_path)
     if result_dir:
         os.makedirs(result_dir, exist_ok=True)
-    with open(result_path, "w", encoding="utf-8") as f:
-        json.dump(prediction, f)
+    
+    # Output format depends on dataset
+    if args.dataset.lower() == "musique" and original_data is not None:
+        # MuSiQue format: JSONL with one prediction per line
+        # Need to map titles back to paragraph indices
+        
+        with open(result_path, "w", encoding="utf-8") as f:
+            for sample_id in prediction["answer"].keys():
+                # Get supporting paragraph titles
+                sp_data = prediction["sp"].get(sample_id, [])
+                sp_titles = [sp[0] for sp in sp_data]
+                
+                # Find the original sample to get paragraph indices
+                original_sample = None
+                for sample in original_data:
+                    if sample["id"] == sample_id:
+                        original_sample = sample
+                        break
+                
+                # Map titles to paragraph indices
+                predicted_support_idxs = []
+                if original_sample:
+                    title_to_idx = {}
+                    for para in original_sample["paragraphs"]:
+                        title_to_idx[para["title"]] = para["idx"]
+                    
+                    seen_idxs = set()
+                    for title in sp_titles:
+                        if title in title_to_idx and title_to_idx[title] not in seen_idxs:
+                            predicted_support_idxs.append(title_to_idx[title])
+                            seen_idxs.add(title_to_idx[title])
+                
+                pred_instance = {
+                    "id": sample_id,
+                    "predicted_answer": prediction["answer"].get(sample_id, ""),
+                    "predicted_support_idxs": predicted_support_idxs,
+                    "predicted_answerable": True
+                }
+                f.write(json.dumps(pred_instance) + "\n")
+    else:
+        # HotpotQA format: single JSON object
+        with open(result_path, "w", encoding="utf-8") as f:
+            json.dump(prediction, f)
 
     print(f"Prediction written to {result_path}")
 
