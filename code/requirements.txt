@@ -2,6 +2,7 @@ FlagEmbedding
 llama_index
 llama-index-embeddings-ollama
 llama-index-llms-ollama
+openai
 networkx
 pandas
 tqdm
