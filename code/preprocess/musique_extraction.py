@@ -161,9 +161,11 @@ def extract_triplets_from_musique(
                             ent2triplets[ent] = dict()
                         if seq not in ent2triplets[ent]:
                             ent2triplets[ent][seq] = list()
-                        ent2triplets[ent][seq] = list(
-                            set(ent2triplets[ent][seq]) | set(triplets)
-                        )
+                        # Convert lists to tuples for set operations, then back to lists
+                        existing_tuples = set(tuple(t) for t in ent2triplets[ent][seq])
+                        new_tuples = set(tuple(t) for t in triplets)
+                        combined = existing_tuples | new_tuples
+                        ent2triplets[ent][seq] = [list(t) for t in combined]
                 except Exception as e:
                     ent, seq = future_to_text[future]
                     print(f"\nError processing entity {ent} seq {seq}: {e}")
