@@ -1,17 +1,22 @@
 import os
 import ujson as json
 from tqdm import tqdm
-from llama_index.llms.openai import OpenAI
+from openai import OpenAI
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from threading import Lock
 import argparse
 
 
-def extract_triplets(llm, ctx):
+def extract_triplets(client, model_name, ctx, temperature, max_tokens):
     """Extract knowledge graph triplets from text using LLM."""
     query = f'Extract triplets informative from the text following the examples. Make sure the triplet texts are only directly from the given text! Complete directly and strictly following the instructions without any additional words, line break nor space!\n{"-"*20}\nText: Scott Derrickson (born July 16, 1966) is an American director, screenwriter and producer.\nTriplets:<Scott Derrickson##born in##1966>$$<Scott Derrickson##nationality##America>$$<Scott Derrickson##occupation##director>$$<Scott Derrickson##occupation##screenwriter>$$<Scott Derrickson##occupation##producer>$$\n{"-"*20}\nText: A Kiss for Corliss is a 1949 American comedy film directed by Richard Wallace and written by Howard Dimsdale. It stars Shirley Temple in her final starring role as well as her final film appearance. Shirley Temple was named United States ambassador to Ghana and to Czechoslovakia and also served as Chief of Protocol of the United States.\nTriplets:<A Kiss for Corliss##cast member##Shirley Temple>$$<Shirley Temple##served as##Chief of Protocol>$$\n{"-"*20}\nText: {ctx}\nTriplets:'
-    resp = llm.complete(query)
-    resp = resp.text
+    response = client.chat.completions.create(
+        model=model_name,
+        messages=[{"role": "user", "content": query}],
+        temperature=temperature,
+        max_tokens=max_tokens,
+    )
+    resp = response.choices[0].message.content
     triplets = set()
     triplet_texts = resp.split("$$")
     for triplet_text in triplet_texts:
@@ -53,7 +58,9 @@ def extract_triplets(llm, ctx):
     return triplets
 
 
-def process_entity(ent, ctx, llm, out_dir, processed_ents, lock):
+def process_entity(
+    ent, ctx, client, model_name, temperature, max_tokens, out_dir, processed_ents, lock
+):
     """Process a single entity and extract triplets from all its contexts."""
     # Check if already processed (thread-safe)
     with lock:
@@ -75,7 +82,9 @@ def process_entity(ent, ctx, llm, out_dir, processed_ents, lock):
             ctx_text = ctx[1][i]
 
         try:
-            ext_triplets = extract_triplets(llm, ctx_text)
+            ext_triplets = extract_triplets(
+                client, model_name, ctx_text, temperature, max_tokens
+            )
             if len(ext_triplets) > 0:
                 entity_triplets[i] = ext_triplets
         except Exception as e:
@@ -91,12 +100,6 @@ def process_entity(ent, ctx, llm, out_dir, processed_ents, lock):
 
 
 def main(args):
-    # Check for API key
-    if not os.getenv("OPENAI_API_KEY"):
-        print("⚠️  Warning: OPENAI_API_KEY environment variable not set!")
-        print("Set it with: export OPENAI_API_KEY='your-api-key'")
-        return
-
     # Load data
     print(f"Loading data from {args.data_path}")
     with open(args.data_path) as f:
@@ -105,9 +108,9 @@ def main(args):
     # Create output directory
     os.makedirs(args.out_dir, exist_ok=True)
 
-    # Initialize LLM (OpenAI handles concurrent requests well)
+    # Initialize OpenAI client
     print(f"Initializing OpenAI model: {args.model}")
-    llm = OpenAI(model=args.model, temperature=0.0, request_timeout=args.timeout)
+    client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
     # Collect all entities to process
     entities_to_process = []
@@ -124,7 +127,6 @@ def main(args):
 
     print(f"Found {len(entities_to_process)} unique entities to process")
     print(f"Using {args.workers} workers for concurrent processing")
-    print(f"⚠️  Note: OpenAI has rate limits. Adjust --workers if you hit limits.")
 
     # Reset processed_ents for thread-safe tracking
     processed_ents = set()
@@ -135,7 +137,16 @@ def main(args):
         # Submit all tasks
         future_to_entity = {
             executor.submit(
-                process_entity, ent, ctx, llm, args.out_dir, processed_ents, lock
+                process_entity,
+                ent,
+                ctx,
+                client,
+                args.model,
+                args.temperature,
+                args.max_tokens,
+                args.out_dir,
+                processed_ents,
+                lock,
             ): ent
             for ent, ctx in entities_to_process
         }
@@ -159,7 +170,7 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description="Extract knowledge graphs concurrently using OpenAI"
+        description="Extract knowledge graphs using OpenAI"
     )
 
     parser.add_argument(
@@ -178,19 +189,25 @@ if __name__ == "__main__":
         "--model",
         type=str,
         default="gpt-4o-mini",
-        help="OpenAI model name (default: gpt-4o-mini)",
+        help="OpenAI model name (e.g., gpt-4o-mini, gpt-4o, gpt-3.5-turbo)",
     )
     parser.add_argument(
         "--workers",
         type=int,
-        default=3,
-        help="Number of concurrent workers (default: 3, be careful with rate limits)",
+        default=2,
+        help="Number of concurrent workers (default: 4)",
     )
     parser.add_argument(
-        "--timeout",
+        "--temperature",
+        type=float,
+        default=0.0,
+        help="Temperature for OpenAI model (default: 0.0)",
+    )
+    parser.add_argument(
+        "--max_tokens",
         type=int,
-        default=120,
-        help="Request timeout in seconds (default: 120)",
+        default=1000,
+        help="Maximum tokens for OpenAI response (default: 1000)",
     )
 
     args = parser.parse_args()
