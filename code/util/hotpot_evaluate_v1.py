@@ -1,8 +1,22 @@
-import sys
-import ujson as json
 import re
 import string
+import sys
 from collections import Counter
+
+import ujson as json
+
+
+def normalize_entity_name(entity):
+    """
+    Remove disambiguators from entity names.
+    Examples:
+        "Ed Wood (film)" -> "Ed Wood"
+        "Deliver Us from Evil (2014 film)" -> "Deliver Us from Evil"
+        "Scott Derrickson" -> "Scott Derrickson" (unchanged)
+    """
+    # Remove parenthetical disambiguators at the end
+    entity = re.sub(r"\s*\([^)]*\)\s*$", "", entity)
+    return entity.strip()
 
 
 def normalize_answer(s):
@@ -64,46 +78,29 @@ def update_answer(metrics, prediction, gold):
     metrics["recall"] += recall
     return em, prec, recall
 
-def equals(a, b):
-    if a[0] in b[0] or b[0] in a[0]:
-        if a[1] == b[1]:
-            return True
-    return False
-
 
 def update_sp(metrics, prediction, gold):
     cur_sp_pred = set(map(tuple, prediction))
     gold_sp_pred = set(map(tuple, gold))
-    print(cur_sp_pred, gold_sp_pred)
+    cur_sp_pred = set((normalize_entity_name(e[0]), e[1]) for e in cur_sp_pred)
+    gold_sp_pred = set((normalize_entity_name(e[0]), e[1]) for e in gold_sp_pred)
     tp, fp, fn = 0, 0, 0
     for e in cur_sp_pred:
-        # if e in gold_sp_pred:
-        matched = False
-        for g in gold_sp_pred:
-            if equals(e, g):
-                matched = True
-                break
-        if matched:
+        if e in gold_sp_pred:
             tp += 1
         else:
             fp += 1
-    for g in gold_sp_pred:
-        matched = False
+    for e in gold_sp_pred:
         if e not in cur_sp_pred:
-            if equals(e, g):
-                matched = True
-                break
-        if not matched:
             fn += 1
-
     prec = 1.0 * tp / (tp + fp) if tp + fp > 0 else 0.0
     recall = 1.0 * tp / (tp + fn) if tp + fn > 0 else 0.0
     f1 = 2 * prec * recall / (prec + recall) if prec + recall > 0 else 0.0
     em = 1.0 if fp + fn == 0 else 0.0
-    metrics['sp_em'] += em
-    metrics['sp_f1'] += f1
-    metrics['sp_prec'] += prec
-    metrics['sp_recall'] += recall
+    metrics["sp_em"] += em
+    metrics["sp_f1"] += f1
+    metrics["sp_prec"] += prec
+    metrics["sp_recall"] += recall
     return em, prec, recall
 
 
@@ -147,7 +144,6 @@ def eval(prediction_file, gold_file):
                 metrics, prediction["sp"][cur_id], dp["supporting_facts"]
             )
         count += 1
-        print(can_eval_joint)
         if can_eval_joint:
             joint_prec = prec * sp_prec
             joint_recall = recall * sp_recall
