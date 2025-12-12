@@ -6,4 +6,5 @@ openai
 networkx
 pandas
 tqdm
+tiktoken
 ujson

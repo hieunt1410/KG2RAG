@@ -1,23 +1,26 @@
 import os
+import asyncio
 import ujson as json
 from tqdm import tqdm
-from openai import OpenAI
-from concurrent.futures import ThreadPoolExecutor, as_completed
-from threading import Lock
-import argparse
+from openai import AsyncOpenAI
+import tiktoken
 
 
-def extract_triplets(client, model_name, ctx, temperature, max_tokens):
-    """Extract knowledge graph triplets from text using LLM."""
+async def extract_triplets(client, ctx):
     query = f'Extract triplets informative from the text following the examples. Make sure the triplet texts are only directly from the given text! Complete directly and strictly following the instructions without any additional words, line break nor space!\n{"-"*20}\nText: Scott Derrickson (born July 16, 1966) is an American director, screenwriter and producer.\nTriplets:<Scott Derrickson##born in##1966>$$<Scott Derrickson##nationality##America>$$<Scott Derrickson##occupation##director>$$<Scott Derrickson##occupation##screenwriter>$$<Scott Derrickson##occupation##producer>$$\n{"-"*20}\nText: A Kiss for Corliss is a 1949 American comedy film directed by Richard Wallace and written by Howard Dimsdale. It stars Shirley Temple in her final starring role as well as her final film appearance. Shirley Temple was named United States ambassador to Ghana and to Czechoslovakia and also served as Chief of Protocol of the United States.\nTriplets:<A Kiss for Corliss##cast member##Shirley Temple>$$<Shirley Temple##served as##Chief of Protocol>$$\n{"-"*20}\nText: {ctx}\nTriplets:'
 
-    response = client.chat.completions.create(
-        model=model_name,
-        messages=[{"role": "user", "content": query}],
-        temperature=temperature,
-        max_tokens=max_tokens,
-    )
-    resp = response.choices[0].message.content
+    try:
+        resp = await client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[{"role": "user", "content": query}],
+            max_tokens=1000,
+            temperature=0,
+        )
+        resp = resp.choices[0].message.content
+    except Exception as e:
+        print(f"Error processing text: {e}")
+        return []
+
     triplets = set()
     triplet_texts = resp.split("$$")
     for triplet_text in triplet_texts:
@@ -59,157 +62,125 @@ def extract_triplets(client, model_name, ctx, temperature, max_tokens):
     return triplets
 
 
-def process_entity(
-    ent, ctx, client, model_name, temperature, max_tokens, out_dir, processed_ents, lock
-):
-    """Process a single entity and extract triplets from all its contexts."""
-    # Check if already processed (thread-safe)
-    with lock:
-        if ent in processed_ents:
-            return None
-        processed_ents.add(ent)
+async def process_entity(client, ent, ctx, out_dir, semaphore):
+    async with semaphore:
+        out_path = os.path.join(out_dir, f"{ent.replace('/', '_')}.json")
+        if os.path.exists(out_path):
+            return 0
 
-    # Check if file already exists
-    out_path = os.path.join(out_dir, f"{ent.replace('/', '_')}.json")
-    if os.path.exists(out_path):
-        return None
+        # Process all contexts for this entity concurrently
+        tasks = []
+        for i in range(len(ctx[1])):
+            if not i == 0:
+                ctx_text = f"{ent}: {ctx[1][i]}"
+            else:
+                ctx_text = ctx[1][i]
+            tasks.append(extract_triplets(client, ctx_text))
 
-    # Extract triplets for each context
-    entity_triplets = {}
-    for i in range(len(ctx[1])):
-        if not i == 0:
-            ctx_text = f"{ent}: {ctx[1][i]}"
-        else:
-            ctx_text = ctx[1][i]
+        results = await asyncio.gather(*tasks, return_exceptions=True)
 
-        try:
-            ext_triplets = extract_triplets(
-                client, model_name, ctx_text, temperature, max_tokens
-            )
-            if len(ext_triplets) > 0:
-                entity_triplets[i] = ext_triplets
-        except Exception as e:
-            print(f"\nError processing {ent} context {i}: {e}")
-            continue
+        entity_triplets = {}
+        for i, result in enumerate(results):
+            if isinstance(result, Exception):
+                print(f"Error processing {ent} context {i}: {result}")
+                continue
+            ext_triplets = result
+            if len(ext_triplets) == 0:
+                continue
+            entity_triplets[i] = ext_triplets
 
-    # Save to file if we got any triplets
-    if entity_triplets:
-        with open(out_path, "w") as f:
-            json.dump(entity_triplets, f)
-        return ent
-    return None
+        # Save results if we have any triplets
+        if entity_triplets:
+            # Use async file I/O to avoid blocking
+            def save_to_file():
+                with open(out_path, "w") as f:
+                    json.dump(entity_triplets, f)
+
+            loop = asyncio.get_event_loop()
+            await loop.run_in_executor(None, save_to_file)
+            return 1
+        return 0
 
 
-def main(args):
-    # Load data
-    print(f"Loading data from {args.data_path}")
-    with open(args.data_path) as f:
+async def main():
+    data_path = "../../data/hotpotqa/hotpotqa_1k.json"
+    with open(data_path) as f:
         data = json.load(f)
 
-    # Create output directory
-    os.makedirs(args.out_dir, exist_ok=True)
+    client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+    out_dir = "../../data/hotpotqa/kgs/extract_subkgs"
+    os.makedirs(out_dir, exist_ok=True)
 
-    # Initialize OpenAI client
-    print(f"Initializing OpenAI model: {args.model}")
-    client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+    # Initialize tiktoken encoder for GPT-4o-mini
+    encoder = tiktoken.get_encoding("o200k_base")  # GPT-4o-mini uses o200k_base encoding
+    input_tokens = [0]  # Use list to make it mutable across async functions
 
-    # Collect all entities to process
-    entities_to_process = []
-    processed_ents = set()
-    lock = Lock()
-
+    # Collect all unique entities and their contexts
+    entities_to_process = {}
     for sample in data:
         ctxs = sample["context"]
         for ctx in ctxs:
             ent = ctx[0]
-            if ent not in processed_ents:
-                entities_to_process.append((ent, ctx))
-                processed_ents.add(ent)
+            if ent not in entities_to_process:
+                out_path = os.path.join(out_dir, f"{ent.replace('/', '_')}.json")
+                if not os.path.exists(out_path):
+                    entities_to_process[ent] = ctx
 
-    print(f"Found {len(entities_to_process)} unique entities to process")
-    print(f"Using {args.workers} workers for concurrent processing")
+    print(f"Total entities to process: {len(entities_to_process)}")
 
-    # Reset processed_ents for thread-safe tracking
-    processed_ents = set()
+    # Count all input tokens before making API calls
+    print("\nCounting input tokens...")
+    total_input_queries = 0
+    for ent, ctx in entities_to_process.items():
+        for i in range(len(ctx[1])):
+            if not i == 0:
+                ctx_text = f"{ent}: {ctx[1][i]}"
+            else:
+                ctx_text = ctx[1][i]
+
+            query = f'Extract triplets informative from the text following the examples. Make sure the triplet texts are only directly from the given text! Complete directly and strictly following the instructions without any additional words, line break nor space!\n{"-"*20}\nText: Scott Derrickson (born July 16, 1966) is an American director, screenwriter and producer.\nTriplets:<Scott Derrickson##born in##1966>$$<Scott Derrickson##nationality##America>$$<Scott Derrickson##occupation##director>$$<Scott Derrickson##occupation##screenwriter>$$<Scott Derrickson##occupation##producer>$$\n{"-"*20}\nText: A Kiss for Corliss is a 1949 American comedy film directed by Richard Wallace and written by Howard Dimsdale. It stars Shirley Temple in her final starring role as well as her final film appearance. Shirley Temple was named United States ambassador to Ghana and to Czechoslovakia and also served as Chief of Protocol of the United States.\nTriplets:<A Kiss for Corliss##cast member##Shirley Temple>$$<Shirley Temple##served as##Chief of Protocol>$$\n{"-"*20}\nText: {ctx_text}\nTriplets:'
+
+            token_count = len(encoder.encode(query))
+            total_input_queries += 1
+            input_tokens[0] += token_count
+
+    print(f"Total input queries: {total_input_queries}")
+    print(f"Total input tokens: {input_tokens[0]:,}")
+
+    # Calculate minimum input cost
+    input_cost = input_tokens[0] * 0.15 / 1_000_000
+    print(f"Minimum input cost (assuming 0 output tokens): ${input_cost:.4f}")
+
+    print("\nProceeding with API calls...")
+    # Process entities concurrently with semaphore for rate limiting
+    semaphore = asyncio.Semaphore(10)  # Limit to 10 concurrent requests
+
+    tasks = [
+        process_entity(client, ent, ctx, out_dir, semaphore)
+        for ent, ctx in entities_to_process.items()
+    ]
+
     count = 0
+    with tqdm(total=len(tasks), desc="Processing entities") as pbar:
+        for coro in asyncio.as_completed(tasks):
+            result = await coro
+            count += result
+            pbar.update(1)
 
-    # Process entities concurrently
-    with ThreadPoolExecutor(max_workers=args.workers) as executor:
-        # Submit all tasks
-        future_to_entity = {
-            executor.submit(
-                process_entity,
-                ent,
-                ctx,
-                client,
-                args.model,
-                args.temperature,
-                args.max_tokens,
-                args.out_dir,
-                processed_ents,
-                lock,
-            ): ent
-            for ent, ctx in entities_to_process
-        }
+    total_input_tokens = input_tokens[0]
 
-        # Process completed tasks with progress bar
-        with tqdm(total=len(future_to_entity), desc="Extracting KGs") as pbar:
-            for future in as_completed(future_to_entity):
-                try:
-                    result = future.result()
-                    if result is not None:
-                        count += 1
-                except Exception as e:
-                    ent = future_to_entity[future]
-                    print(f"\nError processing entity {ent}: {e}")
-                finally:
-                    pbar.update(1)
+    print(f"\nNewly extracted entity KGs number: {count}")
+    print(f"\n--- Token Usage Summary ---")
+    print(f"Input tokens: {total_input_tokens:,}")
 
-    print(f"\n✅ Newly extracted entity KGs: {count}")
-    print(f"📁 Output directory: {args.out_dir}")
+    # Calculate estimated input cost (GPT-4o-mini pricing as of 2024)
+    # Input: $0.15 per 1M tokens
+    input_cost = total_input_tokens * 0.15 / 1_000_000
+
+    print(f"\n--- Cost Estimate (GPT-4o-mini) ---")
+    print(f"Input cost: ${input_cost:.4f}")
+    print("(Note: Output tokens not tracked, actual cost will be higher)")
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(
-        description="Extract knowledge graphs using OpenAI"
-    )
-
-    parser.add_argument(
-        "--data_path",
-        type=str,
-        default="../../data/hotpotqa/hotpot_dev_fullwiki_v1_100.json",
-        help="Path to the input data file",
-    )
-    parser.add_argument(
-        "--out_dir",
-        type=str,
-        default="../../data/hotpotqa/kgs/extract_subkgs",
-        help="Output directory for extracted KGs",
-    )
-    parser.add_argument(
-        "--model",
-        type=str,
-        default="gpt-4o-mini",
-        help="OpenAI model name (e.g., gpt-4o-mini, gpt-4o, gpt-3.5-turbo)",
-    )
-    parser.add_argument(
-        "--workers",
-        type=int,
-        default=2,
-        help="Number of concurrent workers (default: 4)",
-    )
-    parser.add_argument(
-        "--temperature",
-        type=float,
-        default=0.0,
-        help="Temperature for OpenAI model (default: 0.0)",
-    )
-    parser.add_argument(
-        "--max_tokens",
-        type=int,
-        default=1000,
-        help="Maximum tokens for OpenAI response (default: 1000)",
-    )
-
-    args = parser.parse_args()
-    main(args)
+    asyncio.run(main())
