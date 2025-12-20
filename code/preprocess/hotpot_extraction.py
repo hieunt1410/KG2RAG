@@ -112,7 +112,9 @@ async def main():
     os.makedirs(out_dir, exist_ok=True)
 
     # Initialize tiktoken encoder for GPT-4o-mini
-    encoder = tiktoken.get_encoding("o200k_base")  # GPT-4o-mini uses o200k_base encoding
+    encoder = tiktoken.get_encoding(
+        "o200k_base"
+    )  # GPT-4o-mini uses o200k_base encoding
     input_tokens = [0]  # Use list to make it mutable across async functions
 
     # Collect all unique entities and their contexts
@@ -128,9 +130,18 @@ async def main():
 
     print(f"Total entities to process: {len(entities_to_process)}")
 
-    # Count all input tokens before making API calls
+    # Count all input tokens before making API calls (with caching consideration)
     print("\nCounting input tokens...")
+
+    # The fixed template portion (instructions + examples) - this gets cached after first request
+    template_prefix = f"Extract triplets informative from the text following the examples. Make sure the triplet texts are only directly from the given text! Complete directly and strictly following the instructions without any additional words, line break nor space!\n{'-' * 20}\nText: Scott Derrickson (born July 16, 1966) is an American director, screenwriter and producer.\nTriplets:<Scott Derrickson##born in##1966>$$<Scott Derrickson##nationality##America>$$<Scott Derrickson##occupation##director>$$<Scott Derrickson##occupation##screenwriter>$$<Scott Derrickson##occupation##producer>$$\n{'-' * 20}\nText: A Kiss for Corliss is a 1949 American comedy film directed by Richard Wallace and written by Howard Dimsdale. It stars Shirley Temple in her final starring role as well as her final film appearance. Shirley Temple was named United States ambassador to Ghana and to Czechoslovakia and also served as Chief of Protocol of the United States.\nTriplets:<A Kiss for Corliss##cast member##Shirley Temple>$$<Shirley Temple##served as##Chief of Protocol>$$\n{'-' * 20}\nText: "
+    template_suffix = "\nTriplets:"
+
+    cached_tokens_per_query = len(encoder.encode(template_prefix + template_suffix))
+
     total_input_queries = 0
+    non_cached_tokens = 0  # Dynamic context tokens
+
     for ent, ctx in entities_to_process.items():
         for i in range(len(ctx[1])):
             if not i == 0:
@@ -138,20 +149,43 @@ async def main():
             else:
                 ctx_text = ctx[1][i]
 
-            query = f'Extract triplets informative from the text following the examples. Make sure the triplet texts are only directly from the given text! Complete directly and strictly following the instructions without any additional words, line break nor space!\n{"-"*20}\nText: Scott Derrickson (born July 16, 1966) is an American director, screenwriter and producer.\nTriplets:<Scott Derrickson##born in##1966>$$<Scott Derrickson##nationality##America>$$<Scott Derrickson##occupation##director>$$<Scott Derrickson##occupation##screenwriter>$$<Scott Derrickson##occupation##producer>$$\n{"-"*20}\nText: A Kiss for Corliss is a 1949 American comedy film directed by Richard Wallace and written by Howard Dimsdale. It stars Shirley Temple in her final starring role as well as her final film appearance. Shirley Temple was named United States ambassador to Ghana and to Czechoslovakia and also served as Chief of Protocol of the United States.\nTriplets:<A Kiss for Corliss##cast member##Shirley Temple>$$<Shirley Temple##served as##Chief of Protocol>$$\n{"-"*20}\nText: {ctx_text}\nTriplets:'
-
-            token_count = len(encoder.encode(query))
+            # Only count the dynamic context portion
+            context_tokens = len(encoder.encode(ctx_text))
+            non_cached_tokens += context_tokens
             total_input_queries += 1
-            input_tokens[0] += token_count
+
+    # Total tokens = cached template * num_queries + non-cached context tokens
+    total_cached_tokens = cached_tokens_per_query * total_input_queries
+    total_input_tokens = total_cached_tokens + non_cached_tokens
 
     print(f"Total input queries: {total_input_queries}")
-    print(f"Total input tokens: {input_tokens[0]:,}")
+    print(f"Cached tokens (template, per query): {cached_tokens_per_query:,}")
+    print(f"Total cached tokens: {total_cached_tokens:,}")
+    print(f"Non-cached tokens (dynamic context): {non_cached_tokens:,}")
+    print(f"Total input tokens: {total_input_tokens:,}")
 
-    # Calculate minimum input cost
-    input_cost = input_tokens[0] * 0.15 / 1_000_000
-    print(f"Minimum input cost (assuming 0 output tokens): ${input_cost:.4f}")
+    # Calculate cost with caching (GPT-4o-mini pricing)
+    # Input: $0.15 per 1M tokens, Cached: $0.075 per 1M tokens (50% discount)
+    # First query pays full price for template, rest get cached price
+    first_query_cost = cached_tokens_per_query * 0.15 / 1_000_000
+    cached_cost = (total_cached_tokens - cached_tokens_per_query) * 0.075 / 1_000_000
+    non_cached_cost = non_cached_tokens * 0.15 / 1_000_000
+    total_input_cost = first_query_cost + cached_cost + non_cached_cost
 
-    print("\nProceeding with API calls...")
+    # Cost without caching for comparison
+    cost_without_caching = total_input_tokens * 0.15 / 1_000_000
+
+    print("\n--- Cost Estimate (GPT-4o-mini, input only) ---")
+    print(f"With prompt caching: ${total_input_cost:.4f}")
+    print(f"Without caching: ${cost_without_caching:.4f}")
+    print(f"Savings from caching: ${cost_without_caching - total_input_cost:.4f}")
+
+    # Ask for user confirmation before proceeding
+    user_input = input("\nProceed with API calls? (y/n): ").strip().lower()
+    if user_input != "y":
+        print("Aborted by user.")
+        return
+
     # Process entities concurrently with semaphore for rate limiting
     semaphore = asyncio.Semaphore(10)  # Limit to 10 concurrent requests
 
@@ -170,14 +204,14 @@ async def main():
     total_input_tokens = input_tokens[0]
 
     print(f"\nNewly extracted entity KGs number: {count}")
-    print(f"\n--- Token Usage Summary ---")
+    print("\n--- Token Usage Summary ---")
     print(f"Input tokens: {total_input_tokens:,}")
 
     # Calculate estimated input cost (GPT-4o-mini pricing as of 2024)
     # Input: $0.15 per 1M tokens
     input_cost = total_input_tokens * 0.15 / 1_000_000
 
-    print(f"\n--- Cost Estimate (GPT-4o-mini) ---")
+    print("\n--- Cost Estimate (GPT-4o-mini) ---")
     print(f"Input cost: ${input_cost:.4f}")
     print("(Note: Output tokens not tracked, actual cost will be higher)")
 
