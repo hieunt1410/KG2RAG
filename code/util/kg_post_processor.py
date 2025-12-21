@@ -1,7 +1,8 @@
 import string
+import threading
 from builtins import print as _print
 from sys import _getframe
-from typing import Dict, List, Optional, Set
+from typing import Any, Dict, List, Optional, Set
 
 import networkx as nx
 from FlagEmbedding import FlagReranker
@@ -11,6 +12,9 @@ from llama_index.core.postprocessor.types import BaseNodePostprocessor
 from llama_index.core.schema import NodeWithScore, QueryBundle, TextNode
 
 dispatcher = get_dispatcher(__name__)
+
+# Thread-local storage for reranker instances
+_thread_local = threading.local()
 
 
 def print(*arg, **kw):
@@ -269,11 +273,18 @@ class GraphFilterPostProcessor(BaseNodePostprocessor):
     ents: Set[str] = Field
     doc2kg: Dict[str, Dict[str, List[List[str]]]] = Field
     chunks_index: Dict[str, Dict[str, str]] = Field
-    reranker: FlagReranker = Field
+    reranker_model: str = Field  # Store model name instead of instance
+    reranker: Any = Field(default=None, exclude=True)  # Keep for backward compatibility
 
     @classmethod
     def class_name(cls) -> str:
         return "GraphFilterPostprocessor"
+
+    def _get_reranker(self) -> FlagReranker:
+        """Get thread-local reranker instance, creating one if needed."""
+        if not hasattr(_thread_local, 'reranker'):
+            _thread_local.reranker = FlagReranker(model_name_or_path=self.reranker_model)
+        return _thread_local.reranker
 
     def _postprocess_nodes(
         self,
@@ -458,7 +469,8 @@ class GraphFilterPostProcessor(BaseNodePostprocessor):
             cand_tpts.append(tpt_str)
 
         if len(cand_strs) == 0:
-            scores = self.reranker.compute_score(
+            reranker = self._get_reranker()
+            scores = reranker.compute_score(
                 [(query_bundle.query_str, node.node.text) for node in nodes]
             )
             sorted_seqs = sorted(
@@ -470,7 +482,8 @@ class GraphFilterPostProcessor(BaseNodePostprocessor):
             return wanted_nodes
 
         wanted_ctxs = []
-        scores = self.reranker.compute_score(
+        reranker = self._get_reranker()
+        scores = reranker.compute_score(
             [(query_bundle.query_str, cand_str) for cand_str in cand_strs]
         )
         # scores = self.reranker.compute_score([(query_bundle.query_str,cand_tpt) for cand_tpt in cand_tpts])
@@ -491,7 +504,8 @@ class GraphFilterPostProcessor(BaseNodePostprocessor):
                 if node.node.id_ not in wanted_ctxs
             ]
             if len(cands) > 0:
-                scores = self.reranker.compute_score(cands)
+                reranker = self._get_reranker()
+                scores = reranker.compute_score(cands)
                 sorted_seqs = sorted(
                     range(len(scores)), key=lambda x: scores[x], reverse=True
                 )
