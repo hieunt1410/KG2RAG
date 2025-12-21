@@ -1,6 +1,8 @@
 import argparse
 import json
 import os
+from multiprocessing import Pool, cpu_count
+from functools import partial
 
 from FlagEmbedding import FlagReranker
 from llama_index.core import (
@@ -22,8 +24,42 @@ from util.kg_post_processor import (
 )
 
 
+def process_question(sample, retriever, postprocessors):
+    """Process a single question and return results"""
+    sample_id = sample["_id"]
+    sample_question = sample["question"]
+
+    # Direct retrieval with postprocessors (no answer generation)
+    query_bundle = QueryBundle(query_str=sample_question)
+    nodes = retriever.retrieve(sample_question)
+
+    # Apply postprocessors with query bundle
+    try:
+        for postprocessor in postprocessors:
+            nodes = postprocessor.postprocess_nodes(
+                nodes, query_bundle=query_bundle
+            )
+    except UnboundLocalError as e:
+        print(f"Error in postprocessor: {e}")
+        # If postprocessor fails, continue with original nodes
+        pass
+
+    # Extract supporting facts from retrieved nodes
+    sps = [
+        [
+            node.id_.split("##")[0],
+            int(node.id_.split("##")[1]),
+        ]
+        for node in nodes
+    ]
+
+    # Return results for this sample
+    return sample_id, sps
+
+
 def kg_rag_parallel(
-    data,
+    questions,
+    corpora,
     doc2kg,
     top_k=5,
     workers=4,
@@ -36,7 +72,7 @@ def kg_rag_parallel(
     doc_chunks = []
     chunks_index = dict()
     ents = set()
-    for sample in data:
+    for sample in corpora:
         for ctx in sample["context"]:
             ent = ctx[0]
             ents.add(ent)
@@ -88,43 +124,22 @@ def kg_rag_parallel(
         NaivePostprocessor(dataset=dataset),
     ]
 
-    test_size = len(data)
-
     sps_count = []
-    for sample in tqdm(data[: min(len(data), test_size)]):
-        sample_id = sample["_id"]
-        sample_question = sample["question"]
-        sample_answer = sample["answer"]
 
-        # Direct retrieval with postprocessors (no answer generation)
-        query_bundle = QueryBundle(query_str=sample_question)
-        nodes = retriever.retrieve(sample_question)
+    # Use parallel processing with Pool
+    print(f"Processing {len(questions)} questions with {workers} workers...")
 
-        # Apply postprocessors with query bundle
-        try:
-            for postprocessor in postprocessors:
-                nodes = postprocessor.postprocess_nodes(
-                    nodes, query_bundle=query_bundle
-                )
-        except UnboundLocalError as e:
-            print(f"Error in postprocessor: {e}")
-            # If postprocessor fails, continue with original nodes
-            # This ensures we still get some retrieval results even if KG processing fails
-            pass
+    # Create a partial function with fixed arguments
+    process_func = partial(process_question, retriever=retriever, postprocessors=postprocessors)
 
-        # Extract supporting facts from retrieved nodes
-        sps = [
-            [
-                node.id_.split("##")[0],
-                int(node.id_.split("##")[1]),
-            ]
-            for node in nodes
-        ]
+    # Use Pool to process questions in parallel
+    with Pool(workers) as pool:
+        # Use tqdm for progress bar with pool.imap
+        results = list(tqdm(pool.imap(process_func, questions), total=len(questions)))
 
-        # Skip answer generation - use empty string or None
-        prediction["answer"][sample_id] = (
-            ""  # Empty answer since we're only doing retrieval
-        )
+    # Process results and fill prediction dictionary
+    for sample_id, sps in results:
+        prediction["answer"][sample_id] = ""  # Empty answer since we're only doing retrieval
         prediction["sp"][sample_id] = sps
         sps_count.append(len(sps))
 
@@ -134,12 +149,16 @@ def kg_rag_parallel(
 
 
 def main(args):
-    data_path = args.data_path
-    with open(data_path, "r", encoding="utf-8") as f:
-        data = json.load(f)
+    question_path = args.question_path
+    corpus_path = args.corpus_path
+
+    with open(question_path, "r", encoding="utf-8") as f:
+        questions = json.load(f)
+    with open(corpus_path, "r", encoding="utf-8") as f:
+        corpora = json.load(f)
 
     ents = set()
-    for sample in data:
+    for sample in corpora:
         for ctx in sample["context"]:
             ents.add(ctx[0])
 
@@ -182,7 +201,8 @@ def main(args):
     persist_dir = args.persist_dir
     reranker = args.reranker
     prediction = kg_rag_parallel(
-        data,
+        questions,
+        corpora,
         doc2kg,
         top_k=top_k,
         workers=workers,
@@ -199,12 +219,17 @@ def main(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset", type=str, default="hotpotqa", help="Dataset name")
-    # hotpot full
     parser.add_argument(
-        "--data_path",
+        "--question_path",
         type=str,
         default="../data/hotpotqa/hotpot_dev_distractor_v1.json",
         help="Path to the data file",
+    )
+    parser.add_argument(
+        "--corpus_path",
+        type=str,
+        default="../data/hotpotqa/corpus.json",
+        help="Path to the corpus file",
     )
     parser.add_argument(
         "--result_path",
@@ -221,34 +246,29 @@ if __name__ == "__main__":
         default="../data/ollama_index/hotpotqa",
         help="Directory to store the index",
     )
-
-    # # pu-hotpot full
-    # parser.add_argument('--data_path',type=str,default='../data/pu-hotpotqa/hotpot_dev_distractor_v1.json',help='Path to the data file')
-    # parser.add_argument('--result_path',type=str,default='../output/pu-hotpot/pu-hotpot_dev_distractor_v1_full.json',help='Path to the result file')
-    # parser.add_argument('--kg_dir',type=str,default='../data/pu-hotpotqa/kgs/extract_subkgs')
-    # parser.add_argument('--persist_dir',type=str,default='../data/ollama_index/vector_pu_hotpotqa',help='Directory to store the index')
-
-    parser.add_argument(
-        "--model_name", type=str, default="llama3:8b", help="Ollama model name"
-    )
     parser.add_argument(
         "--embed_model_name",
         type=str,
-        default="mixedbread-ai/mxbai-embed-large-v1",
-        help="Ollama embedding model name for indexing",
-    )
-    parser.add_argument("--top_k", type=int, default=10, help="Top k similar documents")
-    parser.add_argument(
-        "--num_workers",
-        type=int,
-        default=4,
-        help="Number of workers for parallel processing",
+        default="sentence-transformers/all-MiniLM-L6-v2",
+        help="Embedding model name",
     )
     parser.add_argument(
         "--reranker",
         type=str,
-        default="BAAI/bge-reranker-large",
-        help="Path of the reranker model",
+        default="bge-small-en-v1.5",
+        help="Reranker model name",
+    )
+    parser.add_argument(
+        "--top_k",
+        type=int,
+        default=10,
+        help="Number of top-k retrieved documents",
+    )
+    parser.add_argument(
+        "--num_workers",
+        type=int,
+        default=1,
+        help="Number of workers for parallel processing",
     )
     args = parser.parse_args()
     main(args)

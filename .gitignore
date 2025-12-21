@@ -6,3 +6,6 @@ data/*/kgs/
 **/**/.DS_Store
 
 code/util/metrics
+
+*.py
+*.pdf

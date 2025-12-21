@@ -8,8 +8,10 @@ from llama_index.core import Settings, VectorStoreIndex, QueryBundle  # , Prompt
 from llama_index.llms.ollama import Ollama
 from llama_index.core.schema import TextNode
 from llama_index.core.retrievers import VectorIndexRetriever
+
 # from llama_index.core.query_engine import RetrieverQueryEngine  # Not needed for retriever testing
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
+
 # from llama_index.core.response_synthesizers import ResponseMode  # Not needed for retriever testing
 from util.kg_post_processor import (
     NaivePostprocessor,
@@ -69,7 +71,7 @@ def read_kg(args, data):
         doc2kg = dict()
         print("Loading KGs")
         for ent in tqdm(ents):
-            subkg_path = os.path.join(kg_dir, f'{ent.replace("/","_")}.json')
+            subkg_path = os.path.join(kg_dir, f"{ent.replace('/', '_')}.json")
             if os.path.exists(subkg_path):
                 with open(subkg_path, "r", encoding="utf-8") as f:
                     subkg = json.load(f)
@@ -160,7 +162,7 @@ def process_sample(args, sample, kg):
             if ent not in chunks_index:
                 chunks_index[ent] = dict()
             seq = ctx["seq"]
-            text = f'{ent}: {ctx["paragraph_text"]}'
+            text = f"{ent}: {ctx['paragraph_text']}"
             if (ent in kg) and (str(seq) in kg[ent]) and (len(kg[ent][str(seq)]) > 0):
                 if ent not in subkg:
                     subkg[ent] = dict()
@@ -171,7 +173,7 @@ def process_sample(args, sample, kg):
 
     index = VectorStoreIndex(doc_chunks)
     retriever = VectorIndexRetriever(index=index, similarity_top_k=args.top_k)
-    
+
     # ===== COMMENTED OUT: Answer generation components =====
     # qa_rag_template_str = "Context information is below.\n{context_str}\nThink step by step but give a short factoid answer (as few words as possible) based on the context and your own knowledge.\nQ: Were Scott Derrickson and Ed Wood of the same nationality?\nA: Yes.\nQ: Who was born earlier, Emma Bull or Virginia Woolf?\nA: Adeline Virginia Woolf.\nQ: The arena where the Lewiston Maineiacs played their home games can seat how many people?\nA: 3,677 seated.\nQ: What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?\nA: Chief of Protocol.\n---------------------\nQ: {query_str}\nA: "
     # qa_rag_prompt_template = PromptTemplate(qa_rag_template_str)
@@ -194,7 +196,7 @@ def process_sample(args, sample, kg):
         reranker=bge_reranker,
     )
     naive_pp = NaivePostprocessor(dataset=args.dataset)
-    
+
     # ===== COMMENTED OUT: Query engine with answer generation =====
     # query_engine = RetrieverQueryEngine(
     #     retriever=retriever,
@@ -207,18 +209,24 @@ def process_sample(args, sample, kg):
     try:
         # Retrieve nodes without generating answers
         retrieved_nodes = retriever.retrieve(sample_question)
-        
+
         # Create a QueryBundle for post-processors
         query_bundle = QueryBundle(query_str=sample_question)
-        
+
         # Apply post-processors manually to test the retrieval pipeline
-        processed_nodes = expansion_pp.postprocess_nodes(retrieved_nodes, query_bundle=query_bundle)
-        processed_nodes = filter_pp.postprocess_nodes(processed_nodes, query_bundle=query_bundle)
-        processed_nodes = naive_pp.postprocess_nodes(processed_nodes, query_bundle=query_bundle)
-        
+        processed_nodes = expansion_pp.postprocess_nodes(
+            retrieved_nodes, query_bundle=query_bundle
+        )
+        processed_nodes = filter_pp.postprocess_nodes(
+            processed_nodes, query_bundle=query_bundle
+        )
+        processed_nodes = naive_pp.postprocess_nodes(
+            processed_nodes, query_bundle=query_bundle
+        )
+
         # Extract supporting facts from retrieved nodes (no answer generation)
         prediction = "[RETRIEVAL_TEST_MODE - NO ANSWER GENERATED]"
-        
+
         if args.dataset == "hotpotqa":
             sps = [
                 [
@@ -229,23 +237,20 @@ def process_sample(args, sample, kg):
             ]
             sps = [[ent, seq] for ent, seq in sps if (seq >= 0)]
         elif args.dataset == "musique":
-            sps = [
-                int(node.node.id_.split("##")[0])
-                for node in processed_nodes
-            ]
+            sps = [int(node.node.id_.split("##")[0]) for node in processed_nodes]
             sps = [idx for idx in sps if (idx >= 0)]
-            
+
         # Print retrieved nodes for inspection
         print(f"\nSample {sample_id}: Retrieved {len(processed_nodes)} nodes")
         for i, node in enumerate(processed_nodes):
-            print(f"  Node {i+1}: {node.node.id_} (score: {node.score})")
-            
+            print(f"  Node {i + 1}: {node.node.id_} (score: {node.score})")
+
     except Exception as e:
         print(f"Sample {sample_id}, Error: {e}")
         prediction = "[ERROR]"
         sps = []
     # ===== END RETRIEVER TESTING MODE =====
-    
+
     return sample_id, prediction, sps
 
 
@@ -257,7 +262,7 @@ def kgrag_distractor_predict(args, data, kg):
         prediction["answer"][sample_id] = sample_prediction
         prediction["sp"][sample_id] = sample_sps
         sps_count += len(sample_sps)
-    print(f"Average number of supporting facts: {sps_count/len(data)}")
+    print(f"Average number of supporting facts: {sps_count / len(data)}")
     return prediction
 
 
