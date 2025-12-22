@@ -183,7 +183,7 @@ def process_sample(args, sample, kg):
     # ===== END COMMENTED OUT =====
 
     expansion_pp = KGRetrievePostProcessor(
-        dataset=args.dataset, ents=ents, doc2kg=subkg, chunks_index=chunks_index
+        dataset=args.dataset, ents=ents, doc2kg=subkg, chunks_index=chunks_index, hops=args.hops
     )
     bge_reranker = FlagReranker(model_name_or_path=args.reranker, device=3)
     filter_pp = GraphFilterPostProcessor(
@@ -302,6 +302,12 @@ if __name__ == "__main__":
         type=str,
         default="../output/hotpot/hotpot_dev_distractor_v1_kgrag.json",
         help="Path to the result file",
+    )
+    parser.add_argument(
+        "--hops",
+        type=int,
+        default=1,
+        help="Number of hops for entity expansion in KGRetrievePostProcessor",
     )
 
     # # pu-hotpotqa distractor
