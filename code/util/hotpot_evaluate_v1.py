@@ -141,7 +141,7 @@ def eval(prediction_file, gold_file):
             can_eval_joint = False
         else:
             sp_em, sp_prec, sp_recall = update_sp(
-                metrics, prediction["sp"][cur_id], dp["supporting_facts"]
+                metrics, prediction["sp"][cur_id][:1000], dp["supporting_facts"]
             )
         count += 1
         if can_eval_joint:

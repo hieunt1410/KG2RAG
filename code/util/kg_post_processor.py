@@ -180,7 +180,7 @@ class KGRetrievePostProcessor(BaseNodePostprocessor):
                     ent_score[t] += node.score
 
         additional_ents = additional_ents.union(retrieved_ents)
-        hops = 0
+        hops = 2
         for hop in range(hops):
             related_ents = related_ents.union(additional_ents)
             temp_ents = set(additional_ents)
