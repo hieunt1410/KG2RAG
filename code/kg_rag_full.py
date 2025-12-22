@@ -66,6 +66,7 @@ def kg_rag(
     dataset="hotpotqa",
     embedding_batch_size=1000,
     question_batch_size=50,
+    hops=1,
 ):
     prediction = {"answer": {}, "sp": {}}
 
@@ -140,7 +141,7 @@ def kg_rag(
     # )
 
     kg_post_processor1 = KGRetrievePostProcessor(
-        dataset=dataset, ents=ents, doc2kg=doc2kg, chunks_index=chunks_index
+        dataset=dataset, ents=ents, doc2kg=doc2kg, chunks_index=chunks_index, hops=hops
     )
     bge_reranker = FlagReranker(model_name_or_path=reranker)
     kg_post_processor2 = GraphFilterPostProcessor(
@@ -272,6 +273,7 @@ def main(args):
         persist_dir=persist_dir,
         dataset=args.dataset,
         reranker=reranker,
+        hops=args.hops,
     )
 
     result_path = args.result_path
@@ -338,6 +340,12 @@ if __name__ == "__main__":
         type=int,
         default=200,
         help="Batch size for processing questions (to manage memory)",
+    )
+    parser.add_argument(
+        "--hops",
+        type=int,
+        default=1,
+        help="Number of hops for entity expansion in KGRetrievePostProcessor",
     )
     args = parser.parse_args()
     main(args)

@@ -97,6 +97,7 @@ class KGRetrievePostProcessor(BaseNodePostprocessor):
     ents: Set[str] = Field
     doc2kg: Dict[str, Dict[str, List[List[str]]]] = Field
     chunks_index: Dict[str, Dict[str, str]] = Field
+    hops: int = Field(default=1)
 
     @classmethod
     def class_name(cls) -> str:
@@ -176,8 +177,7 @@ class KGRetrievePostProcessor(BaseNodePostprocessor):
                     ent_score[t] += node.score
 
         additional_ents = additional_ents.union(retrieved_ents)
-        hops = 1
-        for hop in range(hops):
+        for hop in range(self.hops):
             related_ents = related_ents.union(additional_ents)
             temp_ents = set(additional_ents)
             additional_ents = set()
