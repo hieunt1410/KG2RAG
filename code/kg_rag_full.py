@@ -2,8 +2,8 @@ import argparse
 import json
 import os
 from math import ceil
-from concurrent.futures import ThreadPoolExecutor, as_completed
 
+from FlagEmbedding import FlagReranker
 from llama_index.core import (
     QueryBundle,
     Settings,
@@ -56,7 +56,7 @@ def process_question(sample, retriever, postprocessors):
     return sample_id, sps
 
 
-def kg_rag_parallel(
+def kg_rag(
     questions,
     corpora,
     doc2kg,
@@ -66,7 +66,6 @@ def kg_rag_parallel(
     dataset="hotpotqa",
     embedding_batch_size=1000,
     question_batch_size=50,
-    num_workers=1,
 ):
     prediction = {"answer": {}, "sp": {}}
 
@@ -143,6 +142,7 @@ def kg_rag_parallel(
     kg_post_processor1 = KGRetrievePostProcessor(
         dataset=dataset, ents=ents, doc2kg=doc2kg, chunks_index=chunks_index
     )
+    bge_reranker = FlagReranker(model_name_or_path=reranker)
     kg_post_processor2 = GraphFilterPostProcessor(
         dataset=dataset,
         topk=top_k,
@@ -150,7 +150,7 @@ def kg_rag_parallel(
         ents=ents,
         doc2kg=doc2kg,
         chunks_index=chunks_index,
-        reranker_model=reranker,  # Pass model name, thread-local instances created on demand
+        reranker=bge_reranker,
     )
 
     # Create a retriever with postprocessors for retrieval only
@@ -163,7 +163,6 @@ def kg_rag_parallel(
 
     # Process questions in batches to manage memory
     print(f"Processing {len(questions)} questions in batches of {question_batch_size}...")
-    print(f"Using {num_workers} workers for concurrent processing")
 
     all_results = []
     sps_count = []
@@ -174,39 +173,16 @@ def kg_rag_parallel(
         batch_end = min(batch_start + question_batch_size, len(questions))
         batch_questions = questions[batch_start:batch_end]
 
-        # Process each question in the batch concurrently
         batch_results = []
-        if num_workers > 1:
-            # Use concurrent processing
-            with ThreadPoolExecutor(max_workers=num_workers) as executor:
-                # Submit all tasks
-                future_to_sample = {
-                    executor.submit(process_question, sample, retriever, postprocessors): sample
-                    for sample in batch_questions
-                }
-
-                # Collect results as they complete
-                for future in as_completed(future_to_sample):
-                    sample = future_to_sample[future]
-                    try:
-                        result = future.result()
-                        batch_results.append(result)
-                        sps_count.append(len(result[1]))  # Track SPs count
-                    except Exception as e:
-                        print(f"Error processing question {sample['_id']}: {e}")
-                        batch_results.append((sample["_id"], []))
-                        sps_count.append(0)
-        else:
-            # Sequential processing (original behavior)
-            for sample in tqdm(batch_questions, desc="Processing batch", leave=False):
-                try:
-                    result = process_question(sample, retriever, postprocessors)
-                    batch_results.append(result)
-                    sps_count.append(len(result[1]))  # Track SPs count
-                except Exception as e:
-                    print(f"Error processing question {sample['_id']}: {e}")
-                    batch_results.append((sample["_id"], []))
-                    sps_count.append(0)
+        for sample in tqdm(batch_questions, desc="Processing batch", leave=False):
+            try:
+                result = process_question(sample, retriever, postprocessors)
+                batch_results.append(result)
+                sps_count.append(len(result[1]))  # Track SPs count
+            except Exception as e:
+                print(f"Error processing question {sample['_id']}: {e}")
+                batch_results.append((sample["_id"], []))
+                sps_count.append(0)
 
         all_results.extend(batch_results)
 
@@ -286,7 +262,7 @@ def main(args):
     question_batch_size = args.question_batch_size
     persist_dir = args.persist_dir
     reranker = args.reranker
-    prediction = kg_rag_parallel(
+    prediction = kg_rag(
         questions,
         corpora,
         doc2kg,
@@ -296,7 +272,6 @@ def main(args):
         persist_dir=persist_dir,
         dataset=args.dataset,
         reranker=reranker,
-        num_workers=args.num_workers,
     )
 
     result_path = args.result_path
@@ -351,12 +326,6 @@ if __name__ == "__main__":
         type=int,
         default=10,
         help="Number of top-k retrieved documents",
-    )
-    parser.add_argument(
-        "--num_workers",
-        type=int,
-        default=1,
-        help="Number of workers for parallel processing",
     )
     parser.add_argument(
         "--embedding_batch_size",
